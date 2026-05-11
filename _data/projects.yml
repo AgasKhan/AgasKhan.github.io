@@ -1,0 +1,22 @@
+- id: common-package
+  name: Common-Package
+  short: Biblioteca personal de utilidades para Unity — el workshop interno desde el que se publican los packages individuales.
+  status: active
+  page: /projects/common-package/
+  repo: https://github.com/AgasKhan/Common-Package
+  repo_visibility: private
+  tech:
+    - Unity 2022.3
+    - C#
+
+- id: la-maldicion
+  name: La Maldición
+  short: Card game / videojuego en desarrollo. Consumidor principal de los packages de AgasKhan.
+  status: paused
+  page: /projects/la-maldicion/
+  repo: https://github.com/LaMaldicionDevelopmentTeam/LaMaldicionCardVideoGame
+  repo_visibility: private
+  tech:
+    - Unity 2022.3
+    - C#
+    - Card game

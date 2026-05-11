@@ -1,0 +1,37 @@
+title: AgasKhan
+tagline: Unity dev — packages, juegos y experimentos
+description: >-
+  Portal de Lucas (AgasKhan). Hub de packages reutilizables de Unity,
+  proyectos en curso y notas técnicas.
+url: https://agaskhan.github.io
+baseurl: ""
+
+author:
+  name: Lucas (AgasKhan)
+  github: AgasKhan
+
+repository: AgasKhan/AgasKhan.github.io
+
+permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts
+  - README.md
+  - .gitignore
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
