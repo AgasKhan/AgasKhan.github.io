@@ -1,0 +1,123 @@
+# UI strings keyed by language. Pages reference these via {{ site.data.i18n[page.lang].xxx }}.
+
+es:
+  site_tagline: "Unity dev — packages, juegos y experimentos"
+  nav:
+    home: Home
+    packages: Packages
+    projects: Proyectos
+    about: Sobre mí
+    github: GitHub
+  hero:
+    welcome_prefix: "Bienvenido al portal de"
+  home:
+    profile_heading: Perfil
+    profile_short: "Programador de videojuegos con 10+ años de experiencia, especializado en Unity (C#, URP, Burst, Jobs). También bajo nivel (C++, DX11, Assembler) y full-stack web cuando hace falta."
+    profile_link: "Ver perfil completo →"
+    packages_heading: Packages
+    packages_intro_count: "Unity Packages publicados, distribuidos como repos independientes para consumo via Git URL en"
+    packages_empty: "Aún no hay packages publicados al público. La biblioteca se desarrolla en repos privados; los más estables se irán publicando progresivamente."
+    projects_heading: Proyectos
+    projects_empty: "Aún no hay proyectos públicos para mostrar."
+    view_all: "Ver todos →"
+    purpose_heading: "¿Para qué sirve este sitio?"
+    purpose_body: "Centraliza el acceso a packages, proyectos y notas. Cada README de los repos públicos puede apuntar acá como punto de entrada, en lugar de mantener listas duplicadas package-por-package."
+  packages:
+    heading: Packages
+    intro_with_count_prefix: "packages publicados desde"
+    intro_with_count_suffix: ". Cada uno vive en su propio repo y se instala via Git URL en"
+    install_label: "Install ejemplo (manifest.json)"
+    transitive_note: "UPM no resuelve dependencias transitivas en git URLs — hay que listar también las dependencias de cada package en el manifest."
+    empty: "Aún no hay packages publicados al público."
+    empty_long: "La biblioteca se desarrolla en repos privados. Cuando un package se estabilice, se publicará y aparecerá listado acá."
+    notes_heading: Notas
+    notes_semver: "Las versiones siguen semver. Los breaking changes bump major / minor según corresponda."
+    notes_changelog: "Cada package mantiene su CHANGELOG en su propio repo."
+    deps_singular: "dep"
+    deps_plural: "deps"
+  projects:
+    heading: Proyectos
+    lead_with_items: "Proyectos personales y de equipo. Algunos activos, otros pausados — todos comparten la biblioteca de packages."
+    lead_empty: "Aún no hay proyectos públicos para mostrar."
+    tag_active: activo
+    tag_paused: pausado
+  about:
+    heading: Sobre mí
+    lead: "Programador de videojuegos y simuladores con foco en Unity. Más de una década escribiendo código y enseñándolo."
+    profile_heading: Perfil profesional
+    skills_heading: Habilidades técnicas
+    education_heading: Educación
+    languages_heading: Idiomas
+  status:
+    active: activo
+    paused: pausado
+  footer:
+    rights: ""
+  not_found:
+    heading: "404 · no existe"
+    lead: "La URL que pediste no encaja con nada que tenga publicado."
+    helpful: "Probablemente quieras:"
+    back_home: Volver al home
+    see_packages: Ver todos los packages
+    see_projects: Ver los proyectos
+
+en:
+  site_tagline: "Unity dev — packages, games and experiments"
+  nav:
+    home: Home
+    packages: Packages
+    projects: Projects
+    about: About
+    github: GitHub
+  hero:
+    welcome_prefix: "Welcome to the portal of"
+  home:
+    profile_heading: Profile
+    profile_short: "Video game programmer with 10+ years of experience, specialized in Unity (C#, URP, Burst, Jobs). Comfortable with low-level work (C++, DX11, Assembler) and full-stack web when needed."
+    profile_link: "Full profile →"
+    packages_heading: Packages
+    packages_intro_count: "Unity Packages published, distributed as independent repos for consumption via Git URL in"
+    packages_empty: "No packages publicly available yet. The library is developed in private repos; the most stable ones will be published progressively."
+    projects_heading: Projects
+    projects_empty: "No public projects to show yet."
+    view_all: "See all →"
+    purpose_heading: "What is this site for?"
+    purpose_body: "It centralizes access to packages, projects and notes. The README of each public repo can point here as the entry point, instead of maintaining duplicated lists package-by-package."
+  packages:
+    heading: Packages
+    intro_with_count_prefix: "packages published from"
+    intro_with_count_suffix: ". Each lives in its own repo and installs via Git URL in"
+    install_label: "Install example (manifest.json)"
+    transitive_note: "UPM does not resolve transitive dependencies in git URLs — you must also list each package's dependencies in the manifest."
+    empty: "No packages publicly available yet."
+    empty_long: "The library is developed in private repos. Once a package stabilizes, it will be published and appear listed here."
+    notes_heading: Notes
+    notes_semver: "Versions follow semver. Breaking changes bump major / minor as appropriate."
+    notes_changelog: "Each package keeps its own CHANGELOG in its repo."
+    deps_singular: "dep"
+    deps_plural: "deps"
+  projects:
+    heading: Projects
+    lead_with_items: "Personal and team projects. Some active, some paused — all share the packages library."
+    lead_empty: "No public projects to show yet."
+    tag_active: active
+    tag_paused: paused
+  about:
+    heading: About
+    lead: "Video game and simulator programmer focused on Unity. Over a decade writing code and teaching it."
+    profile_heading: Professional summary
+    skills_heading: Technical skills
+    education_heading: Education
+    languages_heading: Languages
+  status:
+    active: active
+    paused: paused
+  footer:
+    rights: ""
+  not_found:
+    heading: "404 · not found"
+    lead: "The URL you requested doesn't match anything published."
+    helpful: "You probably want to:"
+    back_home: Back home
+    see_packages: See all packages
+    see_projects: See all projects

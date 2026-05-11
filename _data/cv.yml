@@ -1,0 +1,147 @@
+# CV-derived content. Curated subset of the personal CV — no personal data
+# (real name, email, phone, address, LinkedIn). Source: D:\Proyectos\Personales\Heaven\cv\*_VJ_*.md
+# When the CV changes, update this file by hand. There is no auto-sync (the CV has more PII than fits here).
+
+profile:
+  es: |
+    Programador de videojuegos y simuladores con **10+ años** de experiencia,
+    especializado en **Unity (C#, URP, Burst, Jobs)** y desarrollo de gameplay
+    systems, herramientas internas y plugins de editor. Capacidad de descenso
+    a **bajo nivel** (C++, DX11, Assembler) poco común en la industria.
+    Experiencia en docencia técnica avanzada y liderazgo de proyectos
+    multidisciplinarios.
+  en: |
+    Video game and simulator programmer with **10+ years** of experience,
+    specialized in **Unity (C#, URP, Burst, Jobs)** and the development of
+    gameplay systems, internal tools, and editor plugins. Comfortable
+    descending to **low-level** work (C++, DX11, Assembler), an uncommon
+    profile in the industry. Experience in advanced technical pedagogy and
+    leadership of multidisciplinary projects.
+
+# Technical skills grouped by area. Same items in both languages where applicable;
+# only the group label differs.
+skills:
+  - group:
+      es: Lenguajes
+      en: Languages
+    items: [C#, C++, C, HLSL, GLSL, Lua, Assembler, TypeScript, JavaScript, SQL, PHP]
+
+  - group:
+      es: Motores y gráficos
+      en: Engines & graphics
+    items:
+      - Unity 6
+      - URP
+      - Shader Graph
+      - Burst
+      - Jobs
+      - DOTS/ECS
+      - ScriptableRendererFeature
+      - UI Toolkit
+      - Source Generators
+      - DirectX 11
+      - HLSL/GLSL
+      - Photon Fusion 2
+      - Netcode for GameObjects
+
+  - group:
+      es: Programación de juegos
+      en: Game programming
+    items:
+      - "AI (FSM jerárquica, Steering, GOAP)"
+      - "Pathfinding (Dijkstra/A*/Theta*)"
+      - Jobs + Burst spatial detection
+      - Parallel.For + Jobs híbrido
+      - GC-free data structures
+      - Procedural generation
+      - Marching Cubes
+      - Modding API design (Lua)
+
+  - group:
+      es: Embedded / IoT
+      en: Embedded / IoT
+    items:
+      - C & Assembler (Freescale)
+      - Arduino
+      - ESP8266
+      - Raspberry Pi
+      - Electrónica
+
+  - group:
+      es: Web (full-stack)
+      en: Web (full-stack)
+    items: [React, TypeScript, Node.js, Supabase, PostgreSQL, REST APIs, Prompt engineering]
+
+  - group:
+      es: DevOps
+      en: DevOps
+    items: [Git, GitHub Actions, CI/CD, Linux, Visual Studio, Rider]
+
+  - group:
+      es: Metodologías
+      en: Methodologies
+    items:
+      - POO
+      - Patrones de diseño
+      - Dependency Injection
+      - Concurrencia y paralelismo
+      - "Compile-time codegen (IL2CPP-safe)"
+      - Unit testing
+      - Code review
+      - Pedagogía técnica
+
+education:
+  - title:
+      es: "Diseñador y Programador de Simuladores Virtuales"
+      en: "Virtual Simulator Design & Programming"
+    institution: Da Vinci
+    location: Argentina
+    period: 2021–2025
+    note:
+      es: "Mejor promedio: **9.69/10**. Tesis: *Arrange the Heaven* (RPG procedural en Unity)."
+      en: "Top of class · GPA **9.69/10**. Thesis: *Arrange the Heaven* (procedural RPG in Unity)."
+
+  - title:
+      es: "Shaders para Videojuegos / Computational Science"
+      en: "Shaders for Video Games / Computational Science"
+    institution: Image Campus
+    location: Argentina
+    period: Oct–Dec 2025
+    note:
+      es: "HLSL (Unity) y GLSL. Proyecto: librería C++ para compilar compute shaders HLSL en DX11."
+      en: "HLSL (Unity) and GLSL. Capstone: C++ library to compile HLSL compute shaders on DX11."
+
+  - title:
+      es: "Ingeniería Electrónica (3 años cursados)"
+      en: "Electronic Engineering (3 years completed)"
+    institution: UTN
+    location: Argentina
+    period: 2015–2018
+    note:
+      es: ""
+      en: ""
+
+  - title:
+      es: "Talleres Da Vinci"
+      en: "Da Vinci complementary workshops"
+    institution: Da Vinci
+    location: Argentina
+    period: 2021–2025
+    note:
+      es: "HLSL, UX, Sonido para videojuegos."
+      en: "HLSL, UX, sound for video games."
+
+languages:
+  - name:
+      es: Español
+      en: Spanish
+    level:
+      es: Nativo
+      en: Native
+
+  - name:
+      es: Inglés
+      en: English
+    level:
+      es: "Profesional (lectura técnica fluida, escritura, reuniones)"
+      en: "Professional Working Proficiency (advanced technical reading, professional writing, technical meetings)"

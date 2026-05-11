@@ -1,7 +1,7 @@
 ---
 title: Packages
-description: Unity Packages publicados. Distribuidos como repos individuales en GitHub.
-permalink: /packages/
+description: Published Unity Packages. Distributed as independent repos on GitHub.
+permalink: /en/packages/
 ---
 
 {% assign t = site.data.i18n[page.lang] %}
@@ -10,7 +10,7 @@ permalink: /packages/
 <section class="hero">
   <h1>Unity <span class="accent">{{ t.packages.heading }}</span></h1>
   {% if visible_packages.size > 0 %}
-  <p class="lead">{{ visible_packages.size }} {{ t.packages.intro_with_count_prefix }} <a href="{{ '/about/' | relative_url }}">Common-Package</a>{{ t.packages.intro_with_count_suffix }} <code>manifest.json</code>.</p>
+  <p class="lead">{{ visible_packages.size }} {{ t.packages.intro_with_count_prefix }} <a href="{{ '/en/about/' | relative_url }}">Common-Package</a>{{ t.packages.intro_with_count_suffix }} <code>manifest.json</code>.</p>
   {% else %}
   <p class="lead">{{ t.packages.empty }}</p>
   {% endif %}

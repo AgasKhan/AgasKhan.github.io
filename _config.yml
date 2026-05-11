@@ -19,6 +19,12 @@ defaults:
       path: ""
     values:
       layout: default
+      lang: es
+  - scope:
+      path: "en"
+    values:
+      layout: default
+      lang: en
 
 exclude:
   - Gemfile
