@@ -10,3 +10,6 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Personal notes — never publish
+MAINTAIN.md
