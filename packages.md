@@ -1,14 +1,21 @@
 ---
 title: Packages
-description: Unity Packages publicados desde Common-Package. Distribuidos como repos individuales en GitHub.
+description: Unity Packages publicados. Distribuidos como repos individuales en GitHub.
 permalink: /packages/
 ---
 
+{% assign visible_packages = site.data.packages | where: "visibility", "public" %}
+
 <section class="hero">
   <h1>Unity <span class="accent">Packages</span></h1>
-  <p class="lead">{{ site.data.packages.size }} packages publicados desde <a href="{{ '/projects/common-package/' | relative_url }}">Common-Package</a>. Cada uno vive en su propio repo y se instala via Git URL en <code>manifest.json</code>.</p>
+  {% if visible_packages.size > 0 %}
+  <p class="lead">{{ visible_packages.size }} packages publicados desde <a href="{{ '/projects/common-package/' | relative_url }}">Common-Package</a>. Cada uno vive en su propio repo y se instala via Git URL en <code>manifest.json</code>.</p>
+  {% else %}
+  <p class="lead">Aún no hay packages publicados al público.</p>
+  {% endif %}
 </section>
 
+{% if visible_packages.size > 0 %}
 <div class="install-block">
   <div class="label">Install ejemplo (manifest.json)</div>
 <pre><code>"com.agaskhan.timersmanager": "https://github.com/AgasKhan/TimersManager.git#0.2.0"</code></pre>
@@ -18,7 +25,7 @@ permalink: /packages/
 {% assign categories = "Foundation,Engine,Systems,Serialization,Tooling" | split: "," %}
 
 {% for cat in categories %}
-  {% assign pkgs = site.data.packages | where: "category", cat %}
+  {% assign pkgs = visible_packages | where: "category", cat %}
   {% if pkgs.size > 0 %}
   <div class="category-block">
     <h3 class="category-title">{{ cat }} <span style="color: var(--text-dim); font-weight: normal;">· {{ pkgs.size }}</span></h3>
@@ -47,8 +54,9 @@ permalink: /packages/
 
 <h2>Notas</h2>
 <ul>
-  <li>Todos los repos están <strong>privados</strong> hoy. Plan futuro: los más estables se publican en Unity Asset Store.</li>
-  <li>Licencia: <strong>Proprietary / All Rights Reserved</strong> (excepto Common Extensions que es MIT).</li>
-  <li>Versiones siguen semver. Breaking changes bump major / minor según corresponda.</li>
-  <li>Source de verdad: <a href="{{ '/projects/common-package/' | relative_url }}">Common-Package</a>.</li>
+  <li>Las versiones siguen semver. Los breaking changes bump major / minor según corresponda.</li>
+  <li>Cada package mantiene su CHANGELOG en su propio repo.</li>
 </ul>
+{% else %}
+<p class="muted">La biblioteca se desarrolla en repos privados. Cuando un package se estabilice, se publicará y aparecerá listado acá.</p>
+{% endif %}

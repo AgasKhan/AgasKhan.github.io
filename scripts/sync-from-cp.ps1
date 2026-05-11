@@ -52,6 +52,13 @@ $CategoryMap = @{
 # Order categories appear in (and packages are sorted within their category by name).
 $CategoryOrder = @('Foundation', 'Engine', 'Systems', 'Serialization', 'Tooling', 'Other')
 
+# Packages whose repos are public on GitHub. The site only renders public packages;
+# the rest stay listed in packages.yml (so the script output is complete) but get filtered out.
+# Add a package id here when you publish its repo publicly.
+$PublicPackages = @(
+  # 'com.agaskhan.example'
+)
+
 function ConvertTo-YamlString {
   param([string]$Value)
   if ([string]::IsNullOrEmpty($Value)) { return '""' }
@@ -97,7 +104,6 @@ $packages = foreach ($file in $pkgFiles) {
   $json = $raw | ConvertFrom-Json
 
   $repoFolder = Get-RepoFolderName -PackageJson $file
-  $category   = if ($CategoryMap.ContainsKey($json.name)) { $CategoryMap[$json.name] } else { 'Other' }
 
   $deps = @()
   if ($json.dependencies) {
@@ -119,8 +125,8 @@ $packages = foreach ($file in $pkgFiles) {
     license      = $json.license
     repo         = "https://github.com/$GitHubOwner/$repoFolder"
     repo_short   = "$GitHubOwner/$repoFolder"
-    visibility   = 'private'
-    category     = $category
+    visibility   = if ($PublicPackages -contains $json.name) { 'public' } else { 'private' }
+    category     = if ($CategoryMap.ContainsKey($json.name)) { $CategoryMap[$json.name] } else { 'Other' }
     keywords     = $keywords
     dependencies = $deps
   }

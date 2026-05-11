@@ -2,6 +2,7 @@
 title: La Maldición
 description: Card game / videojuego en desarrollo. Consumidor principal de los packages de AgasKhan.
 permalink: /projects/la-maldicion/
+published: false
 ---
 
 <section class="hero">

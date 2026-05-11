@@ -2,6 +2,7 @@
 title: Common-Package
 description: Biblioteca personal de utilidades para Unity. Workshop desde el que se publican los packages individuales.
 permalink: /projects/common-package/
+published: false
 ---
 
 <section class="hero">

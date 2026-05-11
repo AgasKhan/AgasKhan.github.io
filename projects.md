@@ -1,16 +1,23 @@
 ---
-title: Projects
-description: Proyectos personales y de equipo. Cada uno con su contexto, estado y links a repos.
+title: Proyectos
+description: Proyectos personales y de equipo.
 permalink: /projects/
 ---
 
+{% assign visible_projects = site.data.projects | where: "repo_visibility", "public" %}
+
 <section class="hero">
-  <h1><span class="accent">Projects</span></h1>
+  <h1><span class="accent">Proyectos</span></h1>
+  {% if visible_projects.size > 0 %}
   <p class="lead">Proyectos personales y de equipo. Algunos activos, otros pausados — todos comparten la biblioteca de packages.</p>
+  {% else %}
+  <p class="lead">Aún no hay proyectos públicos para mostrar.</p>
+  {% endif %}
 </section>
 
+{% if visible_projects.size > 0 %}
 <div class="project-list">
-  {% for proj in site.data.projects %}
+  {% for proj in visible_projects %}
   <div class="project-row">
     <div>
       <h3><a href="{{ proj.page | relative_url }}">{{ proj.name }}</a>
@@ -26,3 +33,4 @@ permalink: /projects/
   </div>
   {% endfor %}
 </div>
+{% endif %}

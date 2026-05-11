@@ -1,23 +1,26 @@
 ---
 title: Home
-description: Portal de Lucas (AgasKhan). Hub de Unity Packages, proyectos en curso y notas técnicas.
+description: Portal de AgasKhan. Hub de Unity Packages, proyectos en curso y notas técnicas.
 ---
 
 <section class="hero">
-  <h1>Hey, soy <span class="accent">Lucas</span>.</h1>
+  <h1>Bienvenido al portal de <span class="accent">AgasKhan</span>.</h1>
   <p class="lead">Unity developer. Mantengo una biblioteca de packages reutilizables y trabajo sobre proyectos personales. Este sitio es el nexo entre todo eso.</p>
 </section>
 
+{% assign visible_packages = site.data.packages | where: "visibility", "public" %}
+{% assign visible_projects = site.data.projects | where: "repo_visibility", "public" %}
+
 <div class="section-heading">
   <h2>Packages</h2>
-  <a class="section-action" href="{{ '/packages/' | relative_url }}">Ver todos →</a>
+  {% if visible_packages.size > 0 %}<a class="section-action" href="{{ '/packages/' | relative_url }}">Ver todos →</a>{% endif %}
 </div>
 
-<p class="muted">{{ site.data.packages.size }} Unity Packages publicados desde Common-Package, distribuidos como repos independientes para consumo via Git URL en <code>manifest.json</code>.</p>
+{% if visible_packages.size > 0 %}
+<p class="muted">{{ visible_packages.size }} Unity Packages publicados, distribuidos como repos independientes para consumo via Git URL en <code>manifest.json</code>.</p>
 
 <div class="cards">
-  {% assign featured = site.data.packages | where: "category", "Foundation" %}
-  {% for pkg in featured limit:3 %}
+  {% for pkg in visible_packages limit:3 %}
   <article class="card">
     <div class="card-header">
       <a class="card-title" href="{{ pkg.repo }}" target="_blank" rel="noopener">{{ pkg.display_name }}</a>
@@ -32,14 +35,18 @@ description: Portal de Lucas (AgasKhan). Hub de Unity Packages, proyectos en cur
   </article>
   {% endfor %}
 </div>
+{% else %}
+<p class="muted">Aún no hay packages publicados al público. La biblioteca se desarrolla en repos privados; los más estables se irán publicando progresivamente.</p>
+{% endif %}
 
 <div class="section-heading">
-  <h2>Projects</h2>
-  <a class="section-action" href="{{ '/projects/' | relative_url }}">Ver todos →</a>
+  <h2>Proyectos</h2>
+  {% if visible_projects.size > 0 %}<a class="section-action" href="{{ '/projects/' | relative_url }}">Ver todos →</a>{% endif %}
 </div>
 
+{% if visible_projects.size > 0 %}
 <div class="project-list">
-  {% for proj in site.data.projects %}
+  {% for proj in visible_projects %}
   <div class="project-row">
     <div>
       <h3><a href="{{ proj.page | relative_url }}">{{ proj.name }}</a>
@@ -55,15 +62,14 @@ description: Portal de Lucas (AgasKhan). Hub de Unity Packages, proyectos en cur
   </div>
   {% endfor %}
 </div>
+{% else %}
+<p class="muted">Aún no hay proyectos públicos para mostrar.</p>
+{% endif %}
 
 <hr>
 
 <h2>¿Para qué sirve este sitio?</h2>
 
 <p>
-Centraliza acceso a packages, proyectos y notas. Cada README de mis repos puede apuntar acá como punto de entrada, en lugar de mantener listas duplicadas package-por-package.
-</p>
-
-<p class="muted">
-Stack: GitHub Pages + Jekyll. El listado de packages se regenera desde <code>Common-Package</code> con <code>scripts/sync-from-cp.ps1</code>.
+Centraliza el acceso a packages, proyectos y notas. Cada README de los repos públicos puede apuntar acá como punto de entrada, en lugar de mantener listas duplicadas package-por-package.
 </p>

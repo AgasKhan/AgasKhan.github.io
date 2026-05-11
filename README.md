@@ -1,6 +1,6 @@
 # AgasKhan.github.io
 
-Portal personal de Lucas (AgasKhan). Hub de packages de Unity, proyectos y notas técnicas.
+Portal personal de AgasKhan. Hub de packages de Unity, proyectos y notas técnicas.
 
 Vive en [https://agaskhan.github.io](https://agaskhan.github.io).
 

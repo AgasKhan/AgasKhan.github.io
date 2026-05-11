@@ -1,13 +1,13 @@
 title: AgasKhan
 tagline: Unity dev — packages, juegos y experimentos
 description: >-
-  Portal de Lucas (AgasKhan). Hub de packages reutilizables de Unity,
+  Portal de AgasKhan. Hub de packages reutilizables de Unity,
   proyectos en curso y notas técnicas.
 url: https://agaskhan.github.io
 baseurl: ""
 
 author:
-  name: Lucas (AgasKhan)
+  name: AgasKhan
   github: AgasKhan
 
 repository: AgasKhan/AgasKhan.github.io
