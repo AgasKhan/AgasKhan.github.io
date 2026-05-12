@@ -18,6 +18,27 @@ profile:
     development with technical teaching and the leadership of multidisciplinary
     projects.
 
+# How I work — short, descriptive bullets. Phrased in first person, no comparisons.
+way_of_working:
+  es: |
+    - **Allman braces y 4 espacios**, mismo estilo en todos los lenguajes (C#, GLSL, JS, PowerShell).
+    - El código lo escribo yo. La IA me asiste en audits, traducciones y refactors masivos — no toma decisiones de diseño.
+    - **Antes que abstraer, escribir.** Tres líneas parecidas le ganan a una abstracción prematura.
+    - En Unity, prefiero **`OnValidate` sobre `Awake`/`Start`** para todo lo que pueda persistirse en YAML — runtime gratis.
+    - **API fluent**: setters devuelven `this`. Factories `Create(...)` deciden el subtipo concreto.
+    - Sin interfaces sin un consumer concreto. Sin DI containers ni builders fluent complejos: `new` o `static Create`.
+    - Comento el **"por qué" no obvio**. El "qué" lo dice el nombre.
+    - Memoria viva del proyecto en `Assets/Context/` para que cualquier conversación arranque con contexto fresco.
+  en: |
+    - **Allman braces and 4-space indent**, same style across languages (C#, GLSL, JS, PowerShell).
+    - I write the code myself. AI assists with audits, translations and mass refactors — it doesn't make design decisions.
+    - **Writing beats abstracting.** Three similar lines win over a premature abstraction.
+    - In Unity, I prefer **`OnValidate` over `Awake`/`Start`** for anything that can persist into YAML — runtime is free.
+    - **Fluent API**: setters return `this`. `Create(...)` factories pick the concrete subtype.
+    - No interfaces without a concrete consumer. No DI containers, no complex fluent builders — `new` or `static Create`.
+    - I comment the **non-obvious "why"**. The "what" should be in the name.
+    - Living project memory in `Assets/Context/` so any new conversation starts with fresh context.
+
 # Technical skills grouped by area. Same items in both languages where applicable;
 # only the group label differs.
 skills:

@@ -47,6 +47,7 @@ es:
     lead: "Programador de videojuegos y simuladores con foco en Unity. Más de una década escribiendo código y enseñándolo."
     profile_heading: Perfil profesional
     skills_heading: Habilidades técnicas
+    way_of_working_heading: Cómo trabajo
     education_heading: Educación
     languages_heading: Idiomas
   status:
@@ -117,6 +118,7 @@ en:
     lead: "Video game and simulator programmer focused on Unity. Over a decade writing code and teaching it."
     profile_heading: Professional summary
     skills_heading: Technical skills
+    way_of_working_heading: How I work
     education_heading: Education
     languages_heading: Languages
   status:

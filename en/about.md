@@ -30,6 +30,11 @@ permalink: /en/about/
   {% endfor %}
 </div>
 
+<h2>{{ t.about.way_of_working_heading }}</h2>
+<div class="way-of-working">
+{{ cv.way_of_working[lang] | markdownify }}
+</div>
+
 <h2>{{ t.about.education_heading }}</h2>
 <ul class="education-list">
   {% for edu in cv.education %}
