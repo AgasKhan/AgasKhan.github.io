@@ -145,9 +145,25 @@ hr {
 
 /* ---------- Hero ---------- */
 .hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: 32px 0 24px;
   border-bottom: 1px solid var(--border-soft);
   margin-bottom: 48px;
+}
+.hero > *:not(.hero-bg-canvas) {
+  position: relative;
+  z-index: 1;
+}
+.hero-bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
 }
 .hero h1 {
   font-size: 2.8rem;
