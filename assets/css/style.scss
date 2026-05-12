@@ -497,8 +497,36 @@ body { position: relative; }
 .playground-toolbar {
   display: flex;
   align-items: center;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 12px;
+}
+.playground-tabs {
+  display: inline-flex;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-right: 4px;
+}
+.playground-tab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.playground-tab + .playground-tab {
+  border-left: 1px solid var(--border-soft);
+}
+.playground-tab:hover {
+  color: var(--accent);
+}
+.playground-tab[aria-pressed="true"] {
+  background: var(--bg-elev);
+  color: var(--accent);
 }
 .playground-toolbar button {
   font-family: var(--font-mono);
@@ -523,6 +551,57 @@ body { position: relative; }
 .playground-status-idle  { color: var(--text-dim); }
 .playground-status-ok    { color: var(--accent); }
 .playground-status-error { color: #f87171; }
+
+/* Two-pane layout: primary editor on the left, read-only converted GLSL on
+   the right when in HLSL mode. Single-pane (primary only) in GLSL mode. */
+.playground-editors {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.playground.is-hlsl .playground-editors {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 768px) {
+  .playground.is-hlsl .playground-editors {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Read-only secondary pane (the emitted GLSL). */
+.editor-readonly {
+  position: relative;
+  min-height: 540px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--vs-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.editor-readonly-label {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.editor-readonly-body {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 16px 18px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--vs-default);
+  white-space: pre;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
 
 /* Overlay editor: highlight <pre> behind, transparent textarea on top.
    Both share identical font metrics, padding and box-sizing so the caret
@@ -653,9 +732,14 @@ body { position: relative; }
   margin-bottom: 0;
   flex: 0 0 auto;
 }
-.playground.playground-fullscreen .editor-wrap {
+.playground.playground-fullscreen .playground-editors {
   flex: 1 1 auto;
   min-height: 0;
+}
+.playground.playground-fullscreen .editor-wrap,
+.playground.playground-fullscreen .editor-readonly {
+  min-height: 0;
+  height: 100%;
 }
 .playground.playground-fullscreen #pg-editor,
 .playground.playground-fullscreen .editor-highlight {

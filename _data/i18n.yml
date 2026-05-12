@@ -59,10 +59,13 @@ es:
     reset: Restaurar default
     expand: "⛶ Expandir"
     exit_fullscreen: "✕ Cerrar"
+    tab_glsl: GLSL
+    tab_hlsl: HLSL
+    secondary_label: "GLSL emitido"
     status_ok: "✓ aplicado"
     status_error: "✕ error de compilación"
     status_idle: listo
-    hint: "Tip: Tab inserta 4 espacios. Esc cierra el modo expandido. El último shader válido queda guardado; si rompés algo, recargá la página y seguís editando desde lo último que compiló."
+    hint: "Tip: Tab inserta 4 espacios. Esc cierra el modo expandido. En HLSL escribí 'float4 main(float2 uv)' y el conversor genera el GLSL equivalente (panel a la derecha). El último shader válido queda guardado por idioma; si rompés algo, recargá la página."
   footer:
     rights: ""
   not_found:
@@ -132,10 +135,13 @@ en:
     reset: Reset to default
     expand: "⛶ Expand"
     exit_fullscreen: "✕ Close"
+    tab_glsl: GLSL
+    tab_hlsl: HLSL
+    secondary_label: "Emitted GLSL"
     status_ok: "✓ applied"
     status_error: "✕ compile error"
     status_idle: ready
-    hint: "Tip: Tab inserts 4 spaces. Esc exits expanded mode. The last valid shader stays saved; if you break something, reload and pick up from the last one that compiled."
+    hint: "Tip: Tab inserts 4 spaces. Esc exits expanded mode. In HLSL, write 'float4 main(float2 uv)' and the converter generates the equivalent GLSL (right panel). The last valid shader is saved per language; if you break something, reload."
   footer:
     rights: ""
   not_found:

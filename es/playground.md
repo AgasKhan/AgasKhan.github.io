@@ -13,26 +13,38 @@ permalink: /es/playground/
 
 <div class="playground">
     <div class="playground-toolbar">
+        <div class="playground-tabs" role="tablist">
+            <button id="pg-tab-glsl" type="button" class="playground-tab" role="tab">{{ t.playground.tab_glsl }}</button>
+            <button id="pg-tab-hlsl" type="button" class="playground-tab" role="tab">{{ t.playground.tab_hlsl }}</button>
+        </div>
         <button id="pg-reset" type="button">{{ t.playground.reset }}</button>
         <button id="pg-fullscreen" type="button"
             data-label-expand="{{ t.playground.expand }}"
             data-label-close="{{ t.playground.exit_fullscreen }}">{{ t.playground.expand }}</button>
         <span id="pg-status" class="playground-status playground-status-idle"></span>
     </div>
-    <div class="editor-wrap">
-        <pre id="pg-highlight" class="editor-highlight" aria-hidden="true"></pre>
-        <textarea id="pg-editor"
-            spellcheck="false"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            data-label-ok="{{ t.playground.status_ok }}"
-            data-label-error="{{ t.playground.status_error }}"
-            data-label-idle="{{ t.playground.status_idle }}"></textarea>
+    <div class="playground-editors">
+        <div class="editor-wrap" id="pg-primary">
+            <pre id="pg-highlight" class="editor-highlight" aria-hidden="true"></pre>
+            <textarea id="pg-editor"
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                data-label-ok="{{ t.playground.status_ok }}"
+                data-label-error="{{ t.playground.status_error }}"
+                data-label-idle="{{ t.playground.status_idle }}"></textarea>
+        </div>
+        <div class="editor-readonly" id="pg-secondary" hidden>
+            <div class="editor-readonly-label">{{ t.playground.secondary_label }}</div>
+            <pre id="pg-secondary-body" class="editor-readonly-body" aria-hidden="true"></pre>
+        </div>
     </div>
     <pre id="pg-error" class="playground-error" hidden></pre>
     <p class="playground-hint">{{ t.playground.hint }}</p>
 </div>
 
 <script src="{{ '/assets/js/glsl-highlight.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/hlsl-highlight.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/hlsl-to-glsl.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/playground.js' | relative_url }}" defer></script>

@@ -1,14 +1,39 @@
 // Live shader editor wired to window.HeroShader.
-// - Overlay technique: a <pre> with syntax-highlighted HTML sits behind a
-//   transparent <textarea>; both share metrics so the caret tracks the colored text.
-// - Compiles on input (debounced) and hot-swaps the running shader on success.
-// - Displays the GL info log on compile failure without breaking the page.
+// - Two languages selectable via the toolbar: GLSL (native) and HLSL (translated).
+// - In GLSL mode the textarea content is fed straight into HeroShader.setFragment().
+// - In HLSL mode the textarea content goes through HLSLToGLSL.convert() first;
+//   the resulting GLSL is shown read-only in a secondary panel so you can read
+//   what the translator emitted (and any compile error line numbers match it).
+// - Overlay technique for the primary editor (transparent textarea over a
+//   syntax-highlighted <pre>), same as a Unity TMP_InputField + TMP_Text.
 
 (function ()
 {
     'use strict';
 
     var DEBOUNCE_MS = 400;
+
+    // localStorage keys.
+    var KEY_GLSL_CANVAS = 'hero_shader';              // applied to the canvas
+    var KEY_GLSL_USER   = 'hero_shader_source_glsl';  // user-typed GLSL
+    var KEY_HLSL_USER   = 'hero_shader_source_hlsl';  // user-typed HLSL
+    var KEY_LANG        = 'hero_shader_lang';         // 'glsl' | 'hlsl'
+
+    var DEFAULT_GLSL_URL = '/assets/shaders/voronoi.glsl';
+    var DEFAULT_HLSL_URL = '/assets/shaders/default.hlsl';
+
+    function readStorage(k)
+    {
+        try { return window.localStorage.getItem(k); } catch (e) { return null; }
+    }
+    function writeStorage(k, v)
+    {
+        try { window.localStorage.setItem(k, v); } catch (e) { /* quota */ }
+    }
+    function clearStorage(k)
+    {
+        try { window.localStorage.removeItem(k); } catch (e) { /* ignore */ }
+    }
 
     function onHeroReady(cb)
     {
@@ -37,6 +62,15 @@
         return (el.getAttribute(attr) || fallback || '').trim();
     }
 
+    function fetchText(url)
+    {
+        return fetch(url, { cache: 'no-cache' }).then(function (r)
+        {
+            if (!r.ok) throw new Error('Fetch failed: ' + url + ' (' + r.status + ')');
+            return r.text();
+        });
+    }
+
     function init()
     {
         var root          = document.querySelector('.playground');
@@ -44,8 +78,12 @@
         var highlight     = document.getElementById('pg-highlight');
         var resetBtn      = document.getElementById('pg-reset');
         var fullscreenBtn = document.getElementById('pg-fullscreen');
+        var tabGlslBtn    = document.getElementById('pg-tab-glsl');
+        var tabHlslBtn    = document.getElementById('pg-tab-hlsl');
         var status        = document.getElementById('pg-status');
         var errorBox      = document.getElementById('pg-error');
+        var secondary     = document.getElementById('pg-secondary');
+        var secondaryBody = document.getElementById('pg-secondary-body');
         if (!root || !editor || !highlight || !resetBtn || !status || !errorBox)
             return;
 
@@ -53,16 +91,30 @@
         var labelError = readLabel(editor, 'data-label-error', 'error');
         var labelIdle  = readLabel(editor, 'data-label-idle',  '');
 
-        function renderHighlight()
+        // Current mode in this session.
+        var mode = readStorage(KEY_LANG) === 'hlsl' ? 'hlsl' : 'glsl';
+
+        function highlightFor(src, m)
         {
-            // Trailing newline prevents the last empty line from collapsing in <pre>.
-            var html = window.GLSLHighlight
-                ? window.GLSLHighlight.highlight(editor.value)
-                : editor.value
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;');
-            highlight.innerHTML = html + '\n';
+            if (m === 'hlsl' && window.HLSLHighlight)
+                return window.HLSLHighlight.highlight(src);
+            if (window.GLSLHighlight)
+                return window.GLSLHighlight.highlight(src);
+            return src.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function renderPrimaryHighlight()
+        {
+            highlight.innerHTML = highlightFor(editor.value, mode) + '\n';
+        }
+
+        function renderSecondaryGlsl(glsl)
+        {
+            if (!secondaryBody)
+                return;
+            secondaryBody.innerHTML = (window.GLSLHighlight
+                ? window.GLSLHighlight.highlight(glsl)
+                : glsl.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')) + '\n';
         }
 
         function syncScroll()
@@ -71,49 +123,111 @@
             highlight.scrollLeft = editor.scrollLeft;
         }
 
-        function apply(src)
+        // Pipeline: take whatever is in the editor (GLSL or HLSL) and apply.
+        function applyFromEditor()
         {
-            window.HeroShader.setFragment(src).then(function (r)
+            var src = editor.value;
+            if (mode === 'hlsl')
             {
-                if (r.ok)
-                {
-                    setStatus(status, 'ok', labelOk);
-                    showError(errorBox, '');
-                }
-                else
+                if (!window.HLSLToGLSL)
                 {
                     setStatus(status, 'error', labelError);
-                    showError(errorBox, r.error);
+                    showError(errorBox, 'HLSL conversor not loaded.');
+                    return;
                 }
+                var result = window.HLSLToGLSL.convert(src);
+                renderSecondaryGlsl(result.glsl);
+                writeStorage(KEY_HLSL_USER, src);
+                window.HeroShader.setFragment(result.glsl).then(function (r)
+                {
+                    if (r.ok)
+                    {
+                        setStatus(status, 'ok', labelOk);
+                        showError(errorBox, '');
+                    }
+                    else
+                    {
+                        setStatus(status, 'error', labelError);
+                        showError(errorBox, r.error);
+                    }
+                });
+            }
+            else
+            {
+                writeStorage(KEY_GLSL_USER, src);
+                window.HeroShader.setFragment(src).then(function (r)
+                {
+                    if (r.ok)
+                    {
+                        setStatus(status, 'ok', labelOk);
+                        showError(errorBox, '');
+                    }
+                    else
+                    {
+                        setStatus(status, 'error', labelError);
+                        showError(errorBox, r.error);
+                    }
+                });
+            }
+        }
+
+        // Load the editor with the source for the active mode, then apply.
+        function loadModeIntoEditor()
+        {
+            // Toggle tab visuals.
+            if (tabGlslBtn)
+                tabGlslBtn.setAttribute('aria-pressed', mode === 'glsl' ? 'true' : 'false');
+            if (tabHlslBtn)
+                tabHlslBtn.setAttribute('aria-pressed', mode === 'hlsl' ? 'true' : 'false');
+            root.classList.toggle('is-hlsl', mode === 'hlsl');
+            if (secondary)
+                secondary.hidden = (mode !== 'hlsl');
+            writeStorage(KEY_LANG, mode);
+
+            var p;
+            if (mode === 'hlsl')
+            {
+                var saved = readStorage(KEY_HLSL_USER);
+                p = saved ? Promise.resolve(saved) : fetchText(DEFAULT_HLSL_URL);
+            }
+            else
+            {
+                var savedGlsl = readStorage(KEY_GLSL_USER);
+                if (savedGlsl)
+                    p = Promise.resolve(savedGlsl);
+                else
+                    p = window.HeroShader.getCurrent();
+            }
+
+            p.then(function (src)
+            {
+                editor.value = src;
+                renderPrimaryHighlight();
+                syncScroll();
+                applyFromEditor();
             });
         }
 
-        // Seed the editor with whatever is currently driving the canvas.
-        window.HeroShader.getCurrent().then(function (src)
-        {
-            editor.value = src;
-            renderHighlight();
-            syncScroll();
-            setStatus(status, 'idle', labelIdle);
-        });
+        // Initial load.
+        setStatus(status, 'idle', labelIdle);
+        loadModeIntoEditor();
+
+        // -------- Event wiring --------
 
         var debounceId = 0;
         editor.addEventListener('input', function ()
         {
-            renderHighlight();
+            renderPrimaryHighlight();
             syncScroll();
             clearTimeout(debounceId);
-            debounceId = setTimeout(function ()
-            {
-                apply(editor.value);
-            }, DEBOUNCE_MS);
+            debounceId = setTimeout(applyFromEditor, DEBOUNCE_MS);
         });
 
         editor.addEventListener('scroll', syncScroll);
         editor.addEventListener('keyup', syncScroll);
         editor.addEventListener('click', syncScroll);
 
-        // Tab key inserts 4 spaces instead of jumping focus — closer to a real editor.
+        // Tab inserts 4 spaces.
         editor.addEventListener('keydown', function (e)
         {
             if (e.key !== 'Tab')
@@ -128,28 +242,57 @@
             editor.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
+        // Reset: clear the current mode's stored source and reload its default.
         resetBtn.addEventListener('click', function ()
         {
-            window.HeroShader.reset().then(function (r)
+            if (mode === 'hlsl')
             {
-                editor.value = r.source;
-                renderHighlight();
-                syncScroll();
-                if (r.ok)
+                clearStorage(KEY_HLSL_USER);
+                fetchText(DEFAULT_HLSL_URL).then(function (src)
                 {
-                    setStatus(status, 'ok', labelOk);
-                    showError(errorBox, '');
-                }
-                else
+                    editor.value = src;
+                    renderPrimaryHighlight();
+                    syncScroll();
+                    applyFromEditor();
+                });
+            }
+            else
+            {
+                clearStorage(KEY_GLSL_USER);
+                clearStorage(KEY_GLSL_CANVAS);
+                fetchText(DEFAULT_GLSL_URL).then(function (src)
                 {
-                    setStatus(status, 'error', labelError);
-                    showError(errorBox, r.error);
-                }
-            });
+                    editor.value = src;
+                    renderPrimaryHighlight();
+                    syncScroll();
+                    applyFromEditor();
+                });
+            }
         });
 
-        // Fullscreen toggle. Body class lets us hide the page header/footer
-        // while keeping the canvas (which is at body root) visible behind.
+        // Tabs.
+        if (tabGlslBtn)
+        {
+            tabGlslBtn.addEventListener('click', function ()
+            {
+                if (mode === 'glsl')
+                    return;
+                mode = 'glsl';
+                loadModeIntoEditor();
+            });
+        }
+        if (tabHlslBtn)
+        {
+            tabHlslBtn.addEventListener('click', function ()
+            {
+                if (mode === 'hlsl')
+                    return;
+                mode = 'hlsl';
+                loadModeIntoEditor();
+            });
+        }
+
+        // Fullscreen toggle.
         function setFullscreen(on)
         {
             root.classList.toggle('playground-fullscreen', on);
@@ -161,11 +304,8 @@
                 fullscreenBtn.textContent = on ? labelClose : labelExpand;
                 fullscreenBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
             }
-            // Refresh metrics after layout change so the highlight overlay
-            // stays aligned with the textarea on first frame.
             syncScroll();
         }
-
         if (fullscreenBtn)
         {
             fullscreenBtn.addEventListener('click', function ()
@@ -173,7 +313,6 @@
                 setFullscreen(!root.classList.contains('playground-fullscreen'));
             });
         }
-
         document.addEventListener('keydown', function (e)
         {
             if (e.key === 'Escape' && root.classList.contains('playground-fullscreen'))
