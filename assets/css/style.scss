@@ -579,6 +579,12 @@ body { position: relative; }
   display: flex;
   flex-direction: column;
 }
+/* The display:flex above outranks the user-agent `[hidden] { display: none }`
+   on specificity, so the `hidden` attribute alone wouldn't actually hide the
+   pane. Make it explicit. */
+.editor-readonly[hidden] {
+  display: none;
+}
 .editor-readonly-label {
   flex: 0 0 auto;
   font-family: var(--font-mono);
