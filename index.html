@@ -10,18 +10,29 @@
   <meta http-equiv="refresh" content="0;url=/es/">
   <link rel="canonical" href="https://agaskhan.github.io/es/">
   <script>
-    (function () {
-      var target = '/es/';
-      try {
-        var saved = window.localStorage.getItem('lang');
-        if (saved === 'es' || saved === 'en') {
-          target = '/' + saved + '/';
-        } else {
-          var bl = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
-          target = bl.indexOf('en') === 0 ? '/en/' : '/es/';
+    (function ()
+    {
+        'use strict';
+
+        var target = '/es/';
+        try
+        {
+            var saved = window.localStorage.getItem('lang');
+            if (saved === 'es' || saved === 'en')
+            {
+                target = '/' + saved + '/';
+            }
+            else
+            {
+                var bl = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+                target = bl.indexOf('en') === 0 ? '/en/' : '/es/';
+            }
         }
-      } catch (e) { /* localStorage unavailable, keep default */ }
-      window.location.replace(target);
+        catch (e)
+        {
+            // localStorage unavailable — keep default
+        }
+        window.location.replace(target);
     })();
   </script>
   <style>
