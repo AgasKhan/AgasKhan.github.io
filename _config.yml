@@ -21,6 +21,11 @@ defaults:
       layout: default
       lang: es
   - scope:
+      path: "es"
+    values:
+      layout: default
+      lang: es
+  - scope:
       path: "en"
     values:
       layout: default
@@ -31,7 +36,9 @@ exclude:
   - Gemfile.lock
   - vendor
   - scripts
+  - teaching
   - README.md
+  - MAINTAIN.md
   - .gitignore
 
 markdown: kramdown

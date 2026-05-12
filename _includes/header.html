@@ -1,23 +1,18 @@
 {% assign lang = page.lang | default: 'es' %}
 {% assign t = site.data.i18n[lang] %}
 
-{% comment %} Compute the sister-language URL by convention: /en/* ↔ /*. {% endcomment %}
+{% comment %} URLs always prefixed with /es or /en. {% endcomment %}
 {% if lang == 'en' %}
   {% assign alt_lang = 'es' %}
-  {% assign alt_url = page.url | remove_first: '/en' %}
-  {% if alt_url == '' %}{% assign alt_url = '/' %}{% endif %}
-  {% assign home_url = '/en/' %}
-  {% assign packages_url = '/en/packages/' %}
-  {% assign projects_url = '/en/projects/' %}
-  {% assign about_url = '/en/about/' %}
+  {% assign alt_url = page.url | replace_first: '/en', '/es' %}
 {% else %}
   {% assign alt_lang = 'en' %}
-  {% assign alt_url = '/en' | append: page.url %}
-  {% assign home_url = '/' %}
-  {% assign packages_url = '/packages/' %}
-  {% assign projects_url = '/projects/' %}
-  {% assign about_url = '/about/' %}
+  {% assign alt_url = page.url | replace_first: '/es', '/en' %}
 {% endif %}
+{% assign home_url     = '/' | append: lang | append: '/' %}
+{% assign packages_url = '/' | append: lang | append: '/packages/' %}
+{% assign projects_url = '/' | append: lang | append: '/projects/' %}
+{% assign about_url    = '/' | append: lang | append: '/about/' %}
 
 <header class="site-header">
   <div class="container header-inner">
@@ -35,9 +30,9 @@
         {% if lang == 'es' %}
           <span class="lang-current">ES</span>
           <span class="lang-sep">·</span>
-          <a href="{{ alt_url | relative_url }}">EN</a>
+          <a href="{{ alt_url | relative_url }}" data-lang="en">EN</a>
         {% else %}
-          <a href="{{ alt_url | relative_url }}">ES</a>
+          <a href="{{ alt_url | relative_url }}" data-lang="es">ES</a>
           <span class="lang-sep">·</span>
           <span class="lang-current">EN</span>
         {% endif %}
@@ -45,3 +40,13 @@
     </nav>
   </div>
 </header>
+
+<script>
+  (function () {
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('.lang-switch a[data-lang]') : null;
+      if (!a) return;
+      try { window.localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (err) { /* ignore */ }
+    });
+  })();
+</script>

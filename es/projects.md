@@ -1,7 +1,7 @@
 ---
 title: Proyectos
 description: Proyectos personales y de equipo.
-permalink: /projects/
+permalink: /es/projects/
 ---
 
 {% assign t = site.data.i18n[page.lang] %}

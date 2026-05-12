@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>AgasKhan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal de AgasKhan — Unity Packages, proyectos y notas.">
+  <meta name="robots" content="noindex">
+  <!-- Fallback for users without JavaScript: send to ES by default. -->
+  <meta http-equiv="refresh" content="0;url=/es/">
+  <link rel="canonical" href="https://agaskhan.github.io/es/">
+  <script>
+    (function () {
+      var target = '/es/';
+      try {
+        var saved = window.localStorage.getItem('lang');
+        if (saved === 'es' || saved === 'en') {
+          target = '/' + saved + '/';
+        } else {
+          var bl = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+          target = bl.indexOf('en') === 0 ? '/en/' : '/es/';
+        }
+      } catch (e) { /* localStorage unavailable, keep default */ }
+      window.location.replace(target);
+    })();
+  </script>
+  <style>
+    html, body { margin: 0; padding: 0; background: #0f1115; color: #8b93a7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
+    .wrap p { font-size: 14px; }
+    .wrap a { color: #5eead4; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p>Redirecting… / Redirigiendo…</p>
+    <p><a href="/es/">Español</a> · <a href="/en/">English</a></p>
+  </div>
+</body>
+</html>

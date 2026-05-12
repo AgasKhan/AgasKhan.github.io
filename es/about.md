@@ -1,7 +1,7 @@
 ---
 title: Sobre mí
 description: Perfil profesional, habilidades técnicas y educación.
-permalink: /about/
+permalink: /es/about/
 ---
 
 {% assign t = site.data.i18n[page.lang] %}
