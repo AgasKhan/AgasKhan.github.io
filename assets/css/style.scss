@@ -520,28 +520,94 @@ body { position: relative; }
 .playground-status-ok    { color: var(--accent); }
 .playground-status-error { color: #f87171; }
 
-#pg-editor {
-  display: block;
-  width: 100%;
+/* Overlay editor: highlight <pre> behind, transparent textarea on top.
+   Both share identical font metrics, padding and box-sizing so the caret
+   tracks the colored characters one-to-one. */
+
+/* VS Community / Rider dark palette */
+:root {
+  --vs-bg:           #1e1e1e;
+  --vs-default:      #dcdcdc;
+  --vs-keyword:      #569cd6;
+  --vs-type:         #4ec9b0;
+  --vs-builtin-fn:   #dcdcaa;
+  --vs-user-fn:      #a7eb9e;
+  --vs-builtin-var:  #9cdcfe;
+  --vs-number:       #b5cea8;
+  --vs-comment:      #6a9955;
+  --vs-string:       #ce9178;
+  --vs-preprocessor: #bd63c5;
+  --vs-punct:        #d4d4d4;
+  --vs-selection:    rgba(86, 156, 214, 0.35);
+}
+
+.editor-wrap {
+  position: relative;
   min-height: 540px;
-  background: rgba(15, 17, 21, 0.92);
-  color: var(--text);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--vs-bg);
+  transition: border-color .15s ease;
+}
+.editor-wrap:focus-within {
+  border-color: var(--accent);
+}
+
+.editor-highlight,
+#pg-editor {
+  margin: 0;
+  padding: 16px 18px;
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.55;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-sm);
-  padding: 16px 18px;
-  resize: vertical;
-  outline: none;
+  letter-spacing: 0;
+  white-space: pre;
+  word-wrap: normal;
   -moz-tab-size: 4;
   tab-size: 4;
-  white-space: pre;
+  box-sizing: border-box;
+  border: 0;
+}
+
+.editor-highlight {
+  position: absolute;
+  inset: 0;
   overflow: auto;
+  pointer-events: none;
+  color: var(--vs-default);
+  background: transparent;
+  z-index: 1;
 }
-#pg-editor:focus {
-  border-color: var(--accent);
+
+#pg-editor {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 540px;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--vs-default);
+  resize: vertical;
+  outline: none;
+  overflow: auto;
+  z-index: 2;
 }
+#pg-editor::selection         { background: var(--vs-selection); color: transparent; }
+#pg-editor::-moz-selection    { background: var(--vs-selection); color: transparent; }
+
+/* Token classes — used by glsl-highlight.js */
+.tk-keyword      { color: var(--vs-keyword);      font-weight: 500; }
+.tk-type         { color: var(--vs-type); }
+.tk-builtin-fn   { color: var(--vs-builtin-fn); }
+.tk-user-fn      { color: var(--vs-user-fn); }
+.tk-builtin-var  { color: var(--vs-builtin-var); }
+.tk-number       { color: var(--vs-number); }
+.tk-string       { color: var(--vs-string); }
+.tk-comment      { color: var(--vs-comment);      font-style: italic; }
+.tk-preprocessor { color: var(--vs-preprocessor); }
+.tk-punct        { color: var(--vs-punct); }
+.tk-identifier   { color: var(--vs-default); }
 
 .playground-error {
   margin-top: 14px;

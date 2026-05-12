@@ -1,5 +1,6 @@
 // Live shader editor wired to window.HeroShader.
-// - Loads the current fragment shader into the textarea.
+// - Overlay technique: a <pre> with syntax-highlighted HTML sits behind a
+//   transparent <textarea>; both share metrics so the caret tracks the colored text.
 // - Compiles on input (debounced) and hot-swaps the running shader on success.
 // - Displays the GL info log on compile failure without breaking the page.
 
@@ -38,16 +39,35 @@
 
     function init()
     {
-        var editor   = document.getElementById('pg-editor');
-        var resetBtn = document.getElementById('pg-reset');
-        var status   = document.getElementById('pg-status');
-        var errorBox = document.getElementById('pg-error');
-        if (!editor || !resetBtn || !status || !errorBox)
+        var editor    = document.getElementById('pg-editor');
+        var highlight = document.getElementById('pg-highlight');
+        var resetBtn  = document.getElementById('pg-reset');
+        var status    = document.getElementById('pg-status');
+        var errorBox  = document.getElementById('pg-error');
+        if (!editor || !highlight || !resetBtn || !status || !errorBox)
             return;
 
         var labelOk    = readLabel(editor, 'data-label-ok',    'applied');
         var labelError = readLabel(editor, 'data-label-error', 'error');
         var labelIdle  = readLabel(editor, 'data-label-idle',  '');
+
+        function renderHighlight()
+        {
+            // Trailing newline prevents the last empty line from collapsing in <pre>.
+            var html = window.GLSLHighlight
+                ? window.GLSLHighlight.highlight(editor.value)
+                : editor.value
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            highlight.innerHTML = html + '\n';
+        }
+
+        function syncScroll()
+        {
+            highlight.scrollTop  = editor.scrollTop;
+            highlight.scrollLeft = editor.scrollLeft;
+        }
 
         function apply(src)
         {
@@ -70,18 +90,26 @@
         window.HeroShader.getCurrent().then(function (src)
         {
             editor.value = src;
+            renderHighlight();
+            syncScroll();
             setStatus(status, 'idle', labelIdle);
         });
 
         var debounceId = 0;
         editor.addEventListener('input', function ()
         {
+            renderHighlight();
+            syncScroll();
             clearTimeout(debounceId);
             debounceId = setTimeout(function ()
             {
                 apply(editor.value);
             }, DEBOUNCE_MS);
         });
+
+        editor.addEventListener('scroll', syncScroll);
+        editor.addEventListener('keyup', syncScroll);
+        editor.addEventListener('click', syncScroll);
 
         // Tab key inserts 4 spaces instead of jumping focus — closer to a real editor.
         editor.addEventListener('keydown', function (e)
@@ -103,6 +131,8 @@
             window.HeroShader.reset().then(function (r)
             {
                 editor.value = r.source;
+                renderHighlight();
+                syncScroll();
                 if (r.ok)
                 {
                     setStatus(status, 'ok', labelOk);
