@@ -685,7 +685,10 @@ body { position: relative; }
 .editor-highlight {
   position: absolute;
   inset: 0;
-  overflow: auto;
+  /* overflow:hidden (not auto) so the scrollbars of this <pre> don't double up
+     with the textarea's. We still need it scrollable programmatically via
+     scrollLeft/scrollTop — playground.js mirrors the textarea's scroll here. */
+  overflow: hidden;
   pointer-events: none;
   color: var(--vs-default);
   background: transparent;
