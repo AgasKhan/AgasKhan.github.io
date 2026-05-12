@@ -30,15 +30,21 @@ const vec3 cyan   = vec3(0.28, 0.85, 0.85);
 
 // ------------------------------------------------------------
 // Hashes
+//
+// These must run in highp. With mediump precision (mobile default), the
+// intermediate `sin(p) * 43758.5453` overflows the [-2^14, 2^14] range
+// and returns the same value for every cell — collapsing every feature
+// point to its cell center and turning the Voronoi into a regular grid.
+// highp guarantees ~[-2^62, 2^62], which fits the multiplier comfortably.
 // ------------------------------------------------------------
-vec2 hash22(vec2 p)
+highp vec2 hash22(highp vec2 p)
 {
     p = vec2(dot(p, vec2(127.1, 311.7)),
              dot(p, vec2(269.5, 183.3)));
     return fract(sin(p) * 43758.5453);
 }
 
-float hash21(vec2 p)
+highp float hash21(highp vec2 p)
 {
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 }
