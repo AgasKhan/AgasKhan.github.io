@@ -131,8 +131,8 @@ void main()
     // Edge mask: 1 on the line, 0 deep inside a cell.
     // With IQ's metric edgeDist is the actual perpendicular distance to the
     // nearest boundary, so lineThickness is a real "half-width in cell units".
-    float lineThickness = 0.025;
-    float line = 1.0 - smoothstep(0.0, lineThickness, edgeDist);
+    float lineThickness = 0.02;
+    float line = 1.0 - smoothstep(0.001, lineThickness, edgeDist);
 
     // Hit-test the pointer to highlight the cell it sits in.
     vec2 mouseP = u_mouse / u_resolution.xy;
