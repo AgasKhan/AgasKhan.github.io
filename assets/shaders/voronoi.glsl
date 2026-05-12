@@ -158,5 +158,14 @@ void main()
 
     vec3 col = mix(cellShade, lineColor, line);
 
+    // Horizontal fade-to-black framing: darkens the central column so the
+    // page card breathes over the shader, leaving the lateral strips visible.
+    // The clamp keeps it well-behaved on portrait viewports (where aspect < 1
+    // would otherwise push the factor negative everywhere).
+    float ex        = uv.x * aspect;
+    float leftRamp  = clamp(ex * 2.0,            0.0, 1.0);
+    float rightRamp = clamp((aspect - ex) * 2.0, 0.0, 1.0);
+    col *= clamp(aspect - leftRamp - rightRamp, 0.0, 1.0);
+
     gl_FragColor = vec4(col, 1.0);
 }
