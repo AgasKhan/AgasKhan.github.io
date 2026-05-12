@@ -29,6 +29,12 @@
         aPosLoc: -1,
         uRes:    null,
         uTime:   null,
+        uMouse:  null,
+        // Pointer position in physical pixels with bottom-left origin, matching
+        // gl_FragCoord. Off-screen until the first mousemove/touchmove so nothing
+        // is highlighted on initial load (or on touch devices without movement).
+        mouseX:  -10000.0,
+        mouseY:  -10000.0,
         ready:   false
     };
 
@@ -84,8 +90,9 @@
         gl.enableVertexAttribArray(state.aPosLoc);
         gl.vertexAttribPointer(state.aPosLoc, 2, gl.FLOAT, false, 0, 0);
 
-        state.uRes  = gl.getUniformLocation(program, 'u_resolution');
-        state.uTime = gl.getUniformLocation(program, 'u_time');
+        state.uRes   = gl.getUniformLocation(program, 'u_resolution');
+        state.uTime  = gl.getUniformLocation(program, 'u_time');
+        state.uMouse = gl.getUniformLocation(program, 'u_mouse');
     }
 
     function fetchDefault()
@@ -163,10 +170,44 @@
         }
     }
 
+    function updatePointerFromClient(clientX, clientY)
+    {
+        // Convert from CSS pixels (top-left origin) to physical pixels
+        // matching gl_FragCoord (bottom-left origin).
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        state.mouseX = clientX * dpr;
+        state.mouseY = state.canvas.height - clientY * dpr;
+    }
+
+    function setupPointerTracking()
+    {
+        window.addEventListener('mousemove', function (e)
+        {
+            updatePointerFromClient(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('touchmove', function (e)
+        {
+            if (e.touches.length === 0)
+                return;
+            var t = e.touches[0];
+            updatePointerFromClient(t.clientX, t.clientY);
+        }, { passive: true });
+
+        // Park the pointer off-screen when it leaves the viewport so the
+        // highlighted cell disappears instead of getting stuck at the edge.
+        document.addEventListener('mouseleave', function ()
+        {
+            state.mouseX = -10000.0;
+            state.mouseY = -10000.0;
+        });
+    }
+
     function setupRenderLoop()
     {
         resize();
         window.addEventListener('resize', resize);
+        setupPointerTracking();
 
         var t0 = performance.now();
         var running = true;
@@ -184,6 +225,8 @@
                 gl.uniform2f(state.uRes, state.canvas.width, state.canvas.height);
             if (state.uTime)
                 gl.uniform1f(state.uTime, t);
+            if (state.uMouse)
+                gl.uniform2f(state.uMouse, state.mouseX, state.mouseY);
             gl.drawArrays(gl.TRIANGLES, 0, 6);
             rafId = requestAnimationFrame(loop);
         }
