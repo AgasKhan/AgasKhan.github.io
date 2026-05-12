@@ -1,4 +1,8 @@
 // Hero background — animated Voronoi.
+// Lines use the perpendicular-bisector technique from
+// https://iquilezles.org/articles/voronoilines/ for uniform-thickness edges
+// and clean triple-junction vertices.
+//
 // Uniforms expected by hero-shader.js:
 //   uniform vec2  u_resolution; // canvas size in physical pixels
 //   uniform float u_time;       // seconds since start
@@ -29,70 +33,81 @@ float hash21(vec2 p)
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 }
 
+// Position of the feature point owned by a given cell id, in absolute
+// (pre-fragment) space. Shared between the two Voronoi passes so the same
+// animation drives them.
+vec2 cellPoint(in vec2 cellId)
+{
+    vec2 rnd = hash22(cellId);
+    return cellId + 0.5 + 0.42 * sin(u_time * 0.55 + 6.2831 * rnd);
+}
+
 // ------------------------------------------------------------
-// Voronoi F1/F2
-// f1 = distance to the closest feature point
-// f2 = distance to the second-closest
-// Edges are where f2 - f1 ~ 0.
+// Pass 1 — 3x3 neighborhood. Find the closest feature point.
+// Returns the cell id and the absolute position of that point so pass 2
+// can compute distances to bisectors without re-hashing the same cell.
 // ------------------------------------------------------------
-void voronoi(in vec2 p, out float f1, out float f2, out vec2 closest)
+void voronoi(in vec2 p, out vec2 cellId, out vec2 closestPos)
 {
     vec2 ipos = floor(p);
-    vec2 fpos = fract(p);
-    f1 = 8.0;
-    f2 = 8.0;
+    float best = 8.0;
+    cellId     = ipos;
+    closestPos = ipos;
 
     for (int y = -1; y <= 1; y++)
     {
         for (int x = -1; x <= 1; x++)
         {
-            vec2 g = vec2(float(x), float(y));
-            vec2 rnd = hash22(ipos + g);
-            // Each cell point oscillates around the cell center.
-            vec2 point = 0.5 + 0.42 * sin(u_time * 0.55 + 6.2831 * rnd);
-            vec2 diff  = g + point - fpos;
-            float d    = length(diff);
+            vec2 g   = vec2(float(x), float(y));
+            vec2 pos = cellPoint(ipos + g);
+            float d  = length(pos - p);
 
-            if (d < f1)
+            if (d < best)
             {
-                f2 = f1;
-                f1 = d;
-                closest = ipos + g;
-            }
-            else if (d < f2)
-            {
-                f2 = d;
+                best       = d;
+                cellId     = ipos + g;
+                closestPos = pos;
             }
         }
     }
 }
 
-// Cell-only variant: skips f2, used for hit-testing the mouse position.
-vec2 voronoiCell(in vec2 p)
+// ------------------------------------------------------------
+// Pass 2 — 5x5 neighborhood. IQ's voronoi-lines distance.
+//
+// For every other feature point, the cell boundary is the perpendicular
+// bisector between the closest point and that other point. The distance
+// from the fragment to that line is:
+//     dot( midpoint - p, normalize(other - closest) )
+// Taking the minimum across neighbors gives the perpendicular distance
+// to the actual nearest cell boundary — which yields lines of uniform
+// thickness and clean triple-junction vertices.
+//
+// 5x5 (instead of 3x3) matters near triple junctions, where the relevant
+// neighbor can sit two cells away.
+// ------------------------------------------------------------
+float voronoiEdgeDistance(in vec2 p, in vec2 closestPos)
 {
     vec2 ipos = floor(p);
-    vec2 fpos = fract(p);
-    float best = 8.0;
-    vec2 closest = ipos;
+    float md = 8.0;
 
-    for (int y = -1; y <= 1; y++)
+    for (int y = -2; y <= 2; y++)
     {
-        for (int x = -1; x <= 1; x++)
+        for (int x = -2; x <= 2; x++)
         {
-            vec2 g = vec2(float(x), float(y));
-            vec2 rnd = hash22(ipos + g);
-            vec2 point = 0.5 + 0.42 * sin(u_time * 0.55 + 6.2831 * rnd);
-            vec2 diff  = g + point - fpos;
-            float d    = length(diff);
+            vec2 g   = vec2(float(x), float(y));
+            vec2 pos = cellPoint(ipos + g);
+            vec2 r   = pos - closestPos;
 
-            if (d < best)
+            // Skip the closest point itself (r would be ~0, normalize undefined).
+            if (dot(r, r) > 0.00001)
             {
-                best = d;
-                closest = ipos + g;
+                vec2 mid = 0.5 * (closestPos + pos);
+                md = min(md, dot(mid - p, normalize(r)));
             }
         }
     }
-    return closest;
+    return md;
 }
 
 // ------------------------------------------------------------
@@ -108,27 +123,28 @@ void main()
     p.x *= aspect;
     p *= 5.5;
 
-    float f1, f2;
-    vec2 closest;
-    voronoi(p, f1, f2, closest);
+    vec2 cellId, closestPos;
+    voronoi(p, cellId, closestPos);
 
-    // Edge mask: 1 on the line between two cells, 0 deep inside a cell.
-    float edgeDist      = f2 - f1;
-    float lineThickness = 0.035;
-    float line          = 1.0 - smoothstep(0.0, lineThickness, edgeDist);
+    float edgeDist = voronoiEdgeDistance(p, closestPos);
 
-    // Find which cell the mouse pointer is inside, in the same coord space as p.
+    // Edge mask: 1 on the line, 0 deep inside a cell.
+    // With IQ's metric edgeDist is the actual perpendicular distance to the
+    // nearest boundary, so lineThickness is a real "half-width in cell units".
+    float lineThickness = 0.025;
+    float line = 1.0 - smoothstep(0.0, lineThickness, edgeDist);
+
+    // Hit-test the pointer to highlight the cell it sits in.
     vec2 mouseP = u_mouse / u_resolution.xy;
     mouseP.x *= aspect;
     mouseP *= 5.5;
-    vec2 mouseCell = voronoiCell(mouseP);
+    vec2 mouseCellId, mouseClosestPos;
+    voronoi(mouseP, mouseCellId, mouseClosestPos);
     // Cell ids come from floor(), so they are integer-valued — exact compare is safe.
-    bool isMouseCell = (closest.x == mouseCell.x && closest.y == mouseCell.y);
+    bool isMouseCell = (cellId.x == mouseCellId.x && cellId.y == mouseCellId.y);
 
-    // Per-cell color based on a hash of the cell id.
-    float h = hash21(closest);
-
-    // Only the cell under the pointer goes cyan; the rest blend gold↔orange.
+    // Per-cell color: cyan under the pointer, otherwise blend gold ↔ orange.
+    float h = hash21(cellId);
     vec3 cellColor = isMouseCell ? cyan : mix(gold, orange, h);
 
     // Dark page-matching background.
