@@ -192,13 +192,21 @@
         function applyStoredHeight()
         {
             var h = getStoredHeight();
-            if (!h)
-                return;
 
-            if (mode === 'hlsl' && editors)
-                editors.style.height = h + 'px';
-            else if (editor)
-                editor.style.height = h + 'px';
+            // The element that owns the resize handle differs per mode.
+            // Clear the inline height on the *other* one so its CSS rule
+            // (height: 100%) wins, otherwise the leftover inline style makes
+            // the textarea overflow its wrap and shows ghost scrollbars.
+            if (mode === 'hlsl')
+            {
+                if (editor)  editor.style.height  = '';
+                if (editors) editors.style.height = h ? (h + 'px') : '';
+            }
+            else
+            {
+                if (editors) editors.style.height = '';
+                if (editor)  editor.style.height  = h ? (h + 'px') : '';
+            }
         }
 
         // Persist whatever height the user drags to. Both targets are watched:
@@ -269,6 +277,10 @@
             p.then(function (src)
             {
                 editor.value = src;
+                // Reset scroll on mode change so the previous mode's caret
+                // position / scroll offset doesn't leak into the new content.
+                editor.scrollTop  = 0;
+                editor.scrollLeft = 0;
                 renderPrimaryHighlight();
                 syncScroll();
                 applyFromEditor();
