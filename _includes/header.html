@@ -9,10 +9,11 @@
   {% assign alt_lang = 'en' %}
   {% assign alt_url = page.url | replace_first: '/es', '/en' %}
 {% endif %}
-{% assign home_url     = '/' | append: lang | append: '/' %}
-{% assign packages_url = '/' | append: lang | append: '/packages/' %}
-{% assign projects_url = '/' | append: lang | append: '/projects/' %}
-{% assign about_url    = '/' | append: lang | append: '/about/' %}
+{% assign home_url       = '/' | append: lang | append: '/' %}
+{% assign packages_url   = '/' | append: lang | append: '/packages/' %}
+{% assign projects_url   = '/' | append: lang | append: '/projects/' %}
+{% assign about_url      = '/' | append: lang | append: '/about/' %}
+{% assign playground_url = '/' | append: lang | append: '/playground/' %}
 
 <header class="site-header">
   <div class="container header-inner">
@@ -25,6 +26,7 @@
       <a href="{{ packages_url | relative_url }}">{{ t.nav.packages }}</a>
       <a href="{{ projects_url | relative_url }}">{{ t.nav.projects }}</a>
       <a href="{{ about_url | relative_url }}">{{ t.nav.about }}</a>
+      <a href="{{ playground_url | relative_url }}">{{ t.nav.playground }}</a>
       <a href="https://github.com/AgasKhan" target="_blank" rel="noopener">{{ t.nav.github }} ↗</a>
       <span class="lang-switch">
         {% if lang == 'es' %}

@@ -8,6 +8,10 @@ precision mediump float;
 uniform vec2  u_resolution;
 uniform float u_time;
 
+const vec3 gold   = vec3(0.96, 0.72, 0.20);
+const vec3 orange = vec3(0.95, 0.42, 0.12);
+const vec3 cyan   = vec3(0.28, 0.85, 0.85);
+
 // ------------------------------------------------------------
 // Hashes
 // ------------------------------------------------------------
@@ -85,10 +89,6 @@ void main()
 
     // Per-cell color based on a hash of the cell id.
     float h = hash21(closest);
-
-    vec3 gold   = vec3(0.96, 0.72, 0.20);
-    vec3 orange = vec3(0.95, 0.42, 0.12);
-    vec3 cyan   = vec3(0.28, 0.85, 0.85);
 
     // ~12% of cells go cyan, the rest blend gold↔orange.
     vec3 cellColor = (h > 0.88) ? cyan : mix(gold, orange, h);

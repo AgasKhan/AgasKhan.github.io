@@ -7,6 +7,7 @@ es:
     packages: Packages
     projects: Proyectos
     about: Sobre mí
+    playground: Playground
     github: GitHub
   hero:
     welcome_prefix: "Bienvenido al portal de"
@@ -51,6 +52,14 @@ es:
   status:
     active: activo
     paused: pausado
+  playground:
+    heading: Playground
+    lead: "Editor del fragment shader del fondo. Los cambios se compilan mientras escribís y se aplican al fondo de esta misma página. Se guardan en tu navegador (localStorage)."
+    reset: Restaurar default
+    status_ok: "✓ aplicado"
+    status_error: "✕ error de compilación"
+    status_idle: listo
+    hint: "Tip: Tab inserta 4 espacios. El último shader válido queda guardado; si rompés algo, recargá la página y seguís editando desde lo último que compiló."
   footer:
     rights: ""
   not_found:
@@ -68,6 +77,7 @@ en:
     packages: Packages
     projects: Projects
     about: About
+    playground: Playground
     github: GitHub
   hero:
     welcome_prefix: "Welcome to the portal of"
@@ -112,6 +122,14 @@ en:
   status:
     active: active
     paused: paused
+  playground:
+    heading: Playground
+    lead: "Background fragment shader editor. Changes compile as you type and apply to the background of this very page. They are saved in your browser (localStorage)."
+    reset: Reset to default
+    status_ok: "✓ applied"
+    status_error: "✕ compile error"
+    status_idle: ready
+    hint: "Tip: Tab inserts 4 spaces. The last valid shader stays saved; if you break something, reload and pick up from the last one that compiled."
   footer:
     rights: ""
   not_found:
