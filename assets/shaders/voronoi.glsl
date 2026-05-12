@@ -93,10 +93,5 @@ void main() {
 
   vec3 col = mix(cellShade, lineColor, line);
 
-  // Soft vignette so the corners fade toward the page bg.
-  vec2 uv_c = (uv - 0.5) * vec2(aspect, 1.0);
-  float vig = smoothstep(1.25, 0.25, length(uv_c));
-  col = mix(bg, col, vig);
-
   gl_FragColor = vec4(col, 1.0);
 }

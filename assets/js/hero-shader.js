@@ -1,5 +1,5 @@
-// Hero background shader runner.
-// - Finds the first .hero on the page and inserts a WebGL canvas behind its content.
+// Site background shader runner.
+// - Inserts a fixed full-viewport WebGL canvas behind the whole page.
 // - Loads the fragment shader from localStorage if present, otherwise fetches the
 //   default from /assets/shaders/voronoi.glsl and persists it under "hero_shader".
 // - If a custom (localStorage) shader fails to compile, falls back to the default.
@@ -63,18 +63,17 @@
     return link(gl, vs, fs);
   }
 
-  function setupCanvas(hero) {
+  function setupCanvas() {
     var canvas = document.createElement('canvas');
-    canvas.className = 'hero-bg-canvas';
+    canvas.className = 'site-bg-canvas';
     canvas.setAttribute('aria-hidden', 'true');
-    hero.insertBefore(canvas, hero.firstChild);
+    document.body.insertBefore(canvas, document.body.firstChild);
     return canvas;
   }
 
   function start() {
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-    var canvas = setupCanvas(hero);
+    if (!document.body) return;
+    var canvas = setupCanvas();
     var gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: false });
     if (!gl) { canvas.remove(); return; }
 
