@@ -73,17 +73,19 @@
 
     function init()
     {
-        var root          = document.querySelector('.playground');
-        var editor        = document.getElementById('pg-editor');
-        var highlight     = document.getElementById('pg-highlight');
-        var resetBtn      = document.getElementById('pg-reset');
-        var fullscreenBtn = document.getElementById('pg-fullscreen');
-        var tabGlslBtn    = document.getElementById('pg-tab-glsl');
-        var tabHlslBtn    = document.getElementById('pg-tab-hlsl');
-        var status        = document.getElementById('pg-status');
-        var errorBox      = document.getElementById('pg-error');
-        var secondary     = document.getElementById('pg-secondary');
-        var secondaryBody = document.getElementById('pg-secondary-body');
+        var root           = document.querySelector('.playground');
+        var editor         = document.getElementById('pg-editor');
+        var highlight      = document.getElementById('pg-highlight');
+        var resetBtn       = document.getElementById('pg-reset');
+        var fullscreenBtn  = document.getElementById('pg-fullscreen');
+        var shaderOnlyBtn  = document.getElementById('pg-shader-only');
+        var shaderOnlyExit = document.getElementById('pg-shader-only-exit');
+        var tabGlslBtn     = document.getElementById('pg-tab-glsl');
+        var tabHlslBtn     = document.getElementById('pg-tab-hlsl');
+        var status         = document.getElementById('pg-status');
+        var errorBox       = document.getElementById('pg-error');
+        var secondary      = document.getElementById('pg-secondary');
+        var secondaryBody  = document.getElementById('pg-secondary-body');
         if (!root || !editor || !highlight || !resetBtn || !status || !errorBox)
             return;
 
@@ -313,10 +315,39 @@
                 setFullscreen(!root.classList.contains('playground-fullscreen'));
             });
         }
+        // "Shader only" mode: hide everything chrome-related (editor, header,
+        // footer, container card) so the bg canvas takes the full viewport.
+        // The two toggles are mutually exclusive — activating one kills the other.
+        function setShaderOnly(on)
+        {
+            if (on)
+                setFullscreen(false);
+            document.body.classList.toggle('shader-only-on', on);
+        }
+        if (shaderOnlyBtn)
+        {
+            shaderOnlyBtn.addEventListener('click', function ()
+            {
+                setShaderOnly(!document.body.classList.contains('shader-only-on'));
+            });
+        }
+        if (shaderOnlyExit)
+        {
+            shaderOnlyExit.addEventListener('click', function ()
+            {
+                setShaderOnly(false);
+            });
+        }
+
         document.addEventListener('keydown', function (e)
         {
-            if (e.key === 'Escape' && root.classList.contains('playground-fullscreen'))
+            if (e.key !== 'Escape')
+                return;
+
+            if (root.classList.contains('playground-fullscreen'))
                 setFullscreen(false);
+            else if (document.body.classList.contains('shader-only-on'))
+                setShaderOnly(false);
         });
     }
 

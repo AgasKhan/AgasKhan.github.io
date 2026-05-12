@@ -59,6 +59,8 @@ es:
     reset: Restaurar default
     expand: "⛶ Expandir"
     exit_fullscreen: "✕ Cerrar"
+    shader_only: "🖼 Solo shader"
+    exit_shader_only: "✕ Volver al editor"
     tab_glsl: GLSL
     tab_hlsl: HLSL
     secondary_label: "GLSL emitido"
@@ -135,6 +137,8 @@ en:
     reset: Reset to default
     expand: "⛶ Expand"
     exit_fullscreen: "✕ Close"
+    shader_only: "🖼 Shader only"
+    exit_shader_only: "✕ Back to editor"
     tab_glsl: GLSL
     tab_hlsl: HLSL
     secondary_label: "Emitted GLSL"

@@ -21,6 +21,7 @@ permalink: /en/playground/
         <button id="pg-fullscreen" type="button"
             data-label-expand="{{ t.playground.expand }}"
             data-label-close="{{ t.playground.exit_fullscreen }}">{{ t.playground.expand }}</button>
+        <button id="pg-shader-only" type="button">{{ t.playground.shader_only }}</button>
         <span id="pg-status" class="playground-status playground-status-idle"></span>
     </div>
     <div class="playground-editors">
@@ -43,6 +44,8 @@ permalink: /en/playground/
     <pre id="pg-error" class="playground-error" hidden></pre>
     <p class="playground-hint">{{ t.playground.hint }}</p>
 </div>
+
+<button id="pg-shader-only-exit" type="button" class="shader-only-exit-btn">{{ t.playground.exit_shader_only }}</button>
 
 <script src="{{ '/assets/js/glsl-highlight.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/hlsl-highlight.js' | relative_url }}" defer></script>
