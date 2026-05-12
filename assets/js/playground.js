@@ -14,10 +14,15 @@
     var DEBOUNCE_MS = 400;
 
     // localStorage keys.
-    var KEY_GLSL_CANVAS = 'hero_shader';              // applied to the canvas
-    var KEY_GLSL_USER   = 'hero_shader_source_glsl';  // user-typed GLSL
-    var KEY_HLSL_USER   = 'hero_shader_source_hlsl';  // user-typed HLSL
-    var KEY_LANG        = 'hero_shader_lang';         // 'glsl' | 'hlsl'
+    var KEY_GLSL_CANVAS = 'hero_shader';                // applied to the canvas
+    var KEY_GLSL_USER   = 'hero_shader_source_glsl';    // user-typed GLSL
+    var KEY_HLSL_USER   = 'hero_shader_source_hlsl';    // user-typed HLSL
+    var KEY_LANG        = 'hero_shader_lang';           // 'glsl' | 'hlsl'
+    var KEY_HEIGHT      = 'hero_shader_editor_height';  // user-chosen editor px
+
+    // Height bounds — same as the CSS clamps, kept in sync.
+    var HEIGHT_MIN = 280;
+    var HEIGHT_MAX = 1200;
 
     var DEFAULT_GLSL_URL = '/assets/shaders/voronoi.glsl';
     var DEFAULT_HLSL_URL = '/assets/shaders/default.hlsl';
@@ -173,6 +178,63 @@
             }
         }
 
+        // Editor height (shared across GLSL and HLSL modes).
+        var editors = document.querySelector('.playground-editors');
+
+        function getStoredHeight()
+        {
+            var v = parseInt(readStorage(KEY_HEIGHT), 10);
+            if (!isFinite(v))
+                return null;
+            return Math.max(HEIGHT_MIN, Math.min(HEIGHT_MAX, v));
+        }
+
+        function applyStoredHeight()
+        {
+            var h = getStoredHeight();
+            if (!h)
+                return;
+
+            if (mode === 'hlsl' && editors)
+                editors.style.height = h + 'px';
+            else if (editor)
+                editor.style.height = h + 'px';
+        }
+
+        // Persist whatever height the user drags to. Both targets are watched:
+        // the textarea in GLSL mode (resize handle is on it) and the editors
+        // container in HLSL mode (handle is on the grid wrapper).
+        var resizeWriteTimer = 0;
+        function scheduleHeightWrite(px)
+        {
+            clearTimeout(resizeWriteTimer);
+            resizeWriteTimer = setTimeout(function ()
+            {
+                var clamped = Math.max(HEIGHT_MIN, Math.min(HEIGHT_MAX, Math.round(px)));
+                writeStorage(KEY_HEIGHT, String(clamped));
+            }, 120);
+        }
+
+        if (window.ResizeObserver)
+        {
+            var ro = new ResizeObserver(function (entries)
+            {
+                for (var i = 0; i < entries.length; i++)
+                {
+                    var target = entries[i].target;
+                    var h = target.getBoundingClientRect().height;
+                    // Only the *active* mode's container is treated as authoritative,
+                    // otherwise window-resize ticks on the inactive one would clobber the value.
+                    if (mode === 'hlsl' && target === editors)
+                        scheduleHeightWrite(h);
+                    else if (mode === 'glsl' && target === editor)
+                        scheduleHeightWrite(h);
+                }
+            });
+            if (editor)  ro.observe(editor);
+            if (editors) ro.observe(editors);
+        }
+
         // Load the editor with the source for the active mode, then apply.
         function loadModeIntoEditor()
         {
@@ -185,6 +247,9 @@
             if (secondary)
                 secondary.hidden = (mode !== 'hlsl');
             writeStorage(KEY_LANG, mode);
+
+            // Apply persisted height to whichever element owns the resize handle now.
+            applyStoredHeight();
 
             var p;
             if (mode === 'hlsl')

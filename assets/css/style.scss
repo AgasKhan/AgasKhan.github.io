@@ -561,13 +561,16 @@ body { position: relative; }
 }
 .playground.is-hlsl .playground-editors {
   grid-template-columns: 1fr 1fr;
-  /* In HLSL mode, lock both panes to the same explicit height. Without this,
-     the grid stretches both columns to the height of the taller content (the
-     emitted GLSL is longer than what the user typed), leaving the textarea
-     surrounded by empty space and breaking the highlight overlay alignment. */
-  height: 60vh;
-  min-height: 360px;
-  max-height: 800px;
+  /* Locked explicit height so the grid doesn't stretch to the taller column
+     (the emitted GLSL is longer than the user code, which left the textarea
+     surrounded by empty space and broke the highlight overlay alignment).
+     The container itself is the resize handle in HLSL mode, so the user can
+     drag it and the JS will persist that height across mode swaps. */
+  height: 540px;
+  min-height: 280px;
+  max-height: 1200px;
+  resize: vertical;
+  overflow: hidden;
 }
 .playground.is-hlsl .editor-wrap,
 .playground.is-hlsl .editor-readonly {
@@ -577,15 +580,14 @@ body { position: relative; }
 .playground.is-hlsl #pg-editor {
   min-height: 0;
   height: 100%;
-  /* Manual resize would fight the grid row height, so it's off in HLSL mode.
-     Use the "Expand" button for more space. */
+  /* In HLSL the .playground-editors container owns the resize handle. The
+     textarea inside fills the available space. */
   resize: none;
 }
 @media (max-width: 768px) {
   .playground.is-hlsl .playground-editors {
     grid-template-columns: 1fr;
     grid-auto-rows: minmax(0, 1fr);
-    height: 80vh;
   }
 }
 
