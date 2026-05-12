@@ -4,19 +4,19 @@
 
 profile:
   es: |
-    Programador de videojuegos y simuladores con **10+ años** de experiencia,
-    especializado en **Unity (C#, URP, Burst, Jobs)** y desarrollo de gameplay
-    systems, herramientas internas y plugins de editor. Capacidad de descenso
-    a **bajo nivel** (C++, DX11, Assembler) poco común en la industria.
-    Experiencia en docencia técnica avanzada y liderazgo de proyectos
-    multidisciplinarios.
+    Programador de videojuegos y simuladores con **10+ años** de experiencia.
+    Trabajo principalmente con **Unity (C#, URP, Burst, Jobs)** desarrollando
+    gameplay systems, herramientas internas y plugins de editor. Cuando un
+    proyecto lo requiere, bajo a programación de **bajo nivel** (C++, DX11,
+    Assembler). Combino el desarrollo con docencia técnica y liderazgo de
+    proyectos multidisciplinarios.
   en: |
-    Video game and simulator programmer with **10+ years** of experience,
-    specialized in **Unity (C#, URP, Burst, Jobs)** and the development of
-    gameplay systems, internal tools, and editor plugins. Comfortable
-    descending to **low-level** work (C++, DX11, Assembler), an uncommon
-    profile in the industry. Experience in advanced technical pedagogy and
-    leadership of multidisciplinary projects.
+    Video game and simulator programmer with **10+ years** of experience.
+    I work mainly with **Unity (C#, URP, Burst, Jobs)**, building gameplay
+    systems, internal tools and editor plugins. When a project calls for it,
+    I drop down to **low-level** work (C++, DX11, Assembler). I combine
+    development with technical teaching and the leadership of multidisciplinary
+    projects.
 
 # Technical skills grouped by area. Same items in both languages where applicable;
 # only the group label differs.
