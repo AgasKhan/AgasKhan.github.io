@@ -180,11 +180,15 @@ void main()
     // page card breathes over the shader, leaving the lateral strips visible.
     // Cells with active trail are exempted from the fade so the cyan stays
     // visible even when the pointer passes through the dark band.
+    // On narrow viewports (portrait / mobile) the card fills the viewport and
+    // there are no lateral strips to reveal — disable the fade entirely so the
+    // shader stays visible instead of going all black.
     float ex        = uv.x * aspect;
     float leftRamp  = clamp(ex * 2.0,            0.0, 1.0);
     float rightRamp = clamp((aspect - ex) * 2.0, 0.0, 1.0);
     float fadeAmt   = clamp(aspect - leftRamp - rightRamp, 0.0, 1.0);
     fadeAmt         = mix(fadeAmt, 1.0, touch);
+    fadeAmt         = mix(1.0, fadeAmt, step(1.2, aspect));
     col *= fadeAmt;
 
     gl_FragColor = vec4(col, touch);

@@ -262,7 +262,10 @@
     {
         var canvas = state.canvas;
         var gl     = state.gl;
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        // Cap DPR more aggressively on narrow viewports — high-DPR phones
+        // make the shader (which is fill-rate bound) crawl otherwise.
+        var dprCap = (window.innerWidth || 1024) <= 768 ? 1.5 : 2.0;
+        var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
         var w = canvas.clientWidth  || canvas.offsetWidth  || 1;
         var h = canvas.clientHeight || canvas.offsetHeight || 1;
         var pw = Math.max(1, Math.floor(w * dpr));
@@ -279,7 +282,10 @@
     {
         // Convert from CSS pixels (top-left origin) to physical pixels
         // matching gl_FragCoord (bottom-left origin).
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        // Cap DPR more aggressively on narrow viewports — high-DPR phones
+        // make the shader (which is fill-rate bound) crawl otherwise.
+        var dprCap = (window.innerWidth || 1024) <= 768 ? 1.5 : 2.0;
+        var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
         state.mouseX = clientX * dpr;
         state.mouseY = state.canvas.height - clientY * dpr;
     }
