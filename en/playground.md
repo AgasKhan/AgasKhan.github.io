@@ -14,6 +14,9 @@ permalink: /en/playground/
 <div class="playground">
     <div class="playground-toolbar">
         <button id="pg-reset" type="button">{{ t.playground.reset }}</button>
+        <button id="pg-fullscreen" type="button"
+            data-label-expand="{{ t.playground.expand }}"
+            data-label-close="{{ t.playground.exit_fullscreen }}">{{ t.playground.expand }}</button>
         <span id="pg-status" class="playground-status playground-status-idle"></span>
     </div>
     <div class="editor-wrap">

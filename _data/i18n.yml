@@ -57,10 +57,12 @@ es:
     heading: Playground
     lead: "Editor del fragment shader del fondo. Los cambios se compilan mientras escribís y se aplican al fondo de esta misma página. Se guardan en tu navegador (localStorage)."
     reset: Restaurar default
+    expand: "⛶ Expandir"
+    exit_fullscreen: "✕ Cerrar"
     status_ok: "✓ aplicado"
     status_error: "✕ error de compilación"
     status_idle: listo
-    hint: "Tip: Tab inserta 4 espacios. El último shader válido queda guardado; si rompés algo, recargá la página y seguís editando desde lo último que compiló."
+    hint: "Tip: Tab inserta 4 espacios. Esc cierra el modo expandido. El último shader válido queda guardado; si rompés algo, recargá la página y seguís editando desde lo último que compiló."
   footer:
     rights: ""
   not_found:
@@ -128,10 +130,12 @@ en:
     heading: Playground
     lead: "Background fragment shader editor. Changes compile as you type and apply to the background of this very page. They are saved in your browser (localStorage)."
     reset: Reset to default
+    expand: "⛶ Expand"
+    exit_fullscreen: "✕ Close"
     status_ok: "✓ applied"
     status_error: "✕ compile error"
     status_idle: ready
-    hint: "Tip: Tab inserts 4 spaces. The last valid shader stays saved; if you break something, reload and pick up from the last one that compiled."
+    hint: "Tip: Tab inserts 4 spaces. Esc exits expanded mode. The last valid shader stays saved; if you break something, reload and pick up from the last one that compiled."
   footer:
     rights: ""
   not_found:

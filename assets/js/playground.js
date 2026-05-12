@@ -39,12 +39,14 @@
 
     function init()
     {
-        var editor    = document.getElementById('pg-editor');
-        var highlight = document.getElementById('pg-highlight');
-        var resetBtn  = document.getElementById('pg-reset');
-        var status    = document.getElementById('pg-status');
-        var errorBox  = document.getElementById('pg-error');
-        if (!editor || !highlight || !resetBtn || !status || !errorBox)
+        var root          = document.querySelector('.playground');
+        var editor        = document.getElementById('pg-editor');
+        var highlight     = document.getElementById('pg-highlight');
+        var resetBtn      = document.getElementById('pg-reset');
+        var fullscreenBtn = document.getElementById('pg-fullscreen');
+        var status        = document.getElementById('pg-status');
+        var errorBox      = document.getElementById('pg-error');
+        if (!root || !editor || !highlight || !resetBtn || !status || !errorBox)
             return;
 
         var labelOk    = readLabel(editor, 'data-label-ok',    'applied');
@@ -144,6 +146,38 @@
                     showError(errorBox, r.error);
                 }
             });
+        });
+
+        // Fullscreen toggle. Body class lets us hide the page header/footer
+        // while keeping the canvas (which is at body root) visible behind.
+        function setFullscreen(on)
+        {
+            root.classList.toggle('playground-fullscreen', on);
+            document.body.classList.toggle('playground-fullscreen-on', on);
+            if (fullscreenBtn)
+            {
+                var labelExpand = readLabel(fullscreenBtn, 'data-label-expand', '⛶ Expand');
+                var labelClose  = readLabel(fullscreenBtn, 'data-label-close',  '✕ Close');
+                fullscreenBtn.textContent = on ? labelClose : labelExpand;
+                fullscreenBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+            // Refresh metrics after layout change so the highlight overlay
+            // stays aligned with the textarea on first frame.
+            syncScroll();
+        }
+
+        if (fullscreenBtn)
+        {
+            fullscreenBtn.addEventListener('click', function ()
+            {
+                setFullscreen(!root.classList.contains('playground-fullscreen'));
+            });
+        }
+
+        document.addEventListener('keydown', function (e)
+        {
+            if (e.key === 'Escape' && root.classList.contains('playground-fullscreen'))
+                setFullscreen(false);
         });
     }
 

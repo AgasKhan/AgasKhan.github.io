@@ -634,6 +634,61 @@ body { position: relative; }
   color: var(--text-dim);
 }
 
+/* ---------- Playground fullscreen mode ---------- */
+.playground.playground-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  margin: 0;
+  padding: 16px;
+  background: rgba(15, 17, 21, 0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+.playground.playground-fullscreen .playground-toolbar {
+  margin-bottom: 0;
+  flex: 0 0 auto;
+}
+.playground.playground-fullscreen .editor-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.playground.playground-fullscreen #pg-editor,
+.playground.playground-fullscreen .editor-highlight {
+  min-height: 0;
+  height: 100%;
+}
+.playground.playground-fullscreen .playground-error {
+  flex: 0 0 auto;
+  max-height: 30vh;
+}
+.playground.playground-fullscreen .playground-hint {
+  display: none;
+}
+
+/* When the playground is fullscreen, hide the rest of the page chrome so the
+   editor truly takes the viewport. The bg canvas stays visible because it is
+   a sibling of body, not nested inside .site-main. */
+body.playground-fullscreen-on .site-header,
+body.playground-fullscreen-on .site-footer,
+body.playground-fullscreen-on .site-main > .container > *:not(.playground) {
+  display: none;
+}
+body.playground-fullscreen-on .site-main {
+  padding: 0;
+}
+body.playground-fullscreen-on .site-main > .container {
+  background: transparent;
+  border: none;
+  padding: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 /* ---------- Install snippet ---------- */
 .install-block {
   background: var(--bg-elev);
