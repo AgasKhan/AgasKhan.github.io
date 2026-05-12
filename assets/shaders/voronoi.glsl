@@ -4,15 +4,25 @@
 // and clean triple-junction vertices.
 //
 // Uniforms expected by hero-shader.js:
-//   uniform vec2  u_resolution; // canvas size in physical pixels
-//   uniform float u_time;       // seconds since start
-//   uniform vec2  u_mouse;      // pointer position in physical pixels, bottom-left origin
+//   uniform vec2      u_resolution; // canvas size in physical pixels
+//   uniform float     u_time;       // seconds since start
+//   uniform vec2      u_mouse;      // pointer position in physical pixels, bottom-left origin
+//   uniform sampler2D u_history;    // previous frame's output (alpha holds the trail)
+//
+// Output:
+//   gl_FragColor.rgb = visible color this frame
+//   gl_FragColor.a   = "touched-by-mouse" amount in [0,1]; sampled next frame from
+//                      u_history so cells fade back to their resting color gradually.
 
 precision mediump float;
 
-uniform vec2  u_resolution;
-uniform float u_time;
-uniform vec2  u_mouse;
+uniform vec2      u_resolution;
+uniform float     u_time;
+uniform vec2      u_mouse;
+uniform sampler2D u_history;
+
+// How fast the trail fades. 1.0 = forever, 0.0 = no trail. Per-frame multiplier.
+const float TRAIL_DECAY = 0.965;
 
 const vec3 gold   = vec3(0.96, 0.72, 0.20);
 const vec3 orange = vec3(0.95, 0.42, 0.12);
@@ -143,9 +153,17 @@ void main()
     // Cell ids come from floor(), so they are integer-valued — exact compare is safe.
     bool isMouseCell = (cellId.x == mouseCellId.x && cellId.y == mouseCellId.y);
 
-    // Per-cell color: cyan under the pointer, otherwise blend gold ↔ orange.
+    // Trail: read this fragment's previous "touched" amount, decay it, and
+    // overwrite with 1.0 if the cell is currently under the pointer. The max
+    // means a recent touch always wins over a fading older one.
+    float prevTouch = texture2D(u_history, uv).a;
+    float touch     = max(prevTouch * TRAIL_DECAY, isMouseCell ? 1.0 : 0.0);
+
+    // Per-cell color: blend gold ↔ orange normally, then lerp to cyan according
+    // to how recently the pointer was on this cell.
     float h = hash21(cellId);
-    vec3 cellColor = isMouseCell ? cyan : mix(gold, orange, h);
+    vec3 baseColor = mix(gold, orange, h);
+    vec3 cellColor = mix(baseColor, cyan, touch);
 
     // Dark page-matching background.
     vec3 bg = vec3(0.055, 0.063, 0.082);
@@ -160,12 +178,14 @@ void main()
 
     // Horizontal fade-to-black framing: darkens the central column so the
     // page card breathes over the shader, leaving the lateral strips visible.
-    // The clamp keeps it well-behaved on portrait viewports (where aspect < 1
-    // would otherwise push the factor negative everywhere).
+    // Cells with active trail are exempted from the fade so the cyan stays
+    // visible even when the pointer passes through the dark band.
     float ex        = uv.x * aspect;
     float leftRamp  = clamp(ex * 2.0,            0.0, 1.0);
     float rightRamp = clamp((aspect - ex) * 2.0, 0.0, 1.0);
-    col *= clamp(aspect - leftRamp - rightRamp, 0.0, 1.0);
+    float fadeAmt   = clamp(aspect - leftRamp - rightRamp, 0.0, 1.0);
+    fadeAmt         = mix(fadeAmt, 1.0, touch);
+    col *= fadeAmt;
 
-    gl_FragColor = vec4(col, 1.0);
+    gl_FragColor = vec4(col, touch);
 }
