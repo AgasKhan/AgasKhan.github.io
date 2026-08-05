@@ -10,13 +10,15 @@
     - C#
 
 - id: la-maldicion
-  name: La Maldición
-  short: Card game / videojuego en desarrollo. Consumidor principal de los packages de AgasKhan.
-  status: paused
+  name: "La Maldición: Héroes de Lorthar"
+  short: Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Consumidor principal de los packages de AgasKhan.
+  status: active
   page: /projects/la-maldicion/
   repo: https://github.com/LaMaldicionDevelopmentTeam/LaMaldicionCardVideoGame
+  demo: https://riassogna.itch.io/la-maldicin-hroes-de-lorthar
   repo_visibility: private
   tech:
     - Unity 2022.3
     - C#
+    - WebGL
     - Card game

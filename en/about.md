@@ -11,6 +11,10 @@ permalink: /en/about/
 <section class="hero">
   <h1><span class="accent">{{ t.about.heading }}</span></h1>
   <p class="lead">{{ t.about.lead }}</p>
+  <p style="margin: 14px 0 6px;">
+    <a href="{{ '/cv/Lucas_Galardo_CV_Publico_EN.pdf' | relative_url }}" download><strong>⬇ Download CV (short version · PDF)</strong></a>
+  </p>
+  <p style="font-size: 0.85em; opacity: 0.72; margin-top: 0;">Public short version, without direct contact details (to avoid bots/scrapers). Full CV on request or via <a href="https://linktr.ee/AgasKhan" target="_blank" rel="noopener">Linktree</a>.</p>
 </section>
 
 <h2>{{ t.about.profile_heading }}</h2>
