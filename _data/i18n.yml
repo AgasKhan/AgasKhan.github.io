@@ -1,7 +1,7 @@
 # UI strings keyed by language. Pages reference these via {{ site.data.i18n[page.lang].xxx }}.
 
 es:
-  site_tagline: "Unity dev — packages, juegos y experimentos"
+  site_tagline: "Dev de juegos y sistemas — packages, juegos y experimentos"
   nav:
     home: Home
     packages: Packages
@@ -13,7 +13,7 @@ es:
     welcome_prefix: "Bienvenido al portal de"
   home:
     profile_heading: Perfil
-    profile_short: "Programador de videojuegos con 10+ años de experiencia, especializado en Unity (C#, URP, Burst, Jobs). También bajo nivel (C++, DX11, Assembler) y full-stack web cuando hace falta."
+    profile_short: "Programador de videojuegos con 10+ años de experiencia. Motor-agnóstico: base sólida de C# y sistemas desacoplados de la arquitectura del motor para poder portarlos — trabajo sobre todo con Unity (URP, Burst, Jobs). También bajo nivel (C++, DX11, Assembler) y full-stack web cuando hace falta."
     profile_link: "Ver perfil completo →"
     packages_heading: Packages
     packages_intro_count: "Unity Packages publicados, distribuidos como repos independientes para consumo via Git URL en"
@@ -48,7 +48,7 @@ es:
     capabilities_note: "Buena parte de mi trabajo es privado o está bajo NDA (SaaS, un juego con licencia, repos de equipo). En vez de repos públicos, acá dejo write-ups técnicos autocontenidos y un playground de shaders en vivo. El código que se comenta es de proyectos propios; no se expone IP de clientes."
   about:
     heading: Sobre mí
-    lead: "Programador de videojuegos y simuladores con foco en Unity. Más de una década escribiendo código y enseñándolo."
+    lead: "Programador de videojuegos y simuladores, motor-agnóstico. Más de una década escribiendo código y enseñándolo."
     profile_heading: Perfil profesional
     skills_heading: Habilidades técnicas
     way_of_working_heading: Cómo trabajo
@@ -85,7 +85,7 @@ es:
     see_projects: Ver los proyectos
 
 en:
-  site_tagline: "Unity dev — packages, games and experiments"
+  site_tagline: "Game & systems dev — packages, games and experiments"
   nav:
     home: Home
     packages: Packages
@@ -97,7 +97,7 @@ en:
     welcome_prefix: "Welcome to the portal of"
   home:
     profile_heading: Profile
-    profile_short: "Video game programmer with 10+ years of experience, specialized in Unity (C#, URP, Burst, Jobs). Comfortable with low-level work (C++, DX11, Assembler) and full-stack web when needed."
+    profile_short: "Video game programmer with 10+ years of experience. Engine-agnostic: a solid C# core and systems decoupled from the engine's architecture so they port across — I work mostly with Unity (URP, Burst, Jobs). Comfortable with low-level work (C++, DX11, Assembler) and full-stack web when needed."
     profile_link: "Full profile →"
     packages_heading: Packages
     packages_intro_count: "Unity Packages published, distributed as independent repos for consumption via Git URL in"
@@ -132,7 +132,7 @@ en:
     capabilities_note: "A large part of my work is private or under NDA (SaaS, a licensed game, team repos). Instead of public repos, this section holds self-contained technical write-ups and a live shader playground. The code discussed is from my own projects; no client IP is exposed."
   about:
     heading: About
-    lead: "Video game and simulator programmer focused on Unity. Over a decade writing code and teaching it."
+    lead: "Video game and simulator programmer, engine-agnostic. Over a decade writing code and teaching it."
     profile_heading: Professional summary
     skills_heading: Technical skills
     way_of_working_heading: How I work

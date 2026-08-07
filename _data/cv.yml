@@ -5,20 +5,23 @@
 profile:
   es: |
     Programador de videojuegos y simuladores con **10+ años** de experiencia.
-    Trabajo principalmente con **Unity (C#, URP, Burst, Jobs)** desarrollando
-    gameplay systems, herramientas internas y plugins de editor. Cuando un
-    proyecto lo requiere, bajo a programación de **bajo nivel** (C++, DX11,
-    Assembler). Combino el desarrollo con docencia técnica —**40+ alumnos**
-    particulares desde 2021, multi-stack (videojuegos, full-stack web, bases de
-    datos, algoritmos)— y liderazgo de proyectos multidisciplinarios.
+    **Motor-agnóstico**: mi base es C# y armo los sistemas —gameplay,
+    herramientas internas, plugins de editor— **desacoplados de la arquitectura
+    del motor**, para poder llevarlos a otros. Trabajo sobre todo con **Unity
+    (URP, Burst, Jobs)** y, cuando un proyecto lo requiere, bajo a programación
+    de **bajo nivel** (C++, DX11, Assembler). Combino el desarrollo con docencia
+    técnica —**40+ alumnos** particulares desde 2021, multi-stack (videojuegos,
+    full-stack web, bases de datos, algoritmos)— y liderazgo de proyectos
+    multidisciplinarios.
   en: |
     Video game and simulator programmer with **10+ years** of experience.
-    I work mainly with **Unity (C#, URP, Burst, Jobs)**, building gameplay
-    systems, internal tools and editor plugins. When a project calls for it,
-    I drop down to **low-level** work (C++, DX11, Assembler). I combine
-    development with technical teaching —**40+** private students since 2021,
-    multi-stack (games, full-stack web, databases, algorithms)— and the
-    leadership of multidisciplinary projects.
+    **Engine-agnostic**: my core is C#, and I build systems —gameplay, internal
+    tools, editor plugins— **decoupled from the engine's architecture** so they
+    can move to other engines. I work mostly with **Unity (URP, Burst, Jobs)**
+    and, when a project calls for it, drop down to **low-level** work (C++,
+    DX11, Assembler). I combine development with technical teaching —**40+**
+    private students since 2021, multi-stack (games, full-stack web, databases,
+    algorithms)— and the leadership of multidisciplinary projects.
 
 # How I work — short, descriptive bullets. Phrased in first person, no comparisons.
 way_of_working:
