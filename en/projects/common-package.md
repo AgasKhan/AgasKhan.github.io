@@ -96,7 +96,7 @@ In the consumer project's `Packages/manifest.json`:
 
 ## Real usage and roadmap
 
-- Main consumer: <a href="{{ '/en/projects/la-maldicion/' | relative_url }}">La Maldición</a>, which references only the packages it needs as they stabilize.
+- Real usage: the library backs **several projects** — including <a href="{{ '/en/projects/la-maldicion/' | relative_url }}">La Maldición</a> (the most recent build, exercising the latest versions), a <a href="{{ '/en/projects/stealth-multiplayer/' | relative_url }}">stealth multiplayer</a> and educational reference games — each referencing only the packages it needs as they stabilize.
 - Roadmap: namespace convergence towards `AgasKhan.<Module>` and selective publishing of the most stable packages to the Unity Asset Store.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">

@@ -126,8 +126,8 @@
 - id: la-maldicion
   name: "La Maldición: Héroes de Lorthar"
   short:
-    es: "Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Consumidor principal de los packages de AgasKhan."
-    en: "Competitive card game in active development, with a public playable build on itch.io. Main consumer of the AgasKhan packages."
+    es: "Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Uno de los principales consumidores de los packages de AgasKhan."
+    en: "Competitive card game in active development, with a public playable build on itch.io. One of the main consumers of the AgasKhan packages."
   status: active
   listed: true
   case_study: true

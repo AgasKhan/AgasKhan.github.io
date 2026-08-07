@@ -96,7 +96,7 @@ En `Packages/manifest.json` del proyecto consumidor:
 
 ## Consumo real y roadmap
 
-- Consumidor principal: <a href="{{ '/es/projects/la-maldicion/' | relative_url }}">La Maldición</a>, que referencia sólo los packages que necesita a medida que se estabilizan.
+- Consumo real: la biblioteca da soporte a **varios proyectos** —entre ellos <a href="{{ '/es/projects/la-maldicion/' | relative_url }}">La Maldición</a> (la build más reciente, que ejercita las últimas versiones), un <a href="{{ '/es/projects/stealth-multiplayer/' | relative_url }}">multiplayer de sigilo</a> y juegos de referencia educativos—, cada uno referenciando sólo los packages que necesita a medida que se estabilizan.
 - Roadmap: convergencia de namespaces hacia `AgasKhan.<Módulo>` y publicación selectiva en Unity Asset Store de los más estables.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
