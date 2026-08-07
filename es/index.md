@@ -16,33 +16,10 @@ permalink: /es/
   <p style="margin-top: 14px;"><a href="{{ '/es/about/' | relative_url }}">{{ t.home.profile_link }}</a></p>
 </section>
 
-<div class="section-heading">
-  <h2>{{ t.home.packages_heading }}</h2>
-  {% if visible_packages.size > 0 %}<a class="section-action" href="{{ '/es/packages/' | relative_url }}">{{ t.home.view_all }}</a>{% endif %}
-</div>
+<h2>{{ t.home.purpose_heading }}</h2>
+<p>{{ t.home.purpose_body }}</p>
 
-{% if visible_packages.size > 0 %}
-<p class="muted">{{ visible_packages.size }} {{ t.home.packages_intro_count }} <code>manifest.json</code>.</p>
-
-<div class="cards">
-  {% for pkg in visible_packages limit:3 %}
-  <article class="card">
-    <div class="card-header">
-      <a class="card-title" href="{{ pkg.repo }}" target="_blank" rel="noopener">{{ pkg.display_name }}</a>
-      <span class="card-version">v{{ pkg.version }}</span>
-    </div>
-    <div class="card-id">{{ pkg.id }}</div>
-    <p class="card-desc">{{ pkg.description | truncate: 160 }}</p>
-    <div class="card-meta">
-      <span>Unity {{ pkg.unity }}</span>
-      <span>{{ pkg.dependencies.size }} deps</span>
-    </div>
-  </article>
-  {% endfor %}
-</div>
-{% else %}
-<p class="muted">{{ t.home.packages_empty }}</p>
-{% endif %}
+<hr>
 
 <div class="section-heading">
   <h2>{{ t.home.projects_heading }}</h2>
@@ -75,7 +52,30 @@ permalink: /es/
 <p class="muted">{{ t.home.projects_empty }}</p>
 {% endif %}
 
-<hr>
+<div class="section-heading">
+  <h2>{{ t.home.packages_heading }}</h2>
+  {% if visible_packages.size > 0 %}<a class="section-action" href="{{ '/es/packages/' | relative_url }}">{{ t.home.view_all }}</a>{% endif %}
+</div>
 
-<h2>{{ t.home.purpose_heading }}</h2>
-<p>{{ t.home.purpose_body }}</p>
+{% if visible_packages.size > 0 %}
+<p class="muted">{{ visible_packages.size }} {{ t.home.packages_intro_count }} <code>manifest.json</code>.</p>
+
+<div class="cards">
+  {% for pkg in visible_packages limit:3 %}
+  <article class="card">
+    <div class="card-header">
+      <a class="card-title" href="{{ pkg.repo }}" target="_blank" rel="noopener">{{ pkg.display_name }}</a>
+      <span class="card-version">v{{ pkg.version }}</span>
+    </div>
+    <div class="card-id">{{ pkg.id }}</div>
+    <p class="card-desc">{{ pkg.description | truncate: 160 }}</p>
+    <div class="card-meta">
+      <span>Unity {{ pkg.unity }}</span>
+      <span>{{ pkg.dependencies.size }} deps</span>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<p class="muted">{{ t.home.packages_empty }}</p>
+{% endif %}
