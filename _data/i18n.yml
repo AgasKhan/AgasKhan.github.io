@@ -38,10 +38,14 @@ es:
     deps_plural: "deps"
   projects:
     heading: Proyectos
-    lead_with_items: "Proyectos personales y de equipo. Algunos activos, otros pausados — todos comparten la biblioteca de packages."
+    lead_with_items: "Proyectos propios y de equipo, con write-ups técnicos autocontenidos. Algunos activos, otros terminados — la mayoría comparte la biblioteca de packages."
     lead_empty: "Aún no hay proyectos públicos para mostrar."
     tag_active: activo
     tag_paused: pausado
+    read_case_study: "Leer case study →"
+    back: "← Volver a proyectos"
+    capabilities_heading: "Sobre estos proyectos"
+    capabilities_note: "Buena parte de mi trabajo es privado o está bajo NDA (SaaS, un juego con licencia, repos de equipo). En vez de repos públicos, acá dejo write-ups técnicos autocontenidos y un playground de shaders en vivo. El código que se comenta es de proyectos propios; no se expone IP de clientes."
   about:
     heading: Sobre mí
     lead: "Programador de videojuegos y simuladores con foco en Unity. Más de una década escribiendo código y enseñándolo."
@@ -53,6 +57,8 @@ es:
   status:
     active: activo
     paused: pausado
+    done: terminado
+    academic: académico
   playground:
     heading: Playground
     lead: "Editor del fragment shader del fondo. Los cambios se compilan mientras escribís y se aplican al fondo de esta misma página. Se guardan en tu navegador (localStorage)."
@@ -116,10 +122,14 @@ en:
     deps_plural: "deps"
   projects:
     heading: Projects
-    lead_with_items: "Personal and team projects. Some active, some paused — all share the packages library."
+    lead_with_items: "Personal and team projects, with self-contained technical write-ups. Some active, some finished — most share the packages library."
     lead_empty: "No public projects to show yet."
     tag_active: active
     tag_paused: paused
+    read_case_study: "Read case study →"
+    back: "← Back to projects"
+    capabilities_heading: "About these projects"
+    capabilities_note: "A large part of my work is private or under NDA (SaaS, a licensed game, team repos). Instead of public repos, this section holds self-contained technical write-ups and a live shader playground. The code discussed is from my own projects; no client IP is exposed."
   about:
     heading: About
     lead: "Video game and simulator programmer focused on Unity. Over a decade writing code and teaching it."
@@ -131,6 +141,8 @@ en:
   status:
     active: active
     paused: paused
+    done: done
+    academic: academic
   playground:
     heading: Playground
     lead: "Background fragment shader editor. Changes compile as you type and apply to the background of this very page. They are saved in your browser (localStorage)."

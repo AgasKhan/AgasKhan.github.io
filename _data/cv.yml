@@ -8,15 +8,17 @@ profile:
     Trabajo principalmente con **Unity (C#, URP, Burst, Jobs)** desarrollando
     gameplay systems, herramientas internas y plugins de editor. Cuando un
     proyecto lo requiere, bajo a programación de **bajo nivel** (C++, DX11,
-    Assembler). Combino el desarrollo con docencia técnica y liderazgo de
-    proyectos multidisciplinarios.
+    Assembler). Combino el desarrollo con docencia técnica —**40+ alumnos**
+    particulares desde 2021, multi-stack (videojuegos, full-stack web, bases de
+    datos, algoritmos)— y liderazgo de proyectos multidisciplinarios.
   en: |
     Video game and simulator programmer with **10+ years** of experience.
     I work mainly with **Unity (C#, URP, Burst, Jobs)**, building gameplay
     systems, internal tools and editor plugins. When a project calls for it,
     I drop down to **low-level** work (C++, DX11, Assembler). I combine
-    development with technical teaching and the leadership of multidisciplinary
-    projects.
+    development with technical teaching —**40+** private students since 2021,
+    multi-stack (games, full-stack web, databases, algorithms)— and the
+    leadership of multidisciplinary projects.
 
 # How I work — short, descriptive bullets. Phrased in first person, no comparisons.
 way_of_working:
@@ -63,7 +65,9 @@ skills:
       - DirectX 11
       - HLSL/GLSL
       - Photon Fusion 2
+      - Photon Fusion 1
       - Netcode for GameObjects
+      - Unity Relay
 
   - group:
       es: Programación de juegos

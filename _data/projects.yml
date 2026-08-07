@@ -1,19 +1,136 @@
+# Project metadata (manual).
+#
+# Fields:
+#   listed          -> shows the project in the /projects/ listing + home preview.
+#   case_study      -> adds a "read case study" link to the listing row.
+#   repo_visibility -> "public" links the repo; "private" shows a "private repo" label.
+#                      (A project can be listed with a private repo — the write-up is the public artifact.)
+#   short.{es,en}   -> one-line summary per language.
+# Detail pages live at /es/projects/<id>/ and /en/projects/<id>/ (mirrored es/ + en/ markdown).
+# NOTE: <id> is a PUBLIC-SAFE slug. For NDA/client work it never encodes the client name.
+
 - id: common-package
   name: Common-Package
-  short: Biblioteca personal de utilidades para Unity — el workshop interno desde el que se publican los packages individuales.
+  short:
+    es: "Suite de ~36 sistemas Unity de producción reusables (18 publicados como packages UPM) que mantengo desde 2021 — varios vendidos y licenciados a otros desarrolladores, con facturación recurrente."
+    en: "A suite of ~36 reusable production Unity systems (18 shipped as UPM packages) I've maintained since 2021 — several sold and licensed to other developers, with recurring revenue."
   status: active
-  page: /projects/common-package/
+  listed: true
+  case_study: true
   repo: https://github.com/AgasKhan/Common-Package
   repo_visibility: private
   tech:
     - Unity 2022.3
     - C#
+    - Burst
+    - Jobs
+    - Source Generators
+
+- id: nexio-saas-platform
+  name: "Nexio — Plataforma SaaS (Tech Lead)"
+  short:
+    es: "Producto SaaS multi-tenant en producción para inteligencia y gestión de comunidades digitales a través de múltiples canales de mensajería. Tech Lead / Product Engineer: arquitectura y build end-to-end (frontend tipado, backend serverless, integraciones de IA)."
+    en: "A multi-tenant SaaS product in production for intelligence and management of digital communities across multiple messaging channels. Tech Lead / Product Engineer: end-to-end architecture and build (typed frontend, serverless backend, AI integrations)."
+  status: active
+  listed: true
+  case_study: true
+  demo: https://nexio.land
+  repo_visibility: private
+  tech:
+    - TypeScript
+    - React
+    - Supabase / PostgreSQL
+    - Edge Functions (Deno)
+    - AI (Gemini)
+
+- id: ai-image-generation-service
+  name: "Servicio de generación de imágenes por IA"
+  short:
+    es: "Servicio multiusuario de generación de imágenes por IA que corre 100% local sobre una sola GPU. Case study: orquestación de GPU (cola por GPU, ciclo de vida del proceso de inferencia), pipeline de LoRA y bot de Discord como gateway — montado de punta a punta en solitario."
+    en: "A multi-user AI image-generation service running 100% locally on a single GPU. Case study: GPU orchestration (per-GPU queue, inference-process lifecycle), a LoRA pipeline and a Discord bot as gateway — built end to end, solo."
+  status: active
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Node.js
+    - discord.js
+    - stable-diffusion.cpp (CUDA)
+    - Python / PyTorch
+    - kohya-ss (LoRA)
+
+- id: stealth-multiplayer
+  name: "Multiplayer de sigilo (freelance)"
+  short:
+    es: "Juego multiplayer de sigilo en tiempo real, entregado de punta a punta en ~1 mes. Case study: netcode sobre Photon Fusion 2 + IA de sigilo por sospecha (percepción visual y auditiva)."
+    en: "A real-time stealth multiplayer game, delivered end to end in ~1 month. Case study: netcode on Photon Fusion 2 + suspicion-based stealth AI (visual and auditory perception)."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity 2022.3
+    - C#
+    - Photon Fusion 2
+    - Game AI
+    - URP
+
+- id: compute-shaders-dx11
+  name: "Compute shaders HLSL en DirectX 11"
+  short:
+    es: "Librería C++ para Unity que compila compute shaders HLSL en runtime sobre DirectX 11. Case study: debug de un fallo de GPU silencioso con 3 causas root."
+    en: "C++ library for Unity that compiles HLSL compute shaders at runtime on DirectX 11. Case study: debugging a silent GPU failure with 3 root causes."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - C++
+    - DirectX 11
+    - HLSL
+    - Unity Native Plugin
+    - P/Invoke
+
+- id: event-system-level-designers
+  name: "Sistema de eventos para level designers"
+  short:
+    es: "Producto propio: un sistema de eventos que deja a level designers disparar lógica de juego sin escribir código. Vendido y licenciado a otros desarrolladores, con facturación recurrente."
+    en: "My own product: an event system that lets level designers trigger game logic without writing code. Sold and licensed to other developers, with recurring revenue."
+  status: active
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - ScriptableObjects
+    - Editor tooling
+    - Reflection
+
+- id: arrange-the-heaven
+  name: "Arrange the Heaven"
+  short:
+    es: "RPG procedural en Unity (proyecto final de carrera, en equipo). Case study: mantener miles de objetos en escena sin caídas de framerate, con cómputo en paralelo (Jobs) + GPU instancing."
+    en: "Procedural RPG in Unity (degree final project, team). Case study: keeping thousands of on-screen objects running without framerate drops, via parallel compute (Jobs) + GPU instancing."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - URP
+    - Jobs System
+    - GOAP / FSM / Steering
 
 - id: la-maldicion
   name: "La Maldición: Héroes de Lorthar"
-  short: Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Consumidor principal de los packages de AgasKhan.
+  short:
+    es: "Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Consumidor principal de los packages de AgasKhan."
+    en: "Competitive card game in active development, with a public playable build on itch.io. Main consumer of the AgasKhan packages."
   status: active
-  page: /projects/la-maldicion/
+  listed: true
+  case_study: true
   repo: https://github.com/LaMaldicionDevelopmentTeam/LaMaldicionCardVideoGame
   demo: https://riassogna.itch.io/la-maldicin-hroes-de-lorthar
   repo_visibility: private
@@ -22,3 +139,164 @@
     - C#
     - WebGL
     - Card game
+
+- id: game-ai-reference
+  name: "Game AI — implementaciones de referencia"
+  short:
+    es: "Trabajo freelance de Game AI: FSM genérica reutilizable, pathfinding any-angle (Theta*) y steering behaviours, con implementaciones de referencia limpias y atentas a performance."
+    en: "Freelance Game AI work: a reusable generic FSM, any-angle pathfinding (Theta*) and steering behaviours, with clean, performance-aware reference implementations."
+  status: active
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - "Theta* (any-angle)"
+    - FSM
+    - Steering
+
+- id: unity-consulting-audits
+  name: "Consultoría y auditorías Unity"
+  short:
+    es: "Consultor técnico sobre ~10 proyectos Unity de otros desarrolladores: auditorías de código, sistemas transversales reutilizables y refactors. La contribución es propia; los juegos son de terceros."
+    en: "Technical consultant across ~10 Unity projects owned by other developers: code audits, reusable cross-cutting systems and refactors. The contribution is mine; the games are third-party."
+  status: active
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - Photon Fusion 2
+    - Code audit
+    - Editor tooling
+
+- id: reference-demo-games
+  name: "Juegos-demo de referencia"
+  short:
+    es: "Juegos-demo completos, de autoría propia, que construyo como implementaciones de referencia para enseñar arquitectura y patrones: action-adventure, tácticas por turnos multiplayer (Netcode + Relay) y un demo 3D."
+    en: "Complete, self-authored demo games I build as reference implementations to teach architecture and patterns: action-adventure, turn-based multiplayer tactics (Netcode + Relay) and a 3D demo."
+  status: active
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - Netcode for GameObjects
+    - Unity Relay
+    - NavMesh
+
+- id: php-web-platform-automotive
+  name: "Plataforma web full-stack en PHP (diagnóstico automotor)"
+  short:
+    es: "Años de desarrollo full-stack PHP/MySQL/Apache en producción para una empresa de diagnóstico automotor: sitio institucional, catálogo, back-office, gestión de servicio, autenticación propia y mensajería en tiempo real. El contrapeso a que React sea reciente."
+    en: "Years of full-stack PHP/MySQL/Apache development in production for an automotive diagnostics company: institutional site, catalog, back-office, service management, custom auth and real-time messaging. The counterweight to React being recent."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - PHP
+    - MySQL
+    - JavaScript
+    - jQuery / AJAX
+    - Apache
+
+- id: institutional-portal-management
+  name: "Portal institucional + gestión (cámara/asociación)"
+  short:
+    es: "Portal institucional multi-sección + sistema de gestión full-stack en PHP/MySQL para una cámara/asociación de comercio: bolsa de trabajo de doble lado, asesorías, becas, cursos, foro y back-office propio. Trabajo a pedido."
+    en: "A multi-section institutional portal + full-stack management system in PHP/MySQL for a trade chamber/association: two-sided job board, advisory services, scholarships, courses, forum and a custom back-office. On-demand work."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - PHP
+    - MySQL
+    - JavaScript
+    - Bootstrap
+    - Apache
+
+- id: pantano-musgoso
+  name: "Pantano Musgoso — demo HTML5 (vendida)"
+  short:
+    es: "Demo jugable de un plataformas de acción 2D hecha en Construct 2 y exportada a HTML5, de autoría propia. Validación comercial: la demo fue vendida."
+    en: "A playable demo of a 2D action-platformer built in Construct 2 and exported to HTML5, self-authored. Commercial validation: the demo was sold."
+  status: done
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Construct 2
+    - HTML5
+    - JavaScript
+    - PWA
+    - Game AI
+
+- id: event-fsm-goap-planning
+  name: "IA de NPCs: FSM por eventos + GOAP"
+  short:
+    es: "Final de IA (Da Vinci): framework propio de FSM dirigida por eventos que evoluciona a agentes con planificación GOAP y pathfinding A* resuelto en multihilo."
+    en: "AI final project (Da Vinci): my own event-driven FSM framework that evolves into agents with GOAP planning and multithreaded A* pathfinding."
+  status: academic
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - FSM
+    - GOAP
+    - "A* (multithread)"
+
+- id: fusion-multiplayer-game
+  name: "Juego 2D multiplayer (Photon Fusion 1)"
+  short:
+    es: "Final de Redes (Da Vinci): juego 2D de acción top-down llevado a multiplayer con Photon Fusion 1 (modo Shared), más un pipeline data-driven para autorear ataques y jefes."
+    en: "Networking final project (Da Vinci): a top-down 2D action game taken to multiplayer with Photon Fusion 1 (Shared mode), plus a data-driven pipeline to author attacks and bosses."
+  status: academic
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - Photon Fusion 1
+    - ScriptableObjects
+    - ParrelSync
+
+- id: conquerhex
+  name: "Conquerhex — precursor mobile de la tesis"
+  short:
+    es: "Precursor mobile (hex-based) de la tesis Arrange the Heaven, hecho en equipo en la carrera. Aporte de Lucas: el tooling de editor — un editor visual de nodos (UIElements GraphView) y extensiones reusables."
+    en: "The mobile (hex-based) predecessor of the Arrange the Heaven thesis, built as a team during the degree. Lucas's contribution: the editor tooling — a visual node editor (UIElements GraphView) and reusable extensions."
+  status: academic
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - Mobile
+    - UIElements
+    - GraphView
+    - URP
+
+- id: game-launcher-autoupdater
+  name: "Launcher con auto-actualización"
+  short:
+    es: "Trabajo de carrera (Da Vinci): launcher/patcher que instala, actualiza y lanza una build de juego — manifiesto de versión remoto, descarga, descompresión y ejecución."
+    en: "Degree coursework (Da Vinci): a launcher/patcher that installs, updates and launches a game build — remote version manifest, download, unzip and run."
+  status: academic
+  listed: true
+  case_study: true
+  repo_visibility: private
+  tech:
+    - Unity
+    - C#
+    - UnityWebRequest
+    - System.IO.Compression
+    - Coroutines
