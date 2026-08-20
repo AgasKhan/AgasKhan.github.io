@@ -126,13 +126,13 @@
 - id: la-maldicion
   name: "La Maldición: Héroes de Lorthar"
   short:
-    es: "Card game competitivo en desarrollo activo; la build WebGL jugable se publica el 17/08/2026. Uno de los principales consumidores de los packages de AgasKhan."
-    en: "Competitive card game in active development; the playable WebGL build publishes on 2026-08-17. One of the main consumers of the AgasKhan packages."
+    es: "Card game competitivo en desarrollo activo, con build jugable pública en itch.io. Uno de los principales consumidores de los packages de AgasKhan."
+    en: "Competitive card game in active development, with a public playable build on itch.io. One of the main consumers of the AgasKhan packages."
   status: active
   listed: true
   case_study: true
   repo: https://github.com/LaMaldicionDevelopmentTeam/LaMaldicionCardVideoGame
-  # demo (build WebGL jugable): se publica el 17/08/2026 — link embargado hasta esa fecha
+  demo: https://riassogna.itch.io/la-maldicin-hroes-de-lorthar
   repo_visibility: private
   tech:
     - Unity 2022.3
