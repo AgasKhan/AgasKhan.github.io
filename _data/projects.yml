@@ -9,6 +9,22 @@
 # Detail pages live at /es/projects/<id>/ and /en/projects/<id>/ (mirrored es/ + en/ markdown).
 # NOTE: <id> is a PUBLIC-SAFE slug. For NDA/client work it never encodes the client name.
 
+- id: pollito-slayer
+  name: "Pollito Slayer"
+  short:
+    es: "Boss-rush brawler publicado en s&box (Source 2 / C#), desarrollado para la Game Jam III. Trece sistemas de mi biblioteca de Unity, portados a otro motor, sostienen el juego completo."
+    en: "A boss-rush brawler shipped on s&box (Source 2 / C#), built for Game Jam III. Thirteen systems from my Unity library, ported to a different engine, carry the whole game."
+  status: active
+  listed: true
+  case_study: true
+  demo: https://sbox.game/dbg/pollito_slayer/
+  repo_visibility: private
+  tech:
+    - s&box (Source 2)
+    - C# / .NET
+    - Unit testing
+    - Game jam
+
 - id: common-package
   name: Common-Package
   short:
