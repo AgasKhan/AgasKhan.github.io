@@ -23,17 +23,17 @@ Juego completo de un jugador: combate cuerpo a cuerpo, oleadas por rondas, jefes
 
 ## El motor no era el mío
 
-s&box es el motor de Facepunch (los de Garry's Mod y Rust): C#/.NET sobre Source 2. No comparte API, unidades ni convenciones con Unity — las distancias van en pulgadas, el eje vertical es Z y el sandbox restringe qué partes de .NET se pueden usar.
+s&box es el motor de Facepunch (los de Garry's Mod y Rust): C#/.NET sobre Source 2. No comparte API, unidades ni convenciones con Unity: las distancias van en pulgadas, el eje vertical es Z y el sandbox restringe qué partes de .NET se pueden usar.
 
 Es el segundo proyecto que hago ahí, y el primero que se publica.
 
 ## La biblioteca cruzó de motor
 
-Trece sistemas de <a href="{{ '/es/projects/common-package/' | relative_url }}">Common-Package</a> —mi biblioteca, escrita para Unity— entraron a este proyecto y sostienen el juego que se publicó: percepción de agentes, IA de enemigos, máquina de estados, pooling de objetos, temporizadores, bus de eventos, estructuras de datos y utilidades de logging y de fundido.
+Trece sistemas de <a href="{{ '/es/projects/common-package/' | relative_url }}">Common-Package</a>, mi biblioteca escrita para Unity, entraron a este proyecto y sostienen el juego que se publicó: percepción de agentes, IA de enemigos, máquina de estados, pooling de objetos, temporizadores, bus de eventos, estructuras de datos y utilidades de logging y de fundido.
 
 Eso es lo que este proyecto demuestra mejor que cualquier explicación de arquitectura: **el núcleo escrito en C# puro, con el motor en el borde, transfiere.** No hubo que reescribir la lógica de decisión de los enemigos ni la de percepción para cambiar de Unity a Source 2; hubo que escribir la capa delgada que los conecta al motor nuevo.
 
-Tres sistemas más —percepción de agentes, el cerebro intercambiable del personaje y la FSM de enemigos por bandas de distancia— se extrajeron a packages propios durante este desarrollo, con su origen en proyectos anteriores. El bucle va en las dos direcciones: la biblioteca sostiene al juego, y el juego empuja a la biblioteca.
+Otros tres sistemas se extrajeron a packages propios durante este desarrollo, con su origen en proyectos anteriores: percepción de agentes, el cerebro intercambiable del personaje y la FSM de enemigos por bandas de distancia. El bucle va en las dos direcciones: la biblioteca sostiene al juego, y el juego empuja a la biblioteca.
 
 ## Cómo se sostuvo el ritmo
 

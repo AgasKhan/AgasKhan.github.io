@@ -23,17 +23,17 @@ A complete single-player game: melee combat, wave-based rounds, bosses, unlockab
 
 ## The engine wasn't mine
 
-s&box is Facepunch's engine (the Garry's Mod and Rust people): C#/.NET on top of Source 2. It shares no API, units or conventions with Unity — distances are in inches, the vertical axis is Z, and the sandbox restricts which parts of .NET are available.
+s&box is Facepunch's engine (the Garry's Mod and Rust people): C#/.NET on top of Source 2. It shares no API, units or conventions with Unity: distances are in inches, the vertical axis is Z, and the sandbox restricts which parts of .NET are available.
 
 It is the second project I've built there, and the first one to ship.
 
 ## The library crossed engines
 
-Thirteen systems from <a href="{{ '/en/projects/common-package/' | relative_url }}">Common-Package</a> — my library, written for Unity — moved into this project and carry the game that shipped: agent perception, enemy AI, state machine, object pooling, timers, event bus, data structures, and logging and fading utilities.
+Thirteen systems from <a href="{{ '/en/projects/common-package/' | relative_url }}">Common-Package</a>, my library written for Unity, moved into this project and carry the game that shipped: agent perception, enemy AI, state machine, object pooling, timers, event bus, data structures, and logging and fading utilities.
 
 That is what this project shows better than any architecture write-up: **a core written in plain C#, with the engine at the edge, transfers.** Enemy decision-making and perception did not have to be rewritten to go from Unity to Source 2; what had to be written was the thin layer that binds them to the new engine.
 
-Three further systems — agent perception, the character's swappable brain, and the distance-band enemy FSM — were extracted into their own packages during this build, tracing back to earlier projects. The loop runs both ways: the library carries the game, and the game pushes the library.
+Three further systems were extracted into their own packages during this build, tracing back to earlier projects: agent perception, the character's swappable brain, and the distance-band enemy FSM. The loop runs both ways: the library carries the game, and the game pushes the library.
 
 ## How the pace held
 
