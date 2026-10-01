@@ -4,7 +4,7 @@
 #   listed          -> shows the project in the /projects/ listing + home preview.
 #   case_study      -> adds a "read case study" link to the listing row.
 #   repo_visibility -> "public" links the repo; "private" shows a "private repo" label.
-#                      (A project can be listed with a private repo — the write-up is the public artifact.)
+#                      (A project can be listed with a private repo: the write-up is the public artifact.)
 #   short.{es,en}   -> one-line summary per language.
 # Detail pages live at /es/projects/<id>/ and /en/projects/<id>/ (mirrored es/ + en/ markdown).
 # NOTE: <id> is a PUBLIC-SAFE slug. For NDA/client work it never encodes the client name.
@@ -12,8 +12,8 @@
 - id: pollito-slayer
   name: "Pollito Slayer"
   short:
-    es: "Boss-rush brawler publicado en s&box (Source 2 / C#), desarrollado para la Game Jam III. Trece sistemas de mi biblioteca de Unity, portados a otro motor, sostienen el juego completo."
-    en: "A boss-rush brawler shipped on s&box (Source 2 / C#), built for Game Jam III. Thirteen systems from my Unity library, ported to a different engine, carry the whole game."
+    es: "Boss-rush brawler publicado en s&box (Source 2 / C#), con diez versiones en producción e iteración en público. Un cardumen de 47.000 sardinas dibujadas por instancia, cuatro jefes, y trece sistemas de mi biblioteca de Unity portados a otro motor."
+    en: "A boss-rush brawler shipped on s&box (Source 2 / C#), with ten versions in production and iteration in public. A 47,000-sardine crowd drawn by instancing, four bosses, and thirteen systems from my Unity library ported to a different engine."
   status: active
   listed: true
   case_study: true
@@ -22,14 +22,16 @@
   tech:
     - s&box (Source 2)
     - C# / .NET
+    - Rendering / shaders
+    - Performance
     - Unit testing
     - Game jam
 
 - id: common-package
   name: Common-Package
   short:
-    es: "Suite de ~36 sistemas Unity de producción reusables (18 publicados como packages UPM) que mantengo desde 2021 — varios vendidos y licenciados a otros desarrolladores, con facturación recurrente."
-    en: "A suite of ~36 reusable production Unity systems (18 shipped as UPM packages) I've maintained since 2021 — several sold and licensed to other developers, with recurring revenue."
+    es: "Suite de ~36 sistemas Unity de producción reusables (18 publicados como packages UPM) que mantengo desde 2021. Varios están vendidos y licenciados a otros desarrolladores, con facturación recurrente."
+    en: "A suite of ~36 reusable production Unity systems (18 shipped as UPM packages) I've maintained since 2021. Several are sold and licensed to other developers, with recurring revenue."
   status: active
   listed: true
   case_study: true
@@ -43,7 +45,7 @@
     - Source Generators
 
 - id: nexio-saas-platform
-  name: "Nexio — Plataforma SaaS (Tech Lead)"
+  name: "Nexio: Plataforma SaaS (Tech Lead)"
   short:
     es: "Producto SaaS multi-tenant en producción para inteligencia y gestión de comunidades digitales a través de múltiples canales de mensajería. Tech Lead / Product Engineer: arquitectura y build end-to-end (frontend tipado, backend serverless, integraciones de IA)."
     en: "A multi-tenant SaaS product in production for intelligence and management of digital communities across multiple messaging channels. Tech Lead / Product Engineer: end-to-end architecture and build (typed frontend, serverless backend, AI integrations)."
@@ -62,8 +64,8 @@
 - id: ai-image-generation-service
   name: "Servicio de generación de imágenes por IA"
   short:
-    es: "Servicio multiusuario de generación de imágenes por IA que corre 100% local sobre una sola GPU. Case study: orquestación de GPU (cola por GPU, ciclo de vida del proceso de inferencia), pipeline de LoRA y bot de Discord como gateway — montado de punta a punta en solitario."
-    en: "A multi-user AI image-generation service running 100% locally on a single GPU. Case study: GPU orchestration (per-GPU queue, inference-process lifecycle), a LoRA pipeline and a Discord bot as gateway — built end to end, solo."
+    es: "Servicio multiusuario de generación de imágenes por IA que corre 100% local sobre una sola GPU. Case study: orquestación de GPU (cola por GPU, ciclo de vida del proceso de inferencia), pipeline de LoRA y bot de Discord como gateway. Lo monté de punta a punta en solitario."
+    en: "A multi-user AI image-generation service running 100% locally on a single GPU. Case study: GPU orchestration (per-GPU queue, inference-process lifecycle), a LoRA pipeline and a Discord bot as gateway. Built end to end, solo."
   status: active
   listed: true
   case_study: true
@@ -157,7 +159,7 @@
     - Card game
 
 - id: game-ai-reference
-  name: "Game AI — implementaciones de referencia"
+  name: "Game AI: implementaciones de referencia"
   short:
     es: "Trabajo freelance de Game AI: FSM genérica reutilizable, pathfinding any-angle (Theta*) y steering behaviours, con implementaciones de referencia limpias y atentas a performance."
     en: "Freelance Game AI work: a reusable generic FSM, any-angle pathfinding (Theta*) and steering behaviours, with clean, performance-aware reference implementations."
@@ -237,7 +239,7 @@
     - Apache
 
 - id: pantano-musgoso
-  name: "Pantano Musgoso — demo HTML5 (vendida)"
+  name: "Pantano Musgoso: demo HTML5 (vendida)"
   short:
     es: "Demo jugable de un plataformas de acción 2D hecha en Construct 2 y exportada a HTML5, de autoría propia. Validación comercial: la demo fue vendida."
     en: "A playable demo of a 2D action-platformer built in Construct 2 and exported to HTML5, self-authored. Commercial validation: the demo was sold."
@@ -285,10 +287,10 @@
     - ParrelSync
 
 - id: conquerhex
-  name: "Conquerhex — precursor mobile de la tesis"
+  name: "Conquerhex: precursor mobile de la tesis"
   short:
-    es: "Precursor mobile (hex-based) de la tesis Arrange the Heaven, hecho en equipo en la carrera. Aporte de Lucas: el tooling de editor — un editor visual de nodos (UIElements GraphView) y extensiones reusables."
-    en: "The mobile (hex-based) predecessor of the Arrange the Heaven thesis, built as a team during the degree. Lucas's contribution: the editor tooling — a visual node editor (UIElements GraphView) and reusable extensions."
+    es: "Precursor mobile (hex-based) de la tesis Arrange the Heaven, hecho en equipo en la carrera. Lucas aportó el tooling de editor: un editor visual de nodos (UIElements GraphView) y extensiones reusables."
+    en: "The mobile (hex-based) predecessor of the Arrange the Heaven thesis, built as a team during the degree. Lucas's contributed the editor tooling: a visual node editor (UIElements GraphView) and reusable extensions."
   status: academic
   listed: true
   case_study: true
@@ -304,8 +306,8 @@
 - id: game-launcher-autoupdater
   name: "Launcher con auto-actualización"
   short:
-    es: "Trabajo de carrera (Da Vinci): launcher/patcher que instala, actualiza y lanza una build de juego — manifiesto de versión remoto, descarga, descompresión y ejecución."
-    en: "Degree coursework (Da Vinci): a launcher/patcher that installs, updates and launches a game build — remote version manifest, download, unzip and run."
+    es: "Trabajo de carrera (Da Vinci). Un launcher/patcher que instala, actualiza y lanza una build de juego: manifiesto de versión remoto, descarga, descompresión y ejecución."
+    en: "Degree coursework (Da Vinci). A launcher/patcher that installs, updates and launches a game build: remote version manifest, download, unzip and run."
   status: academic
   listed: true
   case_study: true

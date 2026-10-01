@@ -336,6 +336,37 @@ body { position: relative; }
 .tag.active { color: var(--accent); border-color: var(--accent-soft); }
 .tag.paused { color: var(--warn); border-color: rgba(251,191,36,.25); }
 
+/* ---------- Case-study figures ---------- */
+/* Screenshots inside a project write-up. Intrinsic width/height go on the <img>
+   so the page does not reflow while the image loads. */
+.shot
+{
+    margin: 28px 0;
+}
+
+.shot img
+{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-soft);
+}
+
+.shot figcaption
+{
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+/* Two frames of the same moment, stacked, sharing one caption. */
+.shot-pair img + img
+{
+    margin-top: 8px;
+}
+
 /* ---------- About page ---------- */
 .profile-block {
   background: var(--bg-card);
@@ -687,7 +718,7 @@ body { position: relative; }
   inset: 0;
   /* overflow:hidden (not auto) so the scrollbars of this <pre> don't double up
      with the textarea's. We still need it scrollable programmatically via
-     scrollLeft/scrollTop — playground.js mirrors the textarea's scroll here. */
+     scrollLeft/scrollTop: playground.js mirrors the textarea's scroll here. */
   overflow: hidden;
   pointer-events: none;
   color: var(--vs-default);
@@ -711,7 +742,7 @@ body { position: relative; }
 #pg-editor::selection         { background: var(--vs-selection); color: transparent; }
 #pg-editor::-moz-selection    { background: var(--vs-selection); color: transparent; }
 
-/* Token classes — used by glsl-highlight.js */
+/* Token classes, used by glsl-highlight.js */
 .tk-keyword      { color: var(--vs-keyword);      font-weight: 500; }
 .tk-type         { color: var(--vs-type); }
 .tk-builtin-fn   { color: var(--vs-builtin-fn); }
