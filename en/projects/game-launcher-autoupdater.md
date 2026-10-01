@@ -1,6 +1,6 @@
 ---
 title: "Self-updating game launcher"
-description: "Degree coursework (Da Vinci): a launcher/patcher that installs, updates and launches a game build — remote version manifest, download, unzip and run."
+description: "Degree coursework (Da Vinci). A launcher/patcher that installs, updates and launches a game build: remote version manifest, download, unzip and run."
 permalink: /en/projects/game-launcher-autoupdater/
 ---
 
@@ -17,16 +17,16 @@ permalink: /en/projects/game-launcher-autoupdater/
 
 <div class="callout">
   <p class="callout-title">Academic project</p>
-  <p>Degree coursework (Da Vinci). It tackles a real problem — distributing builds to players without your own infrastructure — with a pragmatic solution. It's different from my other projects: not gameplay, but distribution tooling (I/O, networking and install lifecycle).</p>
+  <p>Degree coursework (Da Vinci). It tackles a real problem with a pragmatic solution: distributing builds to players without your own infrastructure. It's different from my other projects: not gameplay, but distribution tooling (I/O, networking and install lifecycle).</p>
 </div>
 
 ## What it does
 
 - **Manifest-based auto-update.** Compares the local version against a remote manifest and only downloads the package when an update is pending, persisting path, version and executable with `PlayerPrefs`.
-- **Full install cycle.** Downloads to `%AppData%`, unzips to a versioned folder, recursively finds the executable and launches the process — with install / update / uninstall / play actions in the UI.
+- **Full install cycle.** Downloads to `%AppData%`, unzips to a versioned folder, recursively finds the executable and launches the process, with install / update / uninstall / play actions in the UI.
 - **Download from Google Drive.** Converts the file link into a direct link and parses Drive's confirmation form to get the real binary URL, bypassing the intermediate download screen.
 
-> The manifest and package were hosted on Google Drive for the convenience of the academic context. Scraping Drive's form is a pragmatic solution, fragile to Drive changes — not production infrastructure, and framed as such.
+> The manifest and package were hosted on Google Drive for the convenience of the academic context. Scraping Drive's form is a pragmatic solution, fragile to Drive changes. It is not production infrastructure, and it is framed as such.
 
 ## What it shows
 
@@ -35,5 +35,5 @@ permalink: /en/projects/game-launcher-autoupdater/
 - A **pragmatic solution** to a real distribution problem, with its limits stated up front.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>degree project (Da Vinci) · private repo</span>
+  <span>degree project (Da Vinci) | private repo</span>
 </div>

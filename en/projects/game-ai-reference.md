@@ -1,5 +1,5 @@
 ---
-title: "Game AI — reference implementations"
+title: "Game AI: reference implementations"
 description: "Freelance Game AI work: a reusable generic FSM, any-angle pathfinding (Theta*) and steering behaviours, with clean reference implementations."
 permalink: /en/projects/game-ai-reference/
 ---
@@ -7,8 +7,8 @@ permalink: /en/projects/game-ai-reference/
 <p class="crumbs"><a href="{{ '/en/projects/' | relative_url }}">← Back to projects</a></p>
 
 <section class="hero">
-  <h1>Game AI — reference implementations <span class="tag active">active</span></h1>
-  <p class="lead">Freelance <strong>Game AI work in Unity</strong>: I designed a progression (fundamentals → steering → state machines → pathfinding → integrator project) and built the reference implementations — clean, performance-aware code as a study base.</p>
+  <h1>Game AI: reference implementations <span class="tag active">active</span></h1>
+  <p class="lead">Freelance <strong>Game AI work in Unity</strong>: I designed a progression (fundamentals → steering → state machines → pathfinding → integrator project) and built the reference implementations. Clean, performance-aware code as a study base.</p>
   <div class="chip-row">
     <span class="tag">Unity 2022.3 LTS</span><span class="tag">C#</span><span class="tag">Generic FSM</span>
     <span class="tag">Theta* (any-angle)</span><span class="tag">Steering</span><span class="tag">Coroutines</span>
@@ -35,5 +35,5 @@ permalink: /en/projects/game-ai-reference/
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/projects/common-package/' | relative_url }}">See Common-Package →</a>
-  <span>freelance client · private repo</span>
+  <span>freelance client | private repo</span>
 </div>

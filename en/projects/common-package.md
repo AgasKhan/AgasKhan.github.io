@@ -17,7 +17,7 @@ permalink: /en/projects/common-package/
 
 <div class="callout">
   <p class="callout-title">Commercial validation</p>
-  <p>Not a side project: several of these systems I sell and license to other developers, with <strong>recurring revenue</strong> — for example an <a href="{{ '/en/projects/event-system-level-designers/' | relative_url }}">event system for level designers</a> that is still billing, among others. Other professionals pay for this technology and ship it in their own games.</p>
+  <p>Not a side project: several of these systems I sell and license to other developers, with <strong>recurring revenue</strong> (for example an <a href="{{ '/en/projects/event-system-level-designers/' | relative_url }}">event system for level designers</a> that is still billing, among others). Other professionals pay for this technology and ship it in their own games.</p>
 </div>
 
 <div class="statline">
@@ -36,7 +36,7 @@ permalink: /en/projects/common-package/
 
 ## Highlighted modules
 
-Of the ~36 systems, this is a selection by technical depth. Each has its own `.asmdef` and ships as an independent package (18 already published as formal UPM packages — semver, isolated repos, tests, proprietary license) once it stabilizes:
+Of the ~36 systems, this is a selection by technical depth. Each has its own `.asmdef` and ships as an independent package (18 already published as formal UPM packages: semver, isolated repos, tests, proprietary license) once it stabilizes:
 
 <div class="module-grid">
   <div class="module">
@@ -52,8 +52,8 @@ Of the ~36 systems, this is a selection by technical depth. Each has its own `.a
     <p>Classic + hierarchical state machine that computes the <strong>Lowest Common Ancestor</strong> at runtime to fire <code>OnExit</code>/<code>OnEnter</code> in the right order when switching branches.</p>
   </div>
   <div class="module">
-    <h4>DataStructure · Heap</h4>
-    <p>A priority queue with an internal index map enabling <code>DecreaseKey</code>/<code>IncreaseKey</code> in O(log n) — which brings Dijkstra/A* down to O(E&nbsp;log&nbsp;V). Plus FastDictionary, serializable Pictionarys and intrusive linked lists.</p>
+    <h4>DataStructure | Heap</h4>
+    <p>A priority queue with an internal index map enabling <code>DecreaseKey</code>/<code>IncreaseKey</code> in O(log n), which brings Dijkstra/A* down to O(E&nbsp;log&nbsp;V). Plus FastDictionary, serializable Pictionarys and intrusive linked lists.</p>
   </div>
   <div class="module">
     <h4>Lite-DependencyInjection</h4>
@@ -69,7 +69,7 @@ Of the ~36 systems, this is a selection by technical depth. Each has its own `.a
   </div>
   <div class="module">
     <h4>CommonScaffolder</h4>
-    <p>An EditorWindow that generates a full new-module structure from templates, with a generator registry — including a meta-tool that generates generators.</p>
+    <p>An EditorWindow that generates a full new-module structure from templates, with a generator registry, including a meta-tool that generates generators.</p>
   </div>
   <div class="module">
     <h4>Movement / Steerings</h4>
@@ -96,7 +96,7 @@ In the consumer project's `Packages/manifest.json`:
 
 ## Real usage and roadmap
 
-- Real usage: the library backs **several projects** — including <a href="{{ '/en/projects/la-maldicion/' | relative_url }}">La Maldición</a> (the most recent build, exercising the latest versions), a <a href="{{ '/en/projects/stealth-multiplayer/' | relative_url }}">stealth multiplayer</a> and educational reference games — each referencing only the packages it needs as they stabilize.
+- Real usage: the library backs **several projects**, including <a href="{{ '/en/projects/la-maldicion/' | relative_url }}">La Maldición</a> (the most recent build, exercising the latest versions), a <a href="{{ '/en/projects/stealth-multiplayer/' | relative_url }}">stealth multiplayer</a> and educational reference games. Each references only the packages it needs as they stabilize.
 - Roadmap: namespace convergence towards `AgasKhan.<Module>` and selective publishing of the most stable packages to the Unity Asset Store.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">

@@ -8,7 +8,7 @@ permalink: /en/projects/stealth-multiplayer/
 
 <section class="hero">
   <h1>Stealth multiplayer <span class="tag done">done</span></h1>
-  <p class="lead">A real-time stealth multiplayer game, built for a freelance client. I contributed the networking layer on <strong>Photon Fusion 2</strong>, the <strong>suspicion-based enemy AI</strong> (visual and auditory perception) and the character, perception and interaction systems — the full project in roughly a month.</p>
+  <p class="lead">A real-time stealth multiplayer game, built for a freelance client. I contributed the networking layer on <strong>Photon Fusion 2</strong>, the <strong>suspicion-based enemy AI</strong> (visual and auditory perception) and the character, perception and interaction systems. The full project in roughly a month.</p>
   <div class="chip-row">
     <span class="tag">Unity 2022.3 LTS</span><span class="tag">C#</span><span class="tag">Photon Fusion 2</span>
     <span class="tag">Jobs / Burst</span><span class="tag">URP</span><span class="tag">Game AI</span>
@@ -17,7 +17,7 @@ permalink: /en/projects/stealth-multiplayer/
 
 <div class="callout">
   <p class="callout-title">Framing</p>
-  <p>Work for a private client. This write-up describes only my technical contribution; it does not expose the client or the game's theme. I could deliver the full project in ~1 month by leaning on my own library of Unity systems (see <a href="{{ '/en/projects/common-package/' | relative_url }}">Common-Package</a>) — a concrete example of the ROI of having a reusable base.</p>
+  <p>Work for a private client. This write-up describes only my technical contribution; it does not expose the client or the game's theme. I could deliver the full project in ~1 month by leaning on my own library of Unity systems (see <a href="{{ '/en/projects/common-package/' | relative_url }}">Common-Package</a>), a concrete example of the ROI of having a reusable base.</p>
 </div>
 
 ## Netcode on Photon Fusion 2
@@ -45,9 +45,9 @@ The character decouples **input from logic** via an input mediator and an event 
 
 - Real-time gameplay **multiplayer / networking** on Photon Fusion 2 (sessions, synchronization, scene authority).
 - **Gameplay AI**: multi-sense perception (visual + auditory) driving a hierarchical state machine.
-- **Delivery speed** leveraged on my own reusable architecture — a full project in ~1 month.
+- **Delivery speed** leveraged on my own reusable architecture: a full project in ~1 month.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/projects/common-package/' | relative_url }}">See Common-Package →</a>
-  <span>freelance client · private repo</span>
+  <span>freelance client | private repo</span>
 </div>

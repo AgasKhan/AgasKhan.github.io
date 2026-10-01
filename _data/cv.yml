@@ -1,46 +1,47 @@
-# CV-derived content. Curated subset of the personal CV — no personal data
+# CV-derived content. Curated subset of the personal CV, with no personal data
 # (real name, email, phone, address, LinkedIn). Source: D:\Proyectos\Personales\CVs\cv\*_VJ_*.md
 # When the CV changes, update this file by hand. There is no auto-sync (the CV has more PII than fits here).
 
 profile:
   es: |
     Programador de videojuegos y simuladores con **10+ años** de experiencia.
-    **Motor-agnóstico**: mi base es C# y armo los sistemas —gameplay,
-    herramientas internas, plugins de editor— **desacoplados de la arquitectura
+    **Motor-agnóstico**: mi base es C# y armo los sistemas (gameplay,
+    herramientas internas, plugins de editor) **desacoplados de la arquitectura
     del motor**, para poder llevarlos a otros. Trabajo sobre todo con **Unity
     (URP, Burst, Jobs)** y, cuando un proyecto lo requiere, bajo a programación
     de **bajo nivel** (C++, DX11, Assembler). Combino el desarrollo con docencia
-    técnica —**40+ alumnos** particulares desde 2021, multi-stack (videojuegos,
-    full-stack web, bases de datos, algoritmos)— y liderazgo de proyectos
-    multidisciplinarios.
+    técnica y liderazgo de proyectos multidisciplinarios. Doy clases
+    particulares a **40+ alumnos** desde 2021, multi-stack (videojuegos,
+    full-stack web, bases de datos, algoritmos).
   en: |
     Video game and simulator programmer with **10+ years** of experience.
-    **Engine-agnostic**: my core is C#, and I build systems —gameplay, internal
-    tools, editor plugins— **decoupled from the engine's architecture** so they
+    **Engine-agnostic**: my core is C#, and I build systems (gameplay, internal
+    tools, editor plugins) **decoupled from the engine's architecture** so they
     can move to other engines. I work mostly with **Unity (URP, Burst, Jobs)**
     and, when a project calls for it, drop down to **low-level** work (C++,
-    DX11, Assembler). I combine development with technical teaching —**40+**
-    private students since 2021, multi-stack (games, full-stack web, databases,
-    algorithms)— and the leadership of multidisciplinary projects.
+    DX11, Assembler). I combine development with technical teaching and the
+    leadership of multidisciplinary projects. I have taught **40+** private
+    students since 2021, multi-stack (games, full-stack web, databases,
+    algorithms).
 
-# How I work — short, descriptive bullets. Phrased in first person, no comparisons.
+# How I work: short, descriptive bullets. Phrased in first person, no comparisons.
 way_of_working:
   es: |
     - **Allman braces y 4 espacios**, mismo estilo en todos los lenguajes (C#, GLSL, JS, PowerShell).
-    - El código lo escribo yo. La IA me asiste en audits, traducciones y refactors masivos — no toma decisiones de diseño.
+    - El código lo escribo yo. La IA me asiste en audits, traducciones y refactors masivos. No toma decisiones de diseño.
     - **Antes que abstraer, escribir.** Tres líneas parecidas le ganan a una abstracción prematura.
-    - En Unity, prefiero **`OnValidate` sobre `Awake`/`Start`** para todo lo que pueda persistirse en YAML — runtime gratis.
+    - En Unity, prefiero **`OnValidate` sobre `Awake`/`Start`** para todo lo que pueda persistirse en YAML: runtime gratis.
     - **API fluent**: setters devuelven `this`. Factories `Create(...)` deciden el subtipo concreto.
     - Sin interfaces sin un consumer concreto. Sin DI containers ni builders fluent complejos: `new` o `static Create`.
     - Comento el **"por qué" no obvio**. El "qué" lo dice el nombre.
     - Memoria viva del proyecto en `Assets/Context/` para que cualquier conversación arranque con contexto fresco.
   en: |
     - **Allman braces and 4-space indent**, same style across languages (C#, GLSL, JS, PowerShell).
-    - I write the code myself. AI assists with audits, translations and mass refactors — it doesn't make design decisions.
+    - I write the code myself. AI assists with audits, translations and mass refactors. It doesn't make design decisions.
     - **Writing beats abstracting.** Three similar lines win over a premature abstraction.
-    - In Unity, I prefer **`OnValidate` over `Awake`/`Start`** for anything that can persist into YAML — runtime is free.
+    - In Unity, I prefer **`OnValidate` over `Awake`/`Start`** for anything that can persist into YAML: runtime is free.
     - **Fluent API**: setters return `this`. `Create(...)` factories pick the concrete subtype.
-    - No interfaces without a concrete consumer. No DI containers, no complex fluent builders — `new` or `static Create`.
+    - No interfaces without a concrete consumer. No DI containers, no complex fluent builders: `new` or `static Create`.
     - I comment the **non-obvious "why"**. The "what" should be in the name.
     - Living project memory in `Assets/Context/` so any new conversation starts with fresh context.
 
@@ -124,17 +125,17 @@ education:
       en: "Virtual Simulator Design & Programming"
     institution: Da Vinci
     location: Argentina
-    period: 2021–2025
+    period: 2021-2025
     note:
       es: "Mejor promedio: **9.69/10**. Tesis: *Arrange the Heaven* (RPG procedural en Unity)."
-      en: "Top of class · GPA **9.69/10**. Thesis: *Arrange the Heaven* (procedural RPG in Unity)."
+      en: "Top of class | GPA **9.69/10**. Thesis: *Arrange the Heaven* (procedural RPG in Unity)."
 
   - title:
       es: "Shaders para Videojuegos / Computational Science"
       en: "Shaders for Video Games / Computational Science"
     institution: Image Campus
     location: Argentina
-    period: Oct–Dec 2025
+    period: Oct-Dec 2025
     note:
       es: "HLSL (Unity) y GLSL. Proyecto: librería C++ para compilar compute shaders HLSL en DX11."
       en: "HLSL (Unity) and GLSL. Capstone: C++ library to compile HLSL compute shaders on DX11."
@@ -144,7 +145,7 @@ education:
       en: "Electronic Engineering (3 years completed)"
     institution: UTN
     location: Argentina
-    period: 2015–2018
+    period: 2015-2018
     note:
       es: ""
       en: ""
@@ -154,7 +155,7 @@ education:
       en: "Da Vinci complementary workshops"
     institution: Da Vinci
     location: Argentina
-    period: 2021–2025
+    period: 2021-2025
     note:
       es: "HLSL, UX, Sonido para videojuegos."
       en: "HLSL, UX, sound for video games."

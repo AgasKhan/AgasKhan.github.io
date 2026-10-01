@@ -1,5 +1,5 @@
 ---
-title: "Pantano Musgoso — demo de juego HTML5 (vendida)"
+title: "Pantano Musgoso: demo de juego HTML5 (vendida)"
 description: "Demo jugable de un plataformas de acción 2D hecha en Construct 2 y exportada a HTML5, de autoría propia. Validación comercial: la demo fue vendida."
 permalink: /es/projects/pantano-musgoso/
 ---
@@ -22,7 +22,7 @@ permalink: /es/projects/pantano-musgoso/
 
 ## El juego
 
-Un plataformas de acción 2D (run-and-gun) ambientado en un pantano musgoso. La demo trae menú propio (jugar, donaciones, créditos, salir) y un flujo de niveles con transiciones de fundido — una demo acotada de un juego mayor.
+Un plataformas de acción 2D (run-and-gun) ambientado en un pantano musgoso. La demo trae menú propio (jugar, donaciones, créditos, salir) y un flujo de niveles con transiciones de fundido. Es una demo acotada de un juego mayor.
 
 ## Mecánicas
 
@@ -51,5 +51,5 @@ Exporté el proyecto como paquete **HTML5/JavaScript autocontenido**, corriendo 
 - Manejo del **pipeline web de juegos**: export HTML5, empaquetado para móvil y distribución offline.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>proyecto propio · demo vendida</span>
+  <span>proyecto propio | demo vendida</span>
 </div>

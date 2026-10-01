@@ -17,7 +17,7 @@ permalink: /es/projects/common-package/
 
 <div class="callout">
   <p class="callout-title">Validación comercial</p>
-  <p>No es un side project: varios de estos sistemas los vendo y licencio a otros desarrolladores, con <strong>facturación recurrente</strong> — por ejemplo, un <a href="{{ '/es/projects/event-system-level-designers/' | relative_url }}">sistema de eventos para level designers</a> que sigue facturando, entre otros. Otros profesionales pagan por esta tecnología y la usan en sus propios juegos.</p>
+  <p>No es un side project: varios de estos sistemas los vendo y licencio a otros desarrolladores, con <strong>facturación recurrente</strong> (por ejemplo, un <a href="{{ '/es/projects/event-system-level-designers/' | relative_url }}">sistema de eventos para level designers</a> que sigue facturando, entre otros). Otros profesionales pagan por esta tecnología y la usan en sus propios juegos.</p>
 </div>
 
 <div class="statline">
@@ -36,7 +36,7 @@ permalink: /es/projects/common-package/
 
 ## Módulos destacados
 
-De los ~36 sistemas, esta es una selección por profundidad técnica. Cada uno tiene su propio `.asmdef` y se publica como package independiente (18 ya publicados como packages UPM formales — semver, repos aislados, tests, licencia propietaria) cuando se estabiliza:
+De los ~36 sistemas, esta es una selección por profundidad técnica. Cada uno tiene su propio `.asmdef` y se publica como package independiente (18 ya publicados como packages UPM formales: semver, repos aislados, tests, licencia propietaria) cuando se estabiliza:
 
 <div class="module-grid">
   <div class="module">
@@ -52,8 +52,8 @@ De los ~36 sistemas, esta es una selección por profundidad técnica. Cada uno t
     <p>Máquina de estados clásica + jerárquica que computa el <strong>Lowest Common Ancestor</strong> en runtime para disparar <code>OnExit</code>/<code>OnEnter</code> en el orden correcto al cambiar de rama.</p>
   </div>
   <div class="module">
-    <h4>DataStructure · Heap</h4>
-    <p>Priority queue con mapa de índices interno que habilita <code>DecreaseKey</code>/<code>IncreaseKey</code> en O(log n) — lo que baja Dijkstra/A* a O(E&nbsp;log&nbsp;V). Más FastDictionary, Pictionarys serializables e intrusive linked lists.</p>
+    <h4>DataStructure | Heap</h4>
+    <p>Priority queue con mapa de índices interno que habilita <code>DecreaseKey</code>/<code>IncreaseKey</code> en O(log n), lo que baja Dijkstra/A* a O(E&nbsp;log&nbsp;V). Más FastDictionary, Pictionarys serializables e intrusive linked lists.</p>
   </div>
   <div class="module">
     <h4>Lite-DependencyInjection</h4>
@@ -69,7 +69,7 @@ De los ~36 sistemas, esta es una selección por profundidad técnica. Cada uno t
   </div>
   <div class="module">
     <h4>CommonScaffolder</h4>
-    <p>EditorWindow que genera la estructura completa de un módulo nuevo desde templates, con registry de generadores — incluido un meta-tool que genera generadores.</p>
+    <p>EditorWindow que genera la estructura completa de un módulo nuevo desde templates, con registry de generadores, incluido un meta-tool que genera generadores.</p>
   </div>
   <div class="module">
     <h4>Movement / Steerings</h4>
@@ -96,7 +96,7 @@ En `Packages/manifest.json` del proyecto consumidor:
 
 ## Consumo real y roadmap
 
-- Consumo real: la biblioteca da soporte a **varios proyectos** —entre ellos <a href="{{ '/es/projects/la-maldicion/' | relative_url }}">La Maldición</a> (la build más reciente, que ejercita las últimas versiones), un <a href="{{ '/es/projects/stealth-multiplayer/' | relative_url }}">multiplayer de sigilo</a> y juegos de referencia educativos—, cada uno referenciando sólo los packages que necesita a medida que se estabilizan.
+- Consumo real: la biblioteca da soporte a **varios proyectos**, entre ellos <a href="{{ '/es/projects/la-maldicion/' | relative_url }}">La Maldición</a> (la build más reciente, que ejercita las últimas versiones), un <a href="{{ '/es/projects/stealth-multiplayer/' | relative_url }}">multiplayer de sigilo</a> y juegos de referencia educativos. Cada uno referencia sólo los packages que necesita a medida que se estabilizan.
 - Roadmap: convergencia de namespaces hacia `AgasKhan.<Módulo>` y publicación selectiva en Unity Asset Store de los más estables.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">

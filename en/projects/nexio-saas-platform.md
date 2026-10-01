@@ -1,5 +1,5 @@
 ---
-title: "Nexio — Multi-layer SaaS platform (Tech Lead)"
+title: "Nexio: Multi-layer SaaS platform (Tech Lead)"
 description: "A multi-tenant SaaS platform in production for intelligence and management of digital communities across multiple messaging channels. Tech Lead / Product Engineer: end-to-end architecture and build of a multi-layer system (SPA + serverless backend + custom Node.js runtime layer + testing harness + traffic simulator)."
 permalink: /en/projects/nexio-saas-platform/
 ---
@@ -7,8 +7,8 @@ permalink: /en/projects/nexio-saas-platform/
 <p class="crumbs"><a href="{{ '/en/projects/' | relative_url }}">← Back to projects</a></p>
 
 <section class="hero">
-  <h1>Nexio — Multi-layer SaaS platform <span class="tag active">active</span></h1>
-  <p class="lead">A <strong>multi-tenant SaaS product in production</strong> to analyze and manage digital communities across <strong>multiple messaging channels</strong> (Discord, Telegram, WhatsApp). I work as <strong>Tech Lead / Product Engineer</strong>: I lead the end-to-end architecture and build of a <strong>multi-layer system</strong> — an SPA frontend, a serverless backend, a <strong>custom Node.js runtime layer</strong>, a multi-technique testing harness and a traffic simulator with ground-truth.</p>
+  <h1>Nexio: Multi-layer SaaS platform <span class="tag active">active</span></h1>
+  <p class="lead">A <strong>multi-tenant SaaS product in production</strong> to analyze and manage digital communities across <strong>multiple messaging channels</strong> (Discord, Telegram, WhatsApp). I work as <strong>Tech Lead / Product Engineer</strong>: I lead the end-to-end architecture and build of a <strong>multi-layer system</strong> with an SPA frontend, a serverless backend, a <strong>custom Node.js runtime layer</strong>, a multi-technique testing harness and a traffic simulator with ground-truth.</p>
   <div class="chip-row">
     <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Supabase</span>
     <span class="tag">PostgreSQL / RLS</span><span class="tag">Edge Functions (Deno)</span><span class="tag">Node.js</span><span class="tag">Baileys / WebSockets</span>
@@ -34,11 +34,11 @@ The shape of the architecture is what makes it interesting. It isn't an SPA talk
 
 ## Multi-channel architecture
 
-The platform integrates three messaging channels (Discord, Telegram, WhatsApp) through **per-channel adapters** that converge on a single normalization model. The design consequence is the point: **adding a channel does not rewrite the analysis pipeline** — the pipeline works on the normalized model, not on each API's quirks.
+The platform integrates three messaging channels (Discord, Telegram, WhatsApp) through **per-channel adapters** that converge on a single normalization model. The design consequence is the point: **adding a channel does not rewrite the analysis pipeline**. The pipeline works on the normalized model, not on each API's quirks.
 
 ## Multi-tenant serverless backend
 
-The backend is serverless on **Supabase**: PostgreSQL with **per-tenant Row-Level Security**, Edge Functions in **Deno** as the authorization boundary, a Realtime channel and versioned migrations. Isolation between clients is enforced **at the database level**, not in application code — the security property does not rely on every query remembering to filter.
+The backend is serverless on **Supabase**: PostgreSQL with **per-tenant Row-Level Security**, Edge Functions in **Deno** as the authorization boundary, a Realtime channel and versioned migrations. Isolation between clients is enforced **at the database level**, not in application code. The security property does not rely on every query remembering to filter.
 
 ## Layered data boundary
 
@@ -54,8 +54,8 @@ The division of responsibilities is deliberate: **the database is the system of 
 
 In this layer, the security properties don't depend on anyone's discipline: **they are encoded, and the machine verifies them.**
 
-- **Zero-outbound, with a double barrier.** The runtime never emits a message to the channel — not as a confirmation, not on error. Two independent layers that must coexist guarantee it: an **AST-selector lint rule** that fails the build if anyone writes a send call, and a **runtime guard (a Proxy over the socket)** that throws if one is invoked anyway. The same receive-only pattern applies to the second channel.
-- **No privileged credential on the host.** The runtime **does not write tables** and holds no privileged write credential: its only path to the database is a **boundary function authenticated by a shared secret**. Environment validation is **fail-fast**: it refuses to start if it detects on that host a privileged credential that shouldn't live there. The threat it was designed to eliminate — that credential leaking on an exposed host — stops being possible by construction.
+- **Zero-outbound, with a double barrier.** The runtime never emits a message to the channel, not as a confirmation, not on error. Two independent layers that must coexist guarantee it: an **AST-selector lint rule** that fails the build if anyone writes a send call, and a **runtime guard (a Proxy over the socket)** that throws if one is invoked anyway. The same receive-only pattern applies to the second channel.
+- **No privileged credential on the host.** The runtime **does not write tables** and holds no privileged write credential: its only path to the database is a **boundary function authenticated by a shared secret**. Environment validation is **fail-fast**: it refuses to start if it detects on that host a privileged credential that shouldn't live there. The threat it was designed to eliminate (that credential leaking on an exposed host) stops being possible by construction.
 
 ## Staging / prod isolation by topology
 
@@ -72,7 +72,7 @@ I integrated AI as a **multi-model router** with cross-provider fallback (Google
 - **The UI passes only the intent** of the operation; **model ids live server-side** and the client never sees them.
 - Fallback **preserves quality**: it never degrades to a lower tier for content or strategy.
 - It distinguishes **recoverable from non-recoverable** errors (it doesn't fabricate a response) and **counts usage exactly once**.
-- The AI **interprets and contextualizes, but base metrics are computed deterministically in code** — the auditable part isn't left to the model's mercy.
+- The AI **interprets and contextualizes, but base metrics are computed deterministically in code**: the auditable part isn't left to the model's mercy.
 
 ## Multi-technique testing harness
 
@@ -89,18 +89,18 @@ To validate the analysis engine without operating dozens of real accounts, I bui
 
 ## Methodology and context-engineering
 
-I formalized a **methodology of my own**: a lightweight protocol for task and spec governance (a state lifecycle, frozen versioned specifications — a stable spec isn't edited in place, it's versioned — and branch governance), integrated with the team's documentation so architecture decisions and work in progress stay traceable.
+I formalized a **methodology of my own**: a lightweight protocol for task and spec governance (a state lifecycle, frozen versioned specifications, branch governance), integrated with the team's documentation so architecture decisions and work in progress stay traceable. A stable spec isn't edited in place: it's versioned.
 
-I extended it to **context-engineering to orchestrate AI agents in layers**: an orchestrator thread hands out work against contracts and per-domain agents return evidence against their contract, with a "live state" of the project as the mandatory first read. And I keep a **versioned visual baseline** — dated step-by-step captures of onboarding, **3 channels × 2 languages** — to compare historical vs. current and catch UI regressions.
+I extended it to **context-engineering to orchestrate AI agents in layers**: an orchestrator thread hands out work against contracts and per-domain agents return evidence against their contract, with a "live state" of the project as the mandatory first read. And I keep a **versioned visual baseline**, dated step-by-step captures of onboarding (**3 channels x 2 languages**), to compare historical vs. current and catch UI regressions.
 
 ## What it shows
 
-- **Multi-layer architecture** of a SaaS product in production: picking the right tool for each layer and separating them with explicit boundaries — not a monolith, not an SPA + BaaS.
-- **Security boundaries encoded and machine-verified**: zero-outbound with a double barrier, no privileged credential, isolation by topology — properties that don't depend on anyone's discipline.
+- **Multi-layer architecture** of a SaaS product in production: picking the right tool for each layer and separating them with explicit boundaries, not a monolith, not an SPA + BaaS.
+- **Security boundaries encoded and machine-verified**: zero-outbound with a double barrier, no privileged credential, isolation by topology. Properties that don't depend on anyone's discipline.
 - **Tech leadership**: defining invariants (security, data, AI) and making the system hold them as it grows.
 - **Verification rigor**: a multi-technique harness and a ground-truth simulator, with validator health kept separate from product quality.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <a href="https://nexio.land" target="_blank" rel="noopener">Live product · nexio.land →</a>
-  <span>employer product · in production</span>
+  <a href="https://nexio.land" target="_blank" rel="noopener">Live product | nexio.land →</a>
+  <span>employer product | in production</span>
 </div>

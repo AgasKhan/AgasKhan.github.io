@@ -8,7 +8,7 @@ permalink: /es/projects/stealth-multiplayer/
 
 <section class="hero">
   <h1>Multiplayer de sigilo <span class="tag done">terminado</span></h1>
-  <p class="lead">Juego multiplayer de sigilo en tiempo real, hecho para un cliente freelance. Aporté la capa de networking sobre <strong>Photon Fusion 2</strong>, la <strong>IA de enemigos por sospecha</strong> (percepción visual y auditiva) y los sistemas de personaje, percepción e interacción — proyecto completo en aproximadamente un mes.</p>
+  <p class="lead">Juego multiplayer de sigilo en tiempo real, hecho para un cliente freelance. Aporté la capa de networking sobre <strong>Photon Fusion 2</strong>, la <strong>IA de enemigos por sospecha</strong> (percepción visual y auditiva) y los sistemas de personaje, percepción e interacción. Proyecto completo en aproximadamente un mes.</p>
   <div class="chip-row">
     <span class="tag">Unity 2022.3 LTS</span><span class="tag">C#</span><span class="tag">Photon Fusion 2</span>
     <span class="tag">Jobs / Burst</span><span class="tag">URP</span><span class="tag">Game AI</span>
@@ -17,7 +17,7 @@ permalink: /es/projects/stealth-multiplayer/
 
 <div class="callout">
   <p class="callout-title">Encuadre</p>
-  <p>Trabajo para un cliente privado. Este write-up describe solo mi contribución técnica; no expone al cliente ni la temática del juego. Pude entregar el proyecto completo en ~1 mes apoyándome en mi propia librería de sistemas Unity (ver <a href="{{ '/es/projects/common-package/' | relative_url }}">Common-Package</a>) — un ejemplo concreto del ROI de tener una base reusable.</p>
+  <p>Trabajo para un cliente privado. Este write-up describe solo mi contribución técnica; no expone al cliente ni la temática del juego. Pude entregar el proyecto completo en ~1 mes apoyándome en mi propia librería de sistemas Unity (ver <a href="{{ '/es/projects/common-package/' | relative_url }}">Common-Package</a>), un ejemplo concreto del ROI de tener una base reusable.</p>
 </div>
 
 ## Netcode sobre Photon Fusion 2
@@ -45,9 +45,9 @@ El personaje desacopla el **input de la lógica** mediante un mediador de input 
 
 - **Multiplayer / networking** de gameplay en tiempo real con Photon Fusion 2 (sesiones, sincronización, autoridad de escena).
 - **Gameplay AI**: percepción multi-sentido (visual + auditiva) alimentando una máquina de estados jerárquica.
-- **Velocidad de entrega** apalancada en una arquitectura reusable propia — un proyecto completo en ~1 mes.
+- **Velocidad de entrega** apalancada en una arquitectura reusable propia: un proyecto completo en ~1 mes.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver Common-Package →</a>
-  <span>cliente freelance · repo privado</span>
+  <span>cliente freelance | repo privado</span>
 </div>

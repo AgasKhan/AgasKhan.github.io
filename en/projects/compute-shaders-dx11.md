@@ -30,7 +30,7 @@ It was built as a personal deliverable for an introductory shader course (Image 
 
 ## Case study: debugging a "silent" GPU failure
 
-The symptom was the worst kind: **an intermittent black screen, with no error in the log**. A GPU won't complain when you write to a valid-but-wrong resource — it just produces garbage, or nothing. With no message to follow, the path was **hypothesis-driven**: isolate each suspicion, reproduce, rule it out. Under a single symptom lived three independent causes.
+The symptom was the worst kind: **an intermittent black screen, with no error in the log**. A GPU won't complain when you write to a valid-but-wrong resource: it just produces garbage, or nothing. With no message to follow, the path was **hypothesis-driven**: isolate each suspicion, reproduce, rule it out. Under a single symptom lived three independent causes.
 
 <ol class="rootcauses">
   <li class="rootcause">
@@ -44,7 +44,7 @@ The symptom was the worst kind: **an intermittent black screen, with no error in
   <li class="rootcause">
     <h4>Main ↔ Render thread race</h4>
     <dl>
-      <dt>Symptom</dt><dd>Black frames that came and went depending on timing — the classic race-dependent bug.</dd>
+      <dt>Symptom</dt><dd>Black frames that came and went depending on timing: the classic race-dependent bug.</dd>
       <dt>Cause</dt><dd>Unity's rendering runs on its own <em>render thread</em>. Setting textures from the main thread without syncing to the render thread's cycle made the GPU sample a resource that wasn't bound yet.</dd>
       <dd class="fix"><strong>Fix:</strong> synchronize resource updates with the render thread's cycle instead of assuming the main thread takes effect immediately.</dd>
     </dl>
@@ -70,5 +70,5 @@ Three bugs, one symptom, zero error messages: each was invisible on its own, and
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/playground/' | relative_url }}">See the shader playground →</a>
-  <span>personal course deliverable · no public repo</span>
+  <span>personal course deliverable | no public repo</span>
 </div>

@@ -40,5 +40,5 @@ This project adds **Photon Fusion 1** to the range of multiplayer I cover: Fusio
 - **Authoring tooling**: data-driven content editable by designers.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>degree project (Da Vinci) · private repo</span>
+  <span>degree project (Da Vinci) | private repo</span>
 </div>

@@ -22,7 +22,7 @@ permalink: /es/projects/institutional-portal-management/
 
 ## Portal institucional multi-sección
 
-Construí la parte pública informativa: secciones institucionales, comisión directiva, cómo asociarse, convenios, beneficios, novedades y datos útiles — en PHP/MySQL sobre Apache.
+Construí la parte pública informativa en PHP/MySQL sobre Apache: secciones institucionales, comisión directiva, cómo asociarse, convenios, beneficios, novedades y datos útiles.
 
 ## Bolsa de trabajo de doble lado
 
@@ -50,5 +50,5 @@ Monté un back-office de administración para operar el portal **sin tocar códi
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/projects/php-web-platform-automotive/' | relative_url }}">Ver la plataforma web en PHP →</a>
-  <span>cliente privado · sistema interno (no público)</span>
+  <span>cliente privado | sistema interno (no público)</span>
 </div>

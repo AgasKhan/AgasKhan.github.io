@@ -17,7 +17,7 @@ permalink: /es/projects/php-web-platform-automotive/
 
 <div class="callout">
   <p class="callout-title">Encuadre</p>
-  <p>Trabajo para un cliente privado (empresa de diagnóstico automotor); este write-up describe solo mi contribución técnica y no expone al cliente ni sus datos de negocio. La señal es concreta: <strong>años reales de PHP/MySQL/Apache sobre un sistema en producción</strong> — el sustrato que respalda mi profundidad web (React, en cambio, es reciente).</p>
+  <p>Trabajo para un cliente privado (empresa de diagnóstico automotor); este write-up describe solo mi contribución técnica y no expone al cliente ni sus datos de negocio. La señal es concreta: <strong>años reales de PHP/MySQL/Apache sobre un sistema en producción</strong>, el sustrato que respalda mi profundidad web (React, en cambio, es reciente).</p>
 </div>
 
 ## Sitio institucional y catálogo
@@ -44,10 +44,10 @@ Armé un sistema de **mensajería en tiempo real** en PHP/JavaScript (servidor c
 
 ## Qué demuestra
 
-- **Web full-stack en producción durante años** — no una prueba de concepto.
+- **Web full-stack en producción durante años**, no una prueba de concepto.
 - Backend, auth, panel de administración y tiempo real construidos a mano sobre PHP/MySQL.
 - El contrapeso concreto a que el stack moderno (React) sea reciente: la base web es de largo recorrido.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>cliente privado · sistema interno (no público)</span>
+  <span>cliente privado | sistema interno (no público)</span>
 </div>

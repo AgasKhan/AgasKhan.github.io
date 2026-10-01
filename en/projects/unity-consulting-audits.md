@@ -17,7 +17,7 @@ permalink: /en/projects/unity-consulting-audits/
 
 <div class="callout">
   <p class="callout-title">Framing</p>
-  <p>All the material is <strong>third-party code</strong> (other developers' games). I'm not the author of the games: I come in as a consultant/auditor and contribute systems, fixes and documentation inside each team's code. This write-up describes my contribution, not someone else's IP — no game names or authors are exposed.</p>
+  <p>All the material is <strong>third-party code</strong> (other developers' games). I'm not the author of the games: I come in as a consultant/auditor and contribute systems, fixes and documentation inside each team's code. This write-up describes my contribution, not someone else's IP. No game names or authors are exposed.</p>
 </div>
 
 ## What I contribute
@@ -33,7 +33,7 @@ In the deepest engagement (a mobile game already shipping on Android, by another
 
 - **A service layer over an unfamiliar codebase:** queued additive, asynchronous scene loading with a loading screen and fade, local save with skin support, a global audio player and dependency injection.
 - **Structural production fixes:** cross-scene canvas sync and scaling, audio duplication, level loading from the game-over screen, particle visibility and Android build configuration.
-- **A technical audit as the deliverable:** a layered architecture-and-patterns analysis, a full script reference, a content inventory, commit history and a prioritized fix plan — meant as onboarding and source of truth for the team. The documentation leaned, honestly, on my own analysis process/tooling.
+- **A technical audit as the deliverable:** a layered architecture-and-patterns analysis, a full script reference, a content inventory, commit history and a prioritized fix plan. Meant as onboarding and source of truth for the team. The documentation leaned, honestly, on my own analysis process/tooling.
 
 ## What it shows
 
@@ -42,5 +42,5 @@ In the deepest engagement (a mobile game already shipping on Android, by another
 - The **technical audit** as a product in itself, not just the code.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>client / third-party projects · private repos</span>
+  <span>client / third-party projects | private repos</span>
 </div>

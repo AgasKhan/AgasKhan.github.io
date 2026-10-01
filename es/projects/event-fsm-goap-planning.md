@@ -41,5 +41,5 @@ Es el salto de una FSM simple a agentes que planifican, sobre la misma base arqu
 - **Multithreading** aplicado a pathfinding para no comprometer el frame.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>proyecto de carrera (Da Vinci) · repo privado</span>
+  <span>proyecto de carrera (Da Vinci) | repo privado</span>
 </div>

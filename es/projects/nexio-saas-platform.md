@@ -1,5 +1,5 @@
 ---
-title: "Nexio — Plataforma SaaS multi-capa (Tech Lead)"
+title: "Nexio: Plataforma SaaS multi-capa (Tech Lead)"
 description: "Plataforma SaaS multi-tenant en producción para inteligencia y gestión de comunidades digitales a través de múltiples canales de mensajería. Tech Lead / Product Engineer: arquitectura y construcción end-to-end de un sistema multi-capa (SPA + backend serverless + capa de runtime Node.js a medida + harness de pruebas + simulador de tráfico)."
 permalink: /es/projects/nexio-saas-platform/
 ---
@@ -7,8 +7,8 @@ permalink: /es/projects/nexio-saas-platform/
 <p class="crumbs"><a href="{{ '/es/projects/' | relative_url }}">← Volver a proyectos</a></p>
 
 <section class="hero">
-  <h1>Nexio — Plataforma SaaS multi-capa <span class="tag active">activo</span></h1>
-  <p class="lead">Producto <strong>SaaS multi-tenant en producción</strong> para analizar y gestionar comunidades digitales a través de <strong>múltiples canales de mensajería</strong> (Discord, Telegram, WhatsApp). Trabajo como <strong>Tech Lead / Product Engineer</strong>: lidero la arquitectura y la construcción end-to-end de un <strong>sistema multi-capa</strong> — SPA frontend, backend serverless, una <strong>capa de runtime Node.js a medida</strong>, un harness de pruebas multi-técnica y un simulador de tráfico con ground-truth.</p>
+  <h1>Nexio: Plataforma SaaS multi-capa <span class="tag active">activo</span></h1>
+  <p class="lead">Producto <strong>SaaS multi-tenant en producción</strong> para analizar y gestionar comunidades digitales a través de <strong>múltiples canales de mensajería</strong> (Discord, Telegram, WhatsApp). Trabajo como <strong>Tech Lead / Product Engineer</strong>: lidero la arquitectura y la construcción end-to-end de un <strong>sistema multi-capa</strong> con SPA frontend, backend serverless, una <strong>capa de runtime Node.js a medida</strong>, un harness de pruebas multi-técnica y un simulador de tráfico con ground-truth.</p>
   <div class="chip-row">
     <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Supabase</span>
     <span class="tag">PostgreSQL / RLS</span><span class="tag">Edge Functions (Deno)</span><span class="tag">Node.js</span><span class="tag">Baileys / WebSockets</span>
@@ -34,11 +34,11 @@ La forma de la arquitectura es lo que la hace interesante. No es una SPA habland
 
 ## Arquitectura multi-canal
 
-La plataforma integra tres canales de mensajería (Discord, Telegram, WhatsApp) mediante **adaptadores por canal** que convergen en un mismo modelo de normalización. La consecuencia de diseño importa: **agregar un canal no reescribe el pipeline de análisis** — el pipeline trabaja sobre el modelo normalizado, no sobre las particularidades de cada API.
+La plataforma integra tres canales de mensajería (Discord, Telegram, WhatsApp) mediante **adaptadores por canal** que convergen en un mismo modelo de normalización. La consecuencia de diseño importa: **agregar un canal no reescribe el pipeline de análisis**. El pipeline trabaja sobre el modelo normalizado, no sobre las particularidades de cada API.
 
 ## Backend serverless multi-tenant
 
-El backend es serverless sobre **Supabase**: PostgreSQL con **Row-Level Security por tenant**, Edge Functions en **Deno** como frontera de autorización, canal Realtime y migraciones versionadas. El aislamiento entre clientes se garantiza **a nivel de base de datos**, no de código de aplicación — la propiedad de seguridad no depende de que cada consulta se acuerde de filtrar.
+El backend es serverless sobre **Supabase**: PostgreSQL con **Row-Level Security por tenant**, Edge Functions en **Deno** como frontera de autorización, canal Realtime y migraciones versionadas. El aislamiento entre clientes se garantiza **a nivel de base de datos**, no de código de aplicación. La propiedad de seguridad no depende de que cada consulta se acuerde de filtrar.
 
 ## Frontera de datos por capas
 
@@ -54,8 +54,8 @@ El reparto de responsabilidades es deliberado: **la base de datos es el sistema 
 
 En esta capa, las propiedades de seguridad no dependen de la disciplina de nadie: **están codificadas y las verifica la máquina.**
 
-- **Cero-outbound, con doble barrera.** El runtime nunca emite un mensaje al canal — ni de confirmación ni ante error. Lo garantizan dos capas independientes que deben coexistir: una **regla de lint por selector AST** que falla el build si alguien escribe una llamada de envío, y un **guard en runtime (un Proxy sobre el socket)** que lanza si alguna se invoca de todos modos. El mismo patrón receive-only se aplica al segundo canal.
-- **Sin credencial privilegiada en el host.** El runtime **no escribe tablas** y no tiene una credencial de escritura privilegiada: su único camino a la base es una **función-frontera autenticada por secreto compartido**. La validación de entorno es **fail-fast**: rechaza el arranque si detecta en ese host una credencial privilegiada que no debería vivir ahí. La amenaza que se diseñó para eliminar —esa credencial filtrándose en un host expuesto— deja de ser posible por construcción.
+- **Cero-outbound, con doble barrera.** El runtime nunca emite un mensaje al canal, ni de confirmación ni ante error. Lo garantizan dos capas independientes que deben coexistir: una **regla de lint por selector AST** que falla el build si alguien escribe una llamada de envío, y un **guard en runtime (un Proxy sobre el socket)** que lanza si alguna se invoca de todos modos. El mismo patrón receive-only se aplica al segundo canal.
+- **Sin credencial privilegiada en el host.** El runtime **no escribe tablas** y no tiene una credencial de escritura privilegiada: su único camino a la base es una **función-frontera autenticada por secreto compartido**. La validación de entorno es **fail-fast**: rechaza el arranque si detecta en ese host una credencial privilegiada que no debería vivir ahí. La amenaza que se diseñó para eliminar (esa credencial filtrándose en un host expuesto) deja de ser posible por construcción.
 
 ## Aislamiento staging / prod por topología
 
@@ -72,7 +72,7 @@ Integré la IA como un **router multi-modelo** con fallback entre proveedores (G
 - **La UI pasa solo la intención** de la operación; los **ids de modelo viven server-side** y nunca los ve el cliente.
 - El fallback **preserva la calidad**: nunca degrada a un tier inferior para contenido o estrategia.
 - Distingue errores **recuperables de no-recuperables** (no inventa una respuesta) y **cuenta el uso una sola vez**.
-- La IA **interpreta y contextualiza, pero las métricas base se calculan de forma determinista en código** — la parte auditable no queda a merced del modelo.
+- La IA **interpreta y contextualiza, pero las métricas base se calculan de forma determinista en código**: la parte auditable no queda a merced del modelo.
 
 ## Harness de pruebas multi-técnica
 
@@ -89,18 +89,18 @@ Para validar el motor de análisis sin operar decenas de cuentas reales, constru
 
 ## Metodología y context-engineering
 
-Formalicé una **metodología de proceso propia**: un protocolo liviano de gobierno de tareas y specs (ciclo de vida de estados, especificaciones congeladas y versionadas —una spec estable no se edita in-place, se versiona— y gobernanza de ramas), integrado con la documentación del equipo para que las decisiones de arquitectura y el trabajo en curso queden trazables.
+Formalicé una **metodología de proceso propia**: un protocolo liviano de gobierno de tareas y specs (ciclo de vida de estados, especificaciones congeladas y versionadas, gobernanza de ramas), integrado con la documentación del equipo para que las decisiones de arquitectura y el trabajo en curso queden trazables. Una spec estable no se edita in-place: se versiona.
 
-La extendí a **context-engineering para orquestar agentes de IA por capas**: un hilo orquestador reparte trabajo contra contratos y agentes por dominio devuelven evidencia contra su contrato, con un "estado vivo" del proyecto como primer read obligatorio. Y mantengo un **baseline visual versionado** —capturas fechadas paso a paso del onboarding, **3 canales × 2 idiomas**— para comparar histórico vs. actual y detectar regresiones de UI.
+La extendí a **context-engineering para orquestar agentes de IA por capas**: un hilo orquestador reparte trabajo contra contratos y agentes por dominio devuelven evidencia contra su contrato, con un "estado vivo" del proyecto como primer read obligatorio. Y mantengo un **baseline visual versionado**, capturas fechadas paso a paso del onboarding (**3 canales x 2 idiomas**), para comparar histórico vs. actual y detectar regresiones de UI.
 
 ## Qué demuestra
 
 - **Arquitectura multi-capa** de un producto SaaS en producción: elegir la herramienta correcta para cada capa y separarlas por fronteras explícitas, no un monolito ni una SPA + BaaS.
-- **Fronteras de seguridad codificadas y verificadas por máquina**: cero-outbound con doble barrera, sin credencial privilegiada, aislamiento por topología — propiedades que no dependen de la disciplina de nadie.
+- **Fronteras de seguridad codificadas y verificadas por máquina**: cero-outbound con doble barrera, sin credencial privilegiada, aislamiento por topología. Propiedades que no dependen de la disciplina de nadie.
 - **Tech leadership**: definir invariantes (seguridad, datos, IA) y hacer que el sistema los mantenga a medida que crece.
 - **Rigor de verificación**: un harness multi-técnica y un simulador con ground-truth, con la salud del validador separada de la calidad del producto.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <a href="https://nexio.land" target="_blank" rel="noopener">Producto en vivo · nexio.land →</a>
-  <span>producto de empleador · en producción</span>
+  <a href="https://nexio.land" target="_blank" rel="noopener">Producto en vivo | nexio.land →</a>
+  <span>producto de empleador | en producción</span>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "AI image-generation service — local GPU orchestration + LoRA pipeline"
+title: "AI image-generation service: local GPU orchestration + LoRA pipeline"
 description: "A multi-user AI image-generation service: orchestration of a local diffusion engine on a single GPU, per-GPU queue, inference-process lifecycle, a LoRA training pipeline and a Discord bot as gateway. Built end to end."
 permalink: /en/projects/ai-image-generation-service/
 ---
@@ -17,7 +17,7 @@ permalink: /en/projects/ai-image-generation-service/
 
 <div class="callout">
   <p class="callout-title">Framing</p>
-  <p>What's on display here is the <strong>engineering</strong>: turning a single-GPU machine into a shared, multi-user generation service, with the orchestration, pipeline and tooling that requires. The domain is character image generation for adult content. I stood up the whole structure on my own — infrastructure, orchestration and task system — from idea to a service in operation. No output is shown and the repo (private) is not linked.</p>
+  <p>What's on display here is the <strong>engineering</strong>: turning a single-GPU machine into a shared, multi-user generation service, with the orchestration, pipeline and tooling that requires. The domain is character image generation for adult content. I stood up the whole structure on my own, from idea to a service in operation: infrastructure, orchestration and task system. No output is shown and the repo (private) is not linked.</p>
 </div>
 
 ## Local GPU orchestration
@@ -46,7 +46,7 @@ To achieve **consistent identity** across generations, I built a per-character L
 
 ## Consistent-identity dataset generator
 
-I wrote a **synthetic dataset** generator: it fixes a character's identity via a **face embedding (IP-Adapter FaceID)** and varies pose, scene and framing to produce the diversity a LoRA needs — emitting progress that the orchestrating process can parse.
+I wrote a **synthetic dataset** generator: it fixes a character's identity via a **face embedding (IP-Adapter FaceID)** and varies pose, scene and framing to produce the diversity a LoRA needs, emitting progress that the orchestrating process can parse.
 
 ## Multi-architecture
 
@@ -54,7 +54,7 @@ I supported multiple diffusion architectures (**SD1.5, SDXL, Flux**) using **qua
 
 ## Process engineering
 
-All work is organized with an **issues-based task system** (GitHub), issues-first. The whole structure — infra, orchestration, pipeline and tooling — I stood up alone.
+All work is organized with an **issues-based task system** (GitHub), issues-first. I stood up that whole structure alone: infra, orchestration, pipeline and tooling.
 
 ## What it shows
 
@@ -64,5 +64,5 @@ All work is organized with an **issues-based task system** (GitHub), issues-firs
 - **End-to-end ownership**: from idea to a service in operation, built solo.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>personal project · private repo</span>
+  <span>personal project | private repo</span>
 </div>

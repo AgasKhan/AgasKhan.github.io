@@ -17,7 +17,7 @@ permalink: /es/projects/event-system-level-designers/
 
 <div class="callout">
   <p class="callout-title">Validación comercial</p>
-  <p>No es un experimento: es un producto <strong>vendido y licenciado</strong> a otros desarrolladores, con <strong>facturación recurrente</strong>. Otros profesionales lo pagan y lo usan en sus propios juegos — la señal más directa de que la tecnología aguanta fuera de mi propio código.</p>
+  <p>No es un experimento: es un producto <strong>vendido y licenciado</strong> a otros desarrolladores, con <strong>facturación recurrente</strong>. Otros profesionales lo pagan y lo usan en sus propios juegos: la señal más directa de que la tecnología aguanta fuera de mi propio código.</p>
 </div>
 
 ## Cómo funciona
@@ -38,5 +38,5 @@ Es uno de los ~36 sistemas de la suite <a href="{{ '/es/projects/common-package/
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver Common-Package →</a>
-  <span>parte de Common-Package · repo privado</span>
+  <span>parte de Common-Package | repo privado</span>
 </div>

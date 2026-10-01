@@ -21,13 +21,13 @@ The degree's final project, built as a team (Lucas's role: programmer and design
 
 ## Case study: thousands of on-screen objects without framerate drops
 
-The challenge: showing and driving **thousands of objects** on screen at once, every frame, without the framerate collapsing. Doing it the naive way — iterating over everything on the main thread — stalls the game as soon as the count grows.
+The challenge: showing and driving **thousands of objects** on screen at once, every frame, without the framerate collapsing. Doing it the naive way, iterating over everything on the main thread, stalls the game as soon as the count grows.
 
 The solution splits the work by what each part allows:
 
 - **Parallel compute (Jobs System):** deciding each object's state is pure data computation that never touches the Unity API, so it's spread across every CPU core.
 - **Batched rendering with GPU instancing:** objects sharing mesh and material are drawn in a batch, cutting the rendering load.
-- **Only the unavoidable on the main thread:** Unity's `Transform`/`GameObject` API is **not thread-safe**, so the engine-bound operation (turning each object on/off with `SetActive`) stays on the main thread — and nothing else.
+- **Only the unavoidable on the main thread:** Unity's `Transform`/`GameObject` API is **not thread-safe**, so the engine-bound operation (turning each object on/off with `SetActive`) stays on the main thread, and nothing else.
 
 Concretely, this sustains turning **4,096 GameObjects** on and off per frame: the heavy computation runs in parallel, rendering leans on GPU instancing, and the main thread does only what it's forced to, instead of resolving everything sequentially.
 
@@ -39,5 +39,5 @@ Concretely, this sustains turning **4,096 GameObjects** on and off per frame: th
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/projects/common-package/' | relative_url }}">See Common-Package →</a>
-  <span>team project · private repo</span>
+  <span>team project | private repo</span>
 </div>

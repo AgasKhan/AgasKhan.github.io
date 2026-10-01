@@ -17,7 +17,7 @@ permalink: /es/projects/unity-consulting-audits/
 
 <div class="callout">
   <p class="callout-title">Encuadre</p>
-  <p>Todo el material es <strong>código de terceros</strong> (juegos de otros desarrolladores). No soy autor de los juegos: entro como consultor/auditor y contribuyo sistemas, correcciones y documentación dentro del código de cada equipo. Este write-up describe mi contribución, no la IP ajena — no se exponen nombres de juegos ni de sus autores.</p>
+  <p>Todo el material es <strong>código de terceros</strong> (juegos de otros desarrolladores). No soy autor de los juegos: entro como consultor/auditor y contribuyo sistemas, correcciones y documentación dentro del código de cada equipo. Este write-up describe mi contribución, no la IP ajena. No se exponen nombres de juegos ni de sus autores.</p>
 </div>
 
 ## Qué aporto
@@ -33,7 +33,7 @@ En el engagement más profundo (un juego móvil ya publicado en Android, de otro
 
 - **Capa de servicios sobre un codebase ajeno:** carga de escenas aditiva y asincrónica en cola con pantalla de carga y fade, guardado local con soporte de skins, reproductor de audio global e inyección de dependencias.
 - **Fixes estructurales de producción:** sincronización y escala de canvas entre escenas, duplicación de audio, carga de niveles desde el game over, visibilidad de partículas y configuración de build Android.
-- **Auditoría técnica como entregable:** análisis por capas y patrones, referencia completa de los scripts, inventario de contenido, historial de commits y un plan de fixes priorizado — pensada como onboarding y fuente de verdad del equipo. La documentación se apoyó, honestamente, en mi propio proceso/tooling de análisis.
+- **Auditoría técnica como entregable:** análisis por capas y patrones, referencia completa de los scripts, inventario de contenido, historial de commits y un plan de fixes priorizado. Pensada como onboarding y fuente de verdad del equipo. La documentación se apoyó, honestamente, en mi propio proceso/tooling de análisis.
 
 ## Qué demuestra
 
@@ -42,5 +42,5 @@ En el engagement más profundo (un juego móvil ya publicado en Android, de otro
 - La **auditoría técnica** como producto en sí, no solo el código.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>proyectos de clientes/terceros · repos privados</span>
+  <span>proyectos de clientes/terceros | repos privados</span>
 </div>

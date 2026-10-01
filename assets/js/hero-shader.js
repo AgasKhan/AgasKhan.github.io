@@ -24,7 +24,7 @@
         '}'
     ].join('\n');
 
-    // Blit shader — copies the FBO texture to the default framebuffer.
+    // Blit shader: copies the FBO texture to the default framebuffer.
     var BLIT_FS = [
         'precision mediump float;',
         'uniform sampler2D u_tex;',
@@ -36,7 +36,7 @@
         '}'
     ].join('\n');
 
-    // Mutable runtime state — installProgram() rebinds the per-program
+    // Mutable runtime state. installProgram() rebinds the per-program
     // attribute/uniform locations when the user swaps the fragment shader.
     var state = {
         gl:        null,
@@ -224,7 +224,7 @@
             }
             catch (e)
             {
-                // quota exceeded — fine, we still return the source
+                // quota exceeded, which is fine: we still return the source
             }
             return src;
         });
@@ -262,7 +262,7 @@
     {
         var canvas = state.canvas;
         var gl     = state.gl;
-        // Cap DPR more aggressively on narrow viewports — high-DPR phones
+        // Cap DPR more aggressively on narrow viewports, because high-DPR phones
         // make the shader (which is fill-rate bound) crawl otherwise.
         var dprCap = (window.innerWidth || 1024) <= 768 ? 1.5 : 2.0;
         var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
@@ -282,7 +282,7 @@
     {
         // Convert from CSS pixels (top-left origin) to physical pixels
         // matching gl_FragCoord (bottom-left origin).
-        // Cap DPR more aggressively on narrow viewports — high-DPR phones
+        // Cap DPR more aggressively on narrow viewports, because high-DPR phones
         // make the shader (which is fill-rate bound) crawl otherwise.
         var dprCap = (window.innerWidth || 1024) <= 768 ? 1.5 : 2.0;
         var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
@@ -429,7 +429,7 @@
             }
             catch (err)
             {
-                // The stored shader is broken — recover with the default.
+                // The stored shader is broken: recover with the default.
                 console.warn('hero-shader: stored shader failed, falling back to default.\n', err.message);
                 return fetchDefault().then(function (def)
                 {
@@ -475,7 +475,7 @@
                     }
                     catch (e)
                     {
-                        // quota or storage disabled — shader is applied in memory anyway
+                        // quota or storage disabled: shader is applied in memory anyway
                     }
                     resolve({ ok: true });
                 }

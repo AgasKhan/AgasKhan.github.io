@@ -27,16 +27,16 @@
       <a href="{{ packages_url | relative_url }}">{{ t.nav.packages }}</a>
       <a href="{{ about_url | relative_url }}">{{ t.nav.about }}</a>
       <a href="{{ playground_url | relative_url }}">{{ t.nav.playground }}</a>
-      <a href="https://github.com/AgasKhan" target="_blank" rel="noopener">{{ t.nav.github }} ↗</a>
-      <a href="https://linktr.ee/AgasKhan" target="_blank" rel="noopener">Linktree ↗</a>
+      <a href="https://github.com/AgasKhan" target="_blank" rel="noopener">{{ t.nav.github }} →</a>
+      <a href="https://linktr.ee/AgasKhan" target="_blank" rel="noopener">Linktree →</a>
       <span class="lang-switch">
         {% if lang == 'es' %}
           <span class="lang-current">ES</span>
-          <span class="lang-sep">·</span>
+          <span class="lang-sep">|</span>
           <a href="{{ alt_url | relative_url }}" data-lang="en">EN</a>
         {% else %}
           <a href="{{ alt_url | relative_url }}" data-lang="es">ES</a>
-          <span class="lang-sep">·</span>
+          <span class="lang-sep">|</span>
           <span class="lang-current">EN</span>
         {% endif %}
       </span>
@@ -61,7 +61,7 @@
             }
             catch (err)
             {
-                // localStorage unavailable — the navigation still happens
+                // localStorage unavailable: the navigation still happens
             }
         });
     })();

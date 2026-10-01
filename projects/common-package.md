@@ -10,9 +10,9 @@ Canonical pages are now bilingual: /es/projects/common-package/ and /en/projects
 
 <section class="hero">
   <h1>Common-Package</h1>
-  <p class="lead">Esta página se movió · This page moved.</p>
+  <p class="lead">Esta página se movió | This page moved.</p>
   <p>
-    <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver en español →</a> ·
+    <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver en español →</a> |
     <a href="{{ '/en/projects/common-package/' | relative_url }}">View in English →</a>
   </p>
 </section>

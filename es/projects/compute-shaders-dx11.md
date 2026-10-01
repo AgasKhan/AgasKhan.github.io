@@ -30,7 +30,7 @@ Se desarrolló como entregable personal en el marco de un curso introductorio de
 
 ## Case study: debug de un fallo de GPU "silencioso"
 
-El síntoma era el peor posible: **pantalla negra intermitente, sin ningún error en el log**. La GPU no se queja cuando escribís a un recurso válido pero equivocado — simplemente produce basura o nada. Sin un mensaje que seguir, el camino fue **por hipótesis**: aislar cada sospecha, reproducir, descartar. Debajo de un único síntoma vivían tres causas independientes.
+El síntoma era el peor posible: **pantalla negra intermitente, sin ningún error en el log**. La GPU no se queja cuando escribís a un recurso válido pero equivocado: simplemente produce basura o nada. Sin un mensaje que seguir, el camino fue **por hipótesis**: aislar cada sospecha, reproducir, descartar. Debajo de un único síntoma vivían tres causas independientes.
 
 <ol class="rootcauses">
   <li class="rootcause">
@@ -44,7 +44,7 @@ El síntoma era el peor posible: **pantalla negra intermitente, sin ningún erro
   <li class="rootcause">
     <h4>Race Main ↔ Render thread</h4>
     <dl>
-      <dt>Síntoma</dt><dd>Negro que aparecía y desaparecía según el timing — el clásico bug dependiente de carrera.</dd>
+      <dt>Síntoma</dt><dd>Negro que aparecía y desaparecía según el timing: el clásico bug dependiente de carrera.</dd>
       <dt>Causa</dt><dd>El rendering de Unity corre en un <em>render thread</em> propio. Setear las texturas desde el main thread sin sincronizar con el ciclo del render thread hacía que la GPU muestreara un recurso todavía no ligado.</dd>
       <dd class="fix"><strong>Fix:</strong> sincronizar la actualización de recursos con el ciclo del render thread, en vez de asumir que el main thread manda de inmediato.</dd>
     </dl>
@@ -70,5 +70,5 @@ Tres bugs, un solo síntoma, cero mensajes de error: cada uno era invisible por 
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/playground/' | relative_url }}">Ver el playground de shaders →</a>
-  <span>entregable personal de curso · sin repo público</span>
+  <span>entregable personal de curso | sin repo público</span>
 </div>

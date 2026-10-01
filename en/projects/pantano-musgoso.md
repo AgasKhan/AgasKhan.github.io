@@ -1,5 +1,5 @@
 ---
-title: "Pantano Musgoso — HTML5 game demo (sold)"
+title: "Pantano Musgoso: HTML5 game demo (sold)"
 description: "A playable demo of a 2D action-platformer built in Construct 2 and exported to HTML5, self-authored. Commercial validation: the demo was sold."
 permalink: /en/projects/pantano-musgoso/
 ---
@@ -22,7 +22,7 @@ permalink: /en/projects/pantano-musgoso/
 
 ## The game
 
-A 2D action-platformer (run-and-gun) set in a mossy swamp. The demo ships with its own menu (play, donations, credits, quit) and a level flow with fade transitions — a scoped demo of a larger game.
+A 2D action-platformer (run-and-gun) set in a mossy swamp. The demo ships with its own menu (play, donations, credits, quit) and a level flow with fade transitions. It is a scoped demo of a larger game.
 
 ## Mechanics
 
@@ -51,5 +51,5 @@ I exported the project as a **self-contained HTML5/JavaScript package**, running
 - Command of the **web game pipeline**: HTML5 export, mobile packaging and offline distribution.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>own project · demo sold</span>
+  <span>own project | demo sold</span>
 </div>

@@ -1,4 +1,4 @@
-// Minimal HLSL syntax highlighter — mirrors glsl-highlight.js with HLSL-specific
+// Minimal HLSL syntax highlighter. Mirrors glsl-highlight.js with HLSL-specific
 // keywords, types, intrinsics and semantics. Same overlay technique applies.
 
 (function ()
@@ -36,7 +36,7 @@
         'ByteAddressBuffer', 'RWByteAddressBuffer'
     ]);
 
-    // HLSL intrinsics (functions only — not types).
+    // HLSL intrinsics (functions only, not types).
     var BUILTIN_FUNCS = makeSet([
         // trig
         'sin', 'cos', 'tan', 'sinh', 'cosh', 'tanh',

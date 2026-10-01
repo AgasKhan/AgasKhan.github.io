@@ -1,4 +1,4 @@
-// Hero background — animated Voronoi.
+// Hero background: animated Voronoi.
 // Lines use the perpendicular-bisector technique from
 // https://iquilezles.org/articles/voronoilines/ for uniform-thickness edges
 // and clean triple-junction vertices.
@@ -33,7 +33,7 @@ const vec3 cyan   = vec3(0.28, 0.85, 0.85);
 //
 // These must run in highp. With mediump precision (mobile default), the
 // intermediate `sin(p) * 43758.5453` overflows the [-2^14, 2^14] range
-// and returns the same value for every cell — collapsing every feature
+// and returns the same value for every cell, collapsing every feature
 // point to its cell center and turning the Voronoi into a regular grid.
 // highp guarantees ~[-2^62, 2^62], which fits the multiplier comfortably.
 // ------------------------------------------------------------
@@ -59,7 +59,7 @@ vec2 cellPoint(in vec2 cellId)
 }
 
 // ------------------------------------------------------------
-// Pass 1 — 3x3 neighborhood. Find the closest feature point.
+// Pass 1, 3x3 neighborhood. Find the closest feature point.
 // Returns the cell id and the absolute position of that point so pass 2
 // can compute distances to bisectors without re-hashing the same cell.
 // ------------------------------------------------------------
@@ -89,14 +89,14 @@ void voronoi(in vec2 p, out vec2 cellId, out vec2 closestPos)
 }
 
 // ------------------------------------------------------------
-// Pass 2 — 5x5 neighborhood. IQ's voronoi-lines distance.
+// Pass 2, 5x5 neighborhood. IQ's voronoi-lines distance.
 //
 // For every other feature point, the cell boundary is the perpendicular
 // bisector between the closest point and that other point. The distance
 // from the fragment to that line is:
 //     dot( midpoint - p, normalize(other - closest) )
 // Taking the minimum across neighbors gives the perpendicular distance
-// to the actual nearest cell boundary — which yields lines of uniform
+// to the actual nearest cell boundary, which yields lines of uniform
 // thickness and clean triple-junction vertices.
 //
 // 5x5 (instead of 3x3) matters near triple junctions, where the relevant
@@ -156,7 +156,7 @@ void main()
     mouseP *= 5.5;
     vec2 mouseCellId, mouseClosestPos;
     voronoi(mouseP, mouseCellId, mouseClosestPos);
-    // Cell ids come from floor(), so they are integer-valued — exact compare is safe.
+    // Cell ids come from floor(), so they are integer-valued: exact compare is safe.
     bool isMouseCell = (cellId.x == mouseCellId.x && cellId.y == mouseCellId.y);
 
     // Trail: read this fragment's previous "touched" amount, decay it, and
@@ -187,7 +187,7 @@ void main()
     // Cells with active trail are exempted from the fade so the cyan stays
     // visible even when the pointer passes through the dark band.
     // On narrow viewports (portrait / mobile) the card fills the viewport and
-    // there are no lateral strips to reveal — disable the fade entirely so the
+    // there are no lateral strips to reveal. Disable the fade entirely so the
     // shader stays visible instead of going all black.
     float ex        = uv.x * aspect;
     float leftRamp  = clamp(ex * 2.0,            0.0, 1.0);

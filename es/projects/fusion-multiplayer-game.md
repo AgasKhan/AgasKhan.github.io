@@ -40,5 +40,5 @@ Este proyecto aporta **Photon Fusion 1** al abanico de multiplayer que cubro: Fu
 - **Tooling de autoría**: contenido data-driven editable por diseñadores.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>proyecto de carrera (Da Vinci) · repo privado</span>
+  <span>proyecto de carrera (Da Vinci) | repo privado</span>
 </div>

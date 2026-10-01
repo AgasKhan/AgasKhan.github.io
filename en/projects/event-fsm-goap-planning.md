@@ -41,5 +41,5 @@ It's the jump from a simple FSM to planning agents, on the same architectural ba
 - **Multithreading** applied to pathfinding to keep the frame smooth.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>degree project (Da Vinci) · private repo</span>
+  <span>degree project (Da Vinci) | private repo</span>
 </div>

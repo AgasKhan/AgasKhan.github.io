@@ -46,5 +46,5 @@ Entre estas demos y el resto de mis proyectos, el multiplayer cubre varios stack
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver Common-Package →</a>
-  <span>material didáctico interno · sin build público</span>
+  <span>material didáctico interno | sin build público</span>
 </div>

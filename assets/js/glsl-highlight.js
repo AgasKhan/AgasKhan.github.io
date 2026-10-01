@@ -38,7 +38,7 @@
         'usampler2D', 'usampler3D', 'usamplerCube'
     ]);
 
-    // Built-in GLSL functions (ES 1.0 + common ES 3.0). Functions only — not types.
+    // Built-in GLSL functions (ES 1.0 + common ES 3.0). Functions only, not types.
     var BUILTIN_FUNCS = makeSet([
         // trig
         'radians', 'degrees',
@@ -79,7 +79,7 @@
         'packHalf2x16', 'unpackHalf2x16'
     ]);
 
-    // Built-in variables — gl_* and friends. Distinct color, like Unity API surface.
+    // Built-in variables: gl_* and friends. Distinct color, like Unity API surface.
     var BUILTIN_VARS = makeSet([
         'gl_Position', 'gl_PointSize',
         'gl_FragCoord', 'gl_FragColor', 'gl_FragData', 'gl_FragDepth',
@@ -125,7 +125,7 @@
         USER_FN_REGEX.lastIndex = 0;
         while ((m = USER_FN_REGEX.exec(code)) !== null)
         {
-            // Skip 'main' deliberately — it's the entry point, treat as user fn anyway.
+            // Skip 'main' deliberately: it's the entry point, treat as user fn anyway.
             fns[m[1]] = true;
         }
         return fns;

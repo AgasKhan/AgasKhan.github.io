@@ -20,7 +20,7 @@
 {
     'use strict';
 
-    // Each rule: [regex, replacement]. Order matters — longest/most specific first.
+    // Each rule: [regex, replacement]. Order matters: longest/most specific first.
     // Multi-component vector and matrix types must precede shorter prefixes
     // (float4x4 before float4 before float etc.).
     var RULES = [
@@ -28,7 +28,7 @@
         [/:\s*(SV_POSITION|SV_TARGET|SV_Target|SV_Depth|SV_VertexID|SV_InstanceID|POSITION\d*|COLOR\d*|NORMAL\d*|TEXCOORD\d*|TANGENT\d*|BINORMAL\d*|VPOS|VFACE|PSIZE|DEPTH\d*)\b/g, ''],
         // Strip register bindings.
         [/:\s*register\s*\(\s*[stub]\d+\s*\)/g, ''],
-        // packoffset — strip.
+        // packoffset: strip.
         [/:\s*packoffset\s*\(\s*[^)]+\)/g, ''],
 
         // 'static const' → 'const'; bare 'static' is GLSL-meaningless, drop it.
@@ -84,7 +84,7 @@
         [/\bsaturate\s*\(\s*([^()]+?)\s*\)/g, 'clamp($1, 0.0, 1.0)'],
 
         // mul(a, b) → (a) * (b). Simple top-level capture; does not handle
-        // nested mul(mul(...)) — those need to be written manually.
+        // nested mul(mul(...)): those need to be written manually.
         [/\bmul\s*\(\s*([^()]+?)\s*,\s*([^()]+?)\s*\)/g, '(($1) * ($2))'],
 
         // Common renames.
@@ -105,7 +105,7 @@
         // .SampleLevel(sampler, uv, lod) → texture2DLod(var, uv, lod).
         [/\b(\w+)\s*\.\s*SampleLevel\s*\(\s*\w+\s*,\s*([^,]+),\s*([^)]+)\)/g, 'texture2DLod($1, $2, $3)'],
 
-        // sincos(x, s, c) is HLSL only — turn into manual assignments.
+        // sincos(x, s, c) is HLSL only: turn into manual assignments.
         [/\bsincos\s*\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^()]+?)\s*\)/g, '$2 = sin($1); $3 = cos($1)']
     ];
 

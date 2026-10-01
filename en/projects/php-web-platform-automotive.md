@@ -17,7 +17,7 @@ permalink: /en/projects/php-web-platform-automotive/
 
 <div class="callout">
   <p class="callout-title">Framing</p>
-  <p>Work for a private client (an automotive diagnostics company); this write-up describes only my technical contribution and does not expose the client or its business data. The signal is concrete: <strong>real years of PHP/MySQL/Apache on a production system</strong> — the substrate behind my web depth (React, by contrast, is recent).</p>
+  <p>Work for a private client (an automotive diagnostics company); this write-up describes only my technical contribution and does not expose the client or its business data. The signal is concrete: <strong>real years of PHP/MySQL/Apache on a production system</strong>, the substrate behind my web depth (React, by contrast, is recent).</p>
 </div>
 
 ## Institutional site and catalog
@@ -44,10 +44,10 @@ I built a **real-time messaging** system in PHP/JavaScript (polling server, send
 
 ## What it shows
 
-- **Full-stack web in production for years** — not a proof of concept.
+- **Full-stack web in production for years**, not a proof of concept.
 - Backend, auth, admin panel and real-time built by hand on PHP/MySQL.
 - The concrete counterweight to a recent modern stack (React): the web foundation runs deep.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>private client · internal system (not public)</span>
+  <span>private client | internal system (not public)</span>
 </div>

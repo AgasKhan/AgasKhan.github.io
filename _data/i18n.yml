@@ -1,7 +1,7 @@
 # UI strings keyed by language. Pages reference these via {{ site.data.i18n[page.lang].xxx }}.
 
 es:
-  site_tagline: "Dev de juegos y sistemas — packages, juegos y experimentos"
+  site_tagline: "Dev de juegos y sistemas: packages, juegos y experimentos"
   nav:
     home: Home
     packages: Packages
@@ -13,7 +13,7 @@ es:
     welcome_prefix: "Bienvenido al portal de"
   home:
     profile_heading: Perfil
-    profile_short: "Programador de videojuegos con 10+ años de experiencia. Motor-agnóstico: base sólida de C# y sistemas desacoplados de la arquitectura del motor para poder portarlos — trabajo sobre todo con Unity (URP, Burst, Jobs). También bajo nivel (C++, DX11, Assembler) y full-stack web cuando hace falta."
+    profile_short: "Programador de videojuegos con 10+ años de experiencia. Motor-agnóstico: base sólida de C# y sistemas desacoplados de la arquitectura del motor para poder portarlos. Trabajo sobre todo con Unity (URP, Burst, Jobs). También bajo nivel (C++, DX11, Assembler) y full-stack web cuando hace falta."
     profile_link: "Ver perfil completo →"
     packages_heading: Packages
     packages_intro_count: "Unity Packages publicados, distribuidos como repos independientes para consumo via Git URL en"
@@ -28,7 +28,7 @@ es:
     intro_with_count_prefix: "packages publicados desde"
     intro_with_count_suffix: ". Cada uno vive en su propio repo y se instala via Git URL en"
     install_label: "Install ejemplo (manifest.json)"
-    transitive_note: "UPM no resuelve dependencias transitivas en git URLs — hay que listar también las dependencias de cada package en el manifest."
+    transitive_note: "UPM no resuelve dependencias transitivas en git URLs: hay que listar también las dependencias de cada package en el manifest."
     empty: "Aún no hay packages publicados al público."
     empty_long: "La biblioteca se desarrolla en repos privados. Cuando un package se estabilice, se publicará y aparecerá listado acá."
     notes_heading: Notas
@@ -38,7 +38,7 @@ es:
     deps_plural: "deps"
   projects:
     heading: Proyectos
-    lead_with_items: "Proyectos propios y de equipo, con write-ups técnicos autocontenidos. Algunos activos, otros terminados — la mayoría comparte la biblioteca de packages."
+    lead_with_items: "Proyectos propios y de equipo, con write-ups técnicos autocontenidos. Algunos activos, otros terminados. La mayoría comparte la biblioteca de packages."
     lead_empty: "Aún no hay proyectos públicos para mostrar."
     tag_active: activo
     tag_paused: pausado
@@ -77,7 +77,7 @@ es:
   footer:
     rights: ""
   not_found:
-    heading: "404 · no existe"
+    heading: "404 | no existe"
     lead: "La URL que pediste no encaja con nada que tenga publicado."
     helpful: "Probablemente quieras:"
     back_home: Volver al home
@@ -85,7 +85,7 @@ es:
     see_projects: Ver los proyectos
 
 en:
-  site_tagline: "Game & systems dev — packages, games and experiments"
+  site_tagline: "Game & systems dev: packages, games and experiments"
   nav:
     home: Home
     packages: Packages
@@ -97,7 +97,7 @@ en:
     welcome_prefix: "Welcome to the portal of"
   home:
     profile_heading: Profile
-    profile_short: "Video game programmer with 10+ years of experience. Engine-agnostic: a solid C# core and systems decoupled from the engine's architecture so they port across — I work mostly with Unity (URP, Burst, Jobs). Comfortable with low-level work (C++, DX11, Assembler) and full-stack web when needed."
+    profile_short: "Video game programmer with 10+ years of experience. Engine-agnostic: a solid C# core and systems decoupled from the engine's architecture so they port across. I work mostly with Unity (URP, Burst, Jobs). Comfortable with low-level work (C++, DX11, Assembler) and full-stack web when needed."
     profile_link: "Full profile →"
     packages_heading: Packages
     packages_intro_count: "Unity Packages published, distributed as independent repos for consumption via Git URL in"
@@ -112,7 +112,7 @@ en:
     intro_with_count_prefix: "packages published from"
     intro_with_count_suffix: ". Each lives in its own repo and installs via Git URL in"
     install_label: "Install example (manifest.json)"
-    transitive_note: "UPM does not resolve transitive dependencies in git URLs — you must also list each package's dependencies in the manifest."
+    transitive_note: "UPM does not resolve transitive dependencies in git URLs: you must also list each package's dependencies in the manifest."
     empty: "No packages publicly available yet."
     empty_long: "The library is developed in private repos. Once a package stabilizes, it will be published and appear listed here."
     notes_heading: Notes
@@ -122,7 +122,7 @@ en:
     deps_plural: "deps"
   projects:
     heading: Projects
-    lead_with_items: "Personal and team projects, with self-contained technical write-ups. Some active, some finished — most share the packages library."
+    lead_with_items: "Personal and team projects, with self-contained technical write-ups. Some active, some finished. Most share the packages library."
     lead_empty: "No public projects to show yet."
     tag_active: active
     tag_paused: paused
@@ -161,7 +161,7 @@ en:
   footer:
     rights: ""
   not_found:
-    heading: "404 · not found"
+    heading: "404 | not found"
     lead: "The URL you requested doesn't match anything published."
     helpful: "You probably want to:"
     back_home: Back home

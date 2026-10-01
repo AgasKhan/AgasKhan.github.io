@@ -1,5 +1,5 @@
 ---
-title: "Servicio de generación de imágenes por IA — orquestación de GPU local + pipeline de LoRA"
+title: "Servicio de generación de imágenes por IA: orquestación de GPU local + pipeline de LoRA"
 description: "Servicio multiusuario de generación de imágenes por IA: orquestación de un motor de difusión local sobre una sola GPU, cola por GPU, ciclo de vida del proceso de inferencia, pipeline de entrenamiento de LoRA y bot de Discord como gateway. Montado de punta a punta."
 permalink: /es/projects/ai-image-generation-service/
 ---
@@ -17,7 +17,7 @@ permalink: /es/projects/ai-image-generation-service/
 
 <div class="callout">
   <p class="callout-title">Encuadre</p>
-  <p>Lo mostrable acá es la <strong>ingeniería</strong>: convertir una PC con una única GPU en un servicio de generación compartido y multiusuario, con la orquestación, el pipeline y el tooling que eso exige. El dominio es la generación de imágenes de personajes de contenido para adultos. Monté toda la estructura solo — infraestructura, orquestación y sistema de tareas — de la idea al servicio en operación. No se muestra output ni se linkea el repo (privado).</p>
+  <p>Lo mostrable acá es la <strong>ingeniería</strong>: convertir una PC con una única GPU en un servicio de generación compartido y multiusuario, con la orquestación, el pipeline y el tooling que eso exige. El dominio es la generación de imágenes de personajes de contenido para adultos. Monté toda la estructura solo, de la idea al servicio en operación: infraestructura, orquestación y sistema de tareas. No se muestra output ni se linkea el repo (privado).</p>
 </div>
 
 ## Orquestación de GPU local
@@ -46,7 +46,7 @@ Para lograr **identidad consistente** entre generaciones, monté un pipeline de 
 
 ## Generador de datasets de identidad consistente
 
-Escribí un generador de **datasets sintéticos**: fija la identidad de un personaje vía **embedding de rostro (IP-Adapter FaceID)** y varía pose, escena y encuadre para producir la diversidad que un LoRA necesita — emitiendo progreso parseable por el proceso orquestador.
+Escribí un generador de **datasets sintéticos**: fija la identidad de un personaje vía **embedding de rostro (IP-Adapter FaceID)** y varía pose, escena y encuadre para producir la diversidad que un LoRA necesita, emitiendo progreso parseable por el proceso orquestador.
 
 ## Multi-arquitectura
 
@@ -54,7 +54,7 @@ Soporté múltiples arquitecturas de difusión (**SD1.5, SDXL, Flux**) usando pe
 
 ## Ingeniería de proceso
 
-Todo el trabajo se organiza con un **sistema de tareas por issues** (GitHub), issues-first. La estructura completa — infra, orquestación, pipeline y tooling — la levanté solo.
+Todo el trabajo se organiza con un **sistema de tareas por issues** (GitHub), issues-first. La estructura completa la levanté solo: infra, orquestación, pipeline y tooling.
 
 ## Qué demuestra
 
@@ -64,5 +64,5 @@ Todo el trabajo se organiza con un **sistema de tareas por issues** (GitHub), is
 - **Ownership de punta a punta**: de la idea al servicio en operación, montado en solitario.
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
-  <span>proyecto personal · repo privado</span>
+  <span>proyecto personal | repo privado</span>
 </div>

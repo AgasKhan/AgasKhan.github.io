@@ -17,7 +17,7 @@ permalink: /en/projects/event-system-level-designers/
 
 <div class="callout">
   <p class="callout-title">Commercial validation</p>
-  <p>Not an experiment: it's a product <strong>sold and licensed</strong> to other developers, with <strong>recurring revenue</strong>. Other professionals pay for it and ship it in their own games — the most direct signal that the technology holds up outside my own code.</p>
+  <p>Not an experiment: it's a product <strong>sold and licensed</strong> to other developers, with <strong>recurring revenue</strong>. Other professionals pay for it and ship it in their own games: the most direct signal that the technology holds up outside my own code.</p>
 </div>
 
 ## How it works
@@ -38,5 +38,5 @@ It's one of the ~36 systems in the <a href="{{ '/en/projects/common-package/' | 
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/projects/common-package/' | relative_url }}">See Common-Package →</a>
-  <span>part of Common-Package · private repo</span>
+  <span>part of Common-Package | private repo</span>
 </div>

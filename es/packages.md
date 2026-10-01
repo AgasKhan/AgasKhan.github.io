@@ -29,7 +29,7 @@ permalink: /es/packages/
   {% assign pkgs = visible_packages | where: "category", cat %}
   {% if pkgs.size > 0 %}
   <div class="category-block">
-    <h3 class="category-title">{{ cat }} <span style="color: var(--text-dim); font-weight: normal;">· {{ pkgs.size }}</span></h3>
+    <h3 class="category-title">{{ cat }} <span style="color: var(--text-dim); font-weight: normal;">| {{ pkgs.size }}</span></h3>
     <div class="cards">
       {% for pkg in pkgs %}
       <article class="card">
@@ -42,7 +42,7 @@ permalink: /es/packages/
         <div class="card-meta">
           <span>Unity {{ pkg.unity }}</span>
           <span>{{ pkg.dependencies.size }} {% if pkg.dependencies.size == 1 %}{{ t.packages.deps_singular }}{% else %}{{ t.packages.deps_plural }}{% endif %}</span>
-          <a href="{{ pkg.repo }}" target="_blank" rel="noopener">repo ↗</a>
+          <a href="{{ pkg.repo }}" target="_blank" rel="noopener">repo →</a>
         </div>
       </article>
       {% endfor %}

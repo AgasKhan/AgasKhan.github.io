@@ -20,7 +20,7 @@
     var KEY_LANG        = 'hero_shader_lang';           // 'glsl' | 'hlsl'
     var KEY_HEIGHT      = 'hero_shader_editor_height';  // user-chosen editor px
 
-    // Height bounds — same as the CSS clamps, kept in sync.
+    // Height bounds, same as the CSS clamps, kept in sync.
     var HEIGHT_MIN = 280;
     var HEIGHT_MAX = 1200;
 
@@ -394,7 +394,7 @@
         }
         // "Shader only" mode: hide everything chrome-related (editor, header,
         // footer, container card) so the bg canvas takes the full viewport.
-        // The two toggles are mutually exclusive — activating one kills the other.
+        // The two toggles are mutually exclusive: activating one kills the other.
         function setShaderOnly(on)
         {
             if (on)

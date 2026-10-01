@@ -21,13 +21,13 @@ Proyecto final de carrera, hecho en equipo (rol de Lucas: programador y diseñad
 
 ## Case study: miles de objetos en escena sin caídas de framerate
 
-El desafío: mostrar y manejar **miles de objetos** en pantalla a la vez, cada frame, sin que el framerate se caiga. Hacerlo de la forma ingenua —recorrer todo en el hilo principal— frena el juego apenas escala la cantidad.
+El desafío: mostrar y manejar **miles de objetos** en pantalla a la vez, cada frame, sin que el framerate se caiga. Hacerlo de la forma ingenua, recorriendo todo en el hilo principal, frena el juego apenas escala la cantidad.
 
 La solución reparte el trabajo según lo que cada parte permite:
 
 - **Cómputo en paralelo (Jobs System):** decidir el estado de cada objeto es puro cálculo sobre datos, sin tocar la API de Unity, así que se reparte entre todos los núcleos del CPU.
 - **Render masivo con GPU instancing:** los objetos que comparten malla y material se dibujan en lote, bajando la carga de rendering.
-- **Solo lo imprescindible en el main thread:** la API de `Transform`/`GameObject` de Unity **no es thread-safe**, así que la operación atada al motor (activar/desactivar cada objeto con `SetActive`) queda en el hilo principal — y nada más.
+- **Solo lo imprescindible en el main thread:** la API de `Transform`/`GameObject` de Unity **no es thread-safe**, así que la operación atada al motor (activar/desactivar cada objeto con `SetActive`) queda en el hilo principal, y nada más.
 
 En números concretos, esto sostiene el encendido/apagado de **4.096 GameObjects** por frame: el cálculo pesado corre en paralelo, el render se apoya en GPU instancing, y el hilo principal hace solo lo que está obligado a hacer, en vez de resolver todo secuencialmente.
 
@@ -39,5 +39,5 @@ En números concretos, esto sostiene el encendido/apagado de **4.096 GameObjects
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/es/projects/common-package/' | relative_url }}">Ver Common-Package →</a>
-  <span>proyecto de equipo · repo privado</span>
+  <span>proyecto de equipo | repo privado</span>
 </div>

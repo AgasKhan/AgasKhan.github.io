@@ -22,7 +22,7 @@ permalink: /en/projects/institutional-portal-management/
 
 ## Multi-section institutional portal
 
-I built the public informational part: institutional sections, board of directors, how to join, agreements, benefits, news and useful data — in PHP/MySQL on Apache.
+I built the public informational part in PHP/MySQL on Apache: institutional sections, board of directors, how to join, agreements, benefits, news and useful data.
 
 ## Two-sided job board
 
@@ -50,5 +50,5 @@ I set up an admin back-office to run the portal **without touching code** (CRUD 
 
 <div class="card-meta" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border-soft);">
   <a href="{{ '/en/projects/php-web-platform-automotive/' | relative_url }}">See the PHP web platform →</a>
-  <span>private client · internal system (not public)</span>
+  <span>private client | internal system (not public)</span>
 </div>
