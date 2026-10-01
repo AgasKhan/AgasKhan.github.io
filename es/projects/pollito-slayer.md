@@ -19,7 +19,7 @@ permalink: /es/projects/pollito-slayer/
   <img src="{{ '/assets/img/pollito-slayer/orca-escala.webp' | relative_url }}"
        width="1600" height="900" decoding="async" fetchpriority="high"
        alt="Una orca con sombrero fedora ocupa media pantalla. Sobre la arena, diminuto en comparación, el pollito con su guante de boxeo rojo. Al fondo, la valla con la tribuna de sardinas y el mar.">
-  <figcaption>El pollito y Orca Nostra. La escala es parte del chiste, y el juego no la comenta.</figcaption>
+  <figcaption>Orca Nostra. El pollito está abajo, con el guante rojo.</figcaption>
 </figure>
 
 ## Qué es
@@ -88,7 +88,7 @@ Verificarlo pidió instrumentar el comportamiento, no la sensación: cuadro a cu
   <img src="{{ '/assets/img/pollito-slayer/cardumen-ring-2.webp' | relative_url }}"
        width="1400" height="676" loading="lazy" decoding="async"
        alt="La misma arena instantes después, con la arena cubierta de sardinas de borde a borde y el pollito apenas visible entre ellas.">
-  <figcaption>La ronda final, la única sin jefe: las sardinas que pelean bajan al ring, con el pollito en el centro como única referencia de escala. Usan el mismo sistema de instancing que las de la tribuna: cambia lo que hacen, no cómo se dibujan.</figcaption>
+  <figcaption>La ronda final, la única sin jefe: todas las sardinas bajan al ring a la vez. Se dibujan con el mismo sistema que las de la tribuna.</figcaption>
 </figure>
 
 ## El ataque que te seguía mientras lo esquivabas
@@ -105,7 +105,7 @@ No era un bug: cada pieza, por separado, estaba bien. Era el cruce de dos decisi
   <img src="{{ '/assets/img/pollito-slayer/telegrafiado.webp' | relative_url }}"
        width="1600" height="900" loading="lazy" decoding="async"
        alt="Una franja roja sale de la orca y se extiende por la arena hasta el pollito, marcando el punto donde va a caer el golpe.">
-  <figcaption>El telegrafiado: la franja roja es la ventana para leer el ataque y salir. Quince de los dieciséis ataques fijan su punto cuando aparece.</figcaption>
+  <figcaption>La franja roja marca dónde va a caer el golpe. Esa es la ventana para salir.</figcaption>
 </figure>
 
 ## Nada se calcula en la máquina del jugador si se puede calcular antes

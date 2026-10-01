@@ -19,7 +19,7 @@ permalink: /en/projects/pollito-slayer/
   <img src="{{ '/assets/img/pollito-slayer/orca-escala.webp' | relative_url }}"
        width="1600" height="900" decoding="async" fetchpriority="high"
        alt="An orca in a fedora fills half the screen. On the sand, tiny by comparison, the chick with its red boxing glove. Behind them, the fence lined with sardine spectators, and the sea.">
-  <figcaption>The chick and Orca Nostra. The scale is part of the joke, and the game never comments on it.</figcaption>
+  <figcaption>Orca Nostra. The chick is down there, with the red glove.</figcaption>
 </figure>
 
 ## What it is
@@ -88,7 +88,7 @@ Verifying it meant instrumenting the behaviour, not the feel: frame by frame ove
   <img src="{{ '/assets/img/pollito-slayer/cardumen-ring-2.webp' | relative_url }}"
        width="1400" height="676" loading="lazy" decoding="async"
        alt="The same arena moments later, the sand covered edge to edge with sardines and the chick barely visible among them.">
-  <figcaption>The final round, the only one without a boss: the fighting sardines come down into the ring, with the chick in the middle as the only sense of scale. They use the same instancing system as the stands: what changes is what they do, not how they are drawn.</figcaption>
+  <figcaption>The final round, the only one without a boss: every sardine comes down to the ring at once. They are drawn with the same system as the stands.</figcaption>
 </figure>
 
 ## The attack that followed you as you dodged it
@@ -105,7 +105,7 @@ It wasn't a bug: each piece, on its own, was correct. It was the crossing of two
   <img src="{{ '/assets/img/pollito-slayer/telegrafiado.webp' | relative_url }}"
        width="1600" height="900" loading="lazy" decoding="async"
        alt="A red band runs from the orca across the sand to the chick, marking the spot where the blow is going to land.">
-  <figcaption>Telegraphing: the red band is the window to read the attack and get out. Fifteen of the sixteen attacks lock their point when it appears.</figcaption>
+  <figcaption>The red band marks where the blow is going to land. That is the window to get out.</figcaption>
 </figure>
 
 ## Nothing is computed on the player's machine if it can be computed beforehand
